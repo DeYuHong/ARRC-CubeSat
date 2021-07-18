@@ -4,9 +4,9 @@
    *Debuger : Openocd/st-link*  
 ***
 ### CubeSat-System List
-- [x] 已完成項目
+- [x] Done
   - [x] 系統架構
-- [ ] 未完成項目 
+- [ ] On-going 
   - [ ] Battery ADC onvert
   - [ ] Payload ADC & data format
   - [ ] 
