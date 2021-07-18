@@ -21,16 +21,11 @@
 ### Main flowchart
 
 ***  
-<h3>Flowchart</h3>
-<div class="mermaid">
-    graph TD
-    A[Christmas] -->|Get money| B(Go shopping)
-    B --> C{Let me think}
-    C -->|One| D[Laptop]
-    C -->|Two| E[iPhone]
-    C -->|Three| F[Car]
-</div>
 
+<script src="https://unpkg.com/mermaid@8.8.4/dist/mermaid.min.js"></script>
+```mermaid
+graph TD;A-->B;A-->C;B-->D;C-->D;
 
+```
 
 
