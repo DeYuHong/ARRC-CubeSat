@@ -22,14 +22,15 @@
 
 ***  
 ```flow
-st=>start: 使用者登陸
-op=>operation: 登陸操作
-cond=>condition: 登陸成功 Yes or No?
-e=>end: 進入後臺
+st=>start: 開始
+e=>end: 結束
+op=>operation: 我的操作
+op2=>operation: 啦啦啦
+cond=>condition: 是或否？
 
-st->op->cond
+st->op->op2->cond
 cond(yes)->e
-cond(no)->op
+cond(no)->op2
 ```
 
 
