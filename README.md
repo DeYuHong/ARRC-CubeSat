@@ -4,12 +4,13 @@
    *Debuger : Openocd/st-link*  
 ***
 ### CubeSat-System List
-- [x] Done
-  - [x] 系統架構
+- [x] Close
+  - [x] CubeSat system structure
+  - [x] Accelerometer data & Real time clock(Data packet)
 - [ ] On-going 
   - [ ] Battery ADC onvert
-  - [ ] Payload ADC & data format
-  - [ ] 
+  - [ ] Payload ADC & data packet
+***
 
 
 
