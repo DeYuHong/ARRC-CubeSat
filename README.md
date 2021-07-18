@@ -19,6 +19,5 @@
   - [ ] Payload ADC & data packet
 ***
 ### Main flowchart
-<svg id="mermaid-1626625185104" width="298.75" xmlns="http://www.w3.org/2000/svg" height="457.7875061035156" viewBox="0 0 298.75 457.7875061035156"><style>
-
+<https://mermaid.cloudinary.us/#/view/eyJjb2RlIjoiZ3JhcGggVERcbkFbQ2hyaXN0bWFzXSAtLT58R2V0IG1vbmV5fCBCKEdvIHNob3BwaW5nKVxuQiAtLT4gQ3tMZXQgbWUgdGhpbmt9XG5DIC0tPnxPbmV8IERbTGFwdG9wXVxuQyAtLT58VHdvfCBFW2lQaG9uZV1cbkMgLS0-fFRocmVlfCBGW2ZhOmZhLWNhciBDYXJdXG4iLCJtZXJtYWlkIjp7InRoZW1lIjoibmV1dHJhbCJ9fQ>
 ***
