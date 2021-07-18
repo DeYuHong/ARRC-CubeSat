@@ -21,17 +21,15 @@
 ### Main flowchart
 
 ***  
-```flow
-st=>start: 開始
-e=>end: 結束
-op=>operation: 我的操作
-op2=>operation: 啦啦啦
-cond=>condition: 是或否？
-
-st->op->op2->cond
-cond(yes)->e
-cond(no)->op2
-```
+<h3>Flowchart</h3>
+<div class="mermaid">
+    graph TD
+    A[Christmas] -->|Get money| B(Go shopping)
+    B --> C{Let me think}
+    C -->|One| D[Laptop]
+    C -->|Two| E[iPhone]
+    C -->|Three| F[Car]
+</div>
 
 
 
