@@ -12,12 +12,16 @@
   - [x] CubeSat system structure
      - Launch test Mode 
      - Beacon Mode 
-     - Payload Mode 
+     - Payload Mode(part on-going) 
 - [ ] On-going 
   - [ ] GPIO Interrupt Launch signal & Separate signal
   - [ ] Battery ADC onvert
   - [ ] Payload ADC & data packet
 ***
+### Main flow chart
+
+graph TD
+    A[CubeSat Init] --> B(test)
 
 
 
