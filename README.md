@@ -8,6 +8,7 @@
   - [x] CubeSat system structure
      - Launch test Mode 
      - Beacon Mode 
+        - 456
      - Payload Mode 
 - [ ] On-going 
   - [ ] Battery ADC onvert
