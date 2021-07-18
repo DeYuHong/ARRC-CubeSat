@@ -10,8 +10,8 @@
 ### CubeSat-System List
 - [x] Close
   - [x] CubeSat system structure
-     ~~- Launch test Mode   ~~
-     ~~- Beacon Mode   
+     - ~~Launch test Mode~~   
+     - ~~Beacon Mode~~  
      - Payload Mode(part on-going) 
 - [ ] On-going 
   - [ ] GPIO Interrupt Launch signal & Separate signal
