@@ -10,23 +10,16 @@
 ### CubeSat-System List
 - [x] Close
   - [x] CubeSat system structure
-     - Launch test Mode 
-     - Beacon Mode 
+     ~~- Launch test Mode 
+     ~- Beacon Mode 
      - Payload Mode(part on-going) 
 - [ ] On-going 
   - [ ] GPIO Interrupt Launch signal & Separate signal
   - [ ] Battery ADC onvert
   - [ ] Payload ADC & data packet
 ***
-### Main flow chart
+### Main flowchart
 
-```mermaid
-graph LR
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-B --> D{Rhombus}
-C --> D
-```
 
 
 
