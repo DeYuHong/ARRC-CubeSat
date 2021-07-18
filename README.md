@@ -3,8 +3,8 @@
    *Toolcahin : gcc-arm-none-eabi*  
    *Debuger : Openocd/st-link*  
    -------------------------------
-   *Hardware : stm32f407discovery*
-   *System : FreeRTOS <https://www.freertos.org/index.html>*  
+   *Hardware : stm32f407discovery*  
+   *System OS : FreeRTOS <https://www.freertos.org/index.html>*  
    
 ***
 ### CubeSat-System List
