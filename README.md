@@ -21,11 +21,6 @@
 ### Main flowchart
 
 ***  
-
-<script src="https://unpkg.com/mermaid@8.8.4/dist/mermaid.min.js"></script>
-```mermaid
-graph TD;A-->B;A-->C;B-->D;C-->D;
-
-```
+'graph TB\n'+'A --> B\n'+'A --> C\n'+'B --> D\n'+'C --> D\n'
 
 
