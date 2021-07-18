@@ -6,7 +6,9 @@
 ### CubeSat-System List
 - [x] Close
   - [x] CubeSat system structure
-  - [x] Accelerometer data & Real time clock(Data packet)
+     - Launch test Mode 
+     - Beacon Mode 
+     - Payload Mode 
 - [ ] On-going 
   - [ ] Battery ADC onvert
   - [ ] Payload ADC & data packet
