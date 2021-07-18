@@ -1,7 +1,7 @@
 # ARRC-CubeSat
-Editor: Vim  \n
-Toolcahin:gcc-arm-none-eabi  \n
-Debuger:Openocd/st-link  \n
+Editor: Vim  
+Toolcahin:gcc-arm-none-eabi  
+Debuger:Openocd/st-link  
 
 
 
