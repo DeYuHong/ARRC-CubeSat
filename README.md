@@ -20,9 +20,12 @@
 ***
 ### Main flow chart
 
-graph TD  
-    A[CubeSat Init] --> B(test)
-
+mermaid
+graph LR
+A[Hard edge] -->B(Round edge)
+  B --> C(Decision)
+  C -->|One| D[Result one]
+  C -->|TWO| E[Resule two]
 
 
 
