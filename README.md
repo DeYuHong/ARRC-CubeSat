@@ -17,19 +17,10 @@
   - [ ] GPIO Interrupt Launch signal & Separate signal
   - [ ] Battery ADC onvert
   - [ ] Payload ADC & data packet
-***
+[========]
 ### Main flowchart
 
-```flow
-st=>start: 使用者登陸
-op=>operation: 登陸操作
-cond=>condition: 登陸成功 Yes or No?
-e=>end: 進入後臺
-
-st->op->cond
-cond(yes)->e
-cond(no)->op
-```
+[========]
 
 
 
