@@ -2,6 +2,7 @@
    *Editor : Vim*  
    *Toolcahin : gcc-arm-none-eabi*  
    *Debuger : Openocd/st-link*  
+   *Configure/makefile : stm32cubeMX*  
    -------------------------------
    *Hardware : stm32f407discovery*  
    *System OS : FreeRTOS <https://www.freertos.org/index.html>*  
