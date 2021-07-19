@@ -1,0 +1,2909 @@
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f4_discovery.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.SPIx_MspInit,"ax",%progbits
+  18              		.align	1
+  19              		.arch armv7e-m
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	SPIx_MspInit:
+  26              	.LFB245:
+  27              		.file 1 "Drivers/accelero/BSP/src/stm32f4_discovery.c"
+   1:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+   2:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   ******************************************************************************
+   3:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @file    stm32f4_discovery.c
+   4:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @author  MCD Application Team
+   5:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief   This file provides set of firmware functions to manage Leds and
+   6:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *          push-button available on STM32F4-Discovery Kit from STMicroelectronics.
+   7:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   ******************************************************************************
+   8:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @attention
+   9:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *
+  10:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
+  11:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *
+  12:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  13:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * are permitted provided that the following conditions are met:
+  14:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  15:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *      this list of conditions and the following disclaimer.
+  16:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  17:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *      this list of conditions and the following disclaimer in the documentation
+  18:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *      and/or other materials provided with the distribution.
+  19:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  20:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *      may be used to endorse or promote products derived from this software
+  21:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *      without specific prior written permission.
+  22:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *
+  23:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  24:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  25:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  26:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  27:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  28:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  29:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  30:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  31:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 2
+
+
+  32:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  33:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *
+  34:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   ******************************************************************************
+  35:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+  36:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /* Includes ------------------------------------------------------------------*/
+  37:Drivers/accelero/BSP/src/stm32f4_discovery.c **** #include "stm32f4_discovery.h"
+  38:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+  39:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /** @defgroup BSP BSP
+  40:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @{
+  41:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+  42:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+  43:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /** @defgroup STM32F4_DISCOVERY STM32F4 DISCOVERY
+  44:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @{
+  45:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */   
+  46:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     
+  47:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /** @defgroup STM32F4_DISCOVERY_LOW_LEVEL STM32F4 DISCOVERY LOW LEVEL
+  48:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief This file provides set of firmware functions to manage Leds and push-button
+  49:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *        available on STM32F4-Discovery Kit from STMicroelectronics.
+  50:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @{
+  51:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+  52:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+  53:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_Private_TypesDefinitions STM32F4 DISCOVERY LOW LEVEL Priv
+  54:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @{
+  55:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+  56:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+  57:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @}
+  58:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+  59:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+  60:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_Private_Defines STM32F4 DISCOVERY LOW LEVEL Private Defin
+  61:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @{
+  62:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+  63:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+  64:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /**
+  65:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief STM32F4 DISCO BSP Driver version number V2.1.3
+  66:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+  67:Drivers/accelero/BSP/src/stm32f4_discovery.c **** #define __STM32F4_DISCO_BSP_VERSION_MAIN   (0x02) /*!< [31:24] main version */
+  68:Drivers/accelero/BSP/src/stm32f4_discovery.c **** #define __STM32F4_DISCO_BSP_VERSION_SUB1   (0x01) /*!< [23:16] sub1 version */
+  69:Drivers/accelero/BSP/src/stm32f4_discovery.c **** #define __STM32F4_DISCO_BSP_VERSION_SUB2   (0x03) /*!< [15:8]  sub2 version */
+  70:Drivers/accelero/BSP/src/stm32f4_discovery.c **** #define __STM32F4_DISCO_BSP_VERSION_RC     (0x00) /*!< [7:0]  release candidate */ 
+  71:Drivers/accelero/BSP/src/stm32f4_discovery.c **** #define __STM32F4_DISCO_BSP_VERSION         ((__STM32F4_DISCO_BSP_VERSION_MAIN << 24)\
+  72:Drivers/accelero/BSP/src/stm32f4_discovery.c ****                                              |(__STM32F4_DISCO_BSP_VERSION_SUB1 << 16)\
+  73:Drivers/accelero/BSP/src/stm32f4_discovery.c ****                                              |(__STM32F4_DISCO_BSP_VERSION_SUB2 << 8 )\
+  74:Drivers/accelero/BSP/src/stm32f4_discovery.c ****                                              |(__STM32F4_DISCO_BSP_VERSION_RC)) 
+  75:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+  76:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @}
+  77:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+  78:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+  79:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+  80:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_Private_Macros STM32F4 DISCOVERY LOW LEVEL Private Macros
+  81:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @{
+  82:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+  83:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+  84:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @}
+  85:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+  86:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+  87:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_Private_Variables STM32F4 DISCOVERY LOW LEVEL Private Var
+  88:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @{
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 3
+
+
+  89:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+  90:Drivers/accelero/BSP/src/stm32f4_discovery.c **** GPIO_TypeDef* GPIO_PORT[LEDn] = {LED4_GPIO_PORT, 
+  91:Drivers/accelero/BSP/src/stm32f4_discovery.c ****                                  LED3_GPIO_PORT, 
+  92:Drivers/accelero/BSP/src/stm32f4_discovery.c ****                                  LED5_GPIO_PORT,
+  93:Drivers/accelero/BSP/src/stm32f4_discovery.c ****                                  LED6_GPIO_PORT};
+  94:Drivers/accelero/BSP/src/stm32f4_discovery.c **** const uint16_t GPIO_PIN[LEDn] = {LED4_PIN, 
+  95:Drivers/accelero/BSP/src/stm32f4_discovery.c ****                                  LED3_PIN, 
+  96:Drivers/accelero/BSP/src/stm32f4_discovery.c ****                                  LED5_PIN,
+  97:Drivers/accelero/BSP/src/stm32f4_discovery.c ****                                  LED6_PIN};
+  98:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+  99:Drivers/accelero/BSP/src/stm32f4_discovery.c **** GPIO_TypeDef* BUTTON_PORT[BUTTONn] = {KEY_BUTTON_GPIO_PORT}; 
+ 100:Drivers/accelero/BSP/src/stm32f4_discovery.c **** const uint16_t BUTTON_PIN[BUTTONn] = {KEY_BUTTON_PIN}; 
+ 101:Drivers/accelero/BSP/src/stm32f4_discovery.c **** const uint8_t BUTTON_IRQn[BUTTONn] = {KEY_BUTTON_EXTI_IRQn};
+ 102:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 103:Drivers/accelero/BSP/src/stm32f4_discovery.c **** uint32_t I2cxTimeout = I2Cx_TIMEOUT_MAX;    /*<! Value of Timeout when I2C communication fails */ 
+ 104:Drivers/accelero/BSP/src/stm32f4_discovery.c **** uint32_t SpixTimeout = SPIx_TIMEOUT_MAX;    /*<! Value of Timeout when SPI communication fails */
+ 105:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 106:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static SPI_HandleTypeDef    SpiHandle;
+ 107:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static I2C_HandleTypeDef    I2cHandle;
+ 108:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 109:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @}
+ 110:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+ 111:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 112:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_Private_FunctionPrototypes STM32F4 DISCOVERY LOW LEVEL Pr
+ 113:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @{
+ 114:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+ 115:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 116:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @}
+ 117:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+ 118:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 119:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_Private_Functions STM32F4 DISCOVERY LOW LEVEL Private Fun
+ 120:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @{
+ 121:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+ 122:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void     I2Cx_Init(void);
+ 123:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void     I2Cx_WriteData(uint8_t Addr, uint8_t Reg, uint8_t Value);
+ 124:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static uint8_t  I2Cx_ReadData(uint8_t Addr, uint8_t Reg);
+ 125:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void     I2Cx_MspInit(void);
+ 126:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void     I2Cx_Error(uint8_t Addr);
+ 127:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 128:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void     SPIx_Init(void);
+ 129:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void     SPIx_MspInit(void);
+ 130:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static uint8_t  SPIx_WriteRead(uint8_t Byte);
+ 131:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static  void    SPIx_Error(void);
+ 132:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 133:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /* Link functions for Accelerometer peripheral */
+ 134:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void            ACCELERO_IO_Init(void);
+ 135:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void            ACCELERO_IO_ITConfig(void);
+ 136:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void            ACCELERO_IO_Write(uint8_t *pBuffer, uint8_t WriteAddr, uint16_t NumByteToWrite);
+ 137:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void            ACCELERO_IO_Read(uint8_t *pBuffer, uint8_t ReadAddr, uint16_t NumByteToRead);
+ 138:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 139:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /* Link functions for Audio peripheral */
+ 140:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void            AUDIO_IO_Init(void);
+ 141:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void            AUDIO_IO_DeInit(void);
+ 142:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void            AUDIO_IO_Write(uint8_t Addr, uint8_t Reg, uint8_t Value);
+ 143:Drivers/accelero/BSP/src/stm32f4_discovery.c **** uint8_t         AUDIO_IO_Read(uint8_t Addr, uint8_t Reg);
+ 144:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 145:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @}
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 4
+
+
+ 146:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 147:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 148:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_LED_Functions STM32F4 DISCOVERY LOW LEVEL LED Functions
+ 149:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @{
+ 150:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+ 151:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 152:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 153:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  This method returns the STM32F4 DISCO BSP Driver revision
+ 154:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @retval version : 0xXYZR (8bits for each decimal, R for RC)
+ 155:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 156:Drivers/accelero/BSP/src/stm32f4_discovery.c **** uint32_t BSP_GetVersion(void)
+ 157:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 158:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   return __STM32F4_DISCO_BSP_VERSION;
+ 159:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 160:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 161:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 162:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Configures LED GPIO.
+ 163:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Led: Specifies the Led to be configured. 
+ 164:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *   This parameter can be one of following parameters:
+ 165:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED4
+ 166:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED3
+ 167:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED5
+ 168:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED6
+ 169:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 170:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void BSP_LED_Init(Led_TypeDef Led)
+ 171:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 172:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitTypeDef  GPIO_InitStruct;
+ 173:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 174:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Enable the GPIO_LED Clock */
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   LEDx_GPIO_CLK_ENABLE(Led);
+ 176:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 177:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Configure the GPIO_LED pin */
+ 178:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Pin = GPIO_PIN[Led];
+ 179:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 180:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 181:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+ 182:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 183:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_Init(GPIO_PORT[Led], &GPIO_InitStruct);
+ 184:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 185:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_WritePin(GPIO_PORT[Led], GPIO_PIN[Led], GPIO_PIN_RESET); 
+ 186:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 187:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 188:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 189:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Turns selected LED On.
+ 190:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Led: Specifies the Led to be set on. 
+ 191:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *   This parameter can be one of following parameters:
+ 192:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED4
+ 193:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED3
+ 194:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED5
+ 195:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED6  
+ 196:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 197:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void BSP_LED_On(Led_TypeDef Led)
+ 198:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 199:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_WritePin(GPIO_PORT[Led], GPIO_PIN[Led], GPIO_PIN_SET); 
+ 200:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 201:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 202:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 5
+
+
+ 203:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Turns selected LED Off.
+ 204:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Led: Specifies the Led to be set off. 
+ 205:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *   This parameter can be one of following parameters:
+ 206:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED4
+ 207:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED3
+ 208:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED5
+ 209:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED6 
+ 210:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 211:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void BSP_LED_Off(Led_TypeDef Led)
+ 212:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 213:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_WritePin(GPIO_PORT[Led], GPIO_PIN[Led], GPIO_PIN_RESET); 
+ 214:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 215:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 216:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 217:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Toggles the selected LED.
+ 218:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Led: Specifies the Led to be toggled. 
+ 219:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *   This parameter can be one of following parameters:
+ 220:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED4
+ 221:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED3
+ 222:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED5
+ 223:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg LED6  
+ 224:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 225:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void BSP_LED_Toggle(Led_TypeDef Led)
+ 226:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 227:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_TogglePin(GPIO_PORT[Led], GPIO_PIN[Led]);
+ 228:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 229:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 230:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 231:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @}
+ 232:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+ 233:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 234:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_BUTTON_Functions STM32F4 DISCOVERY LOW LEVEL BUTTON Funct
+ 235:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @{
+ 236:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+ 237:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 238:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 239:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Configures Button GPIO and EXTI Line.
+ 240:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Button: Specifies the Button to be configured.
+ 241:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *   This parameter should be: BUTTON_KEY
+ 242:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Mode: Specifies Button mode.
+ 243:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *   This parameter can be one of following parameters:   
+ 244:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg BUTTON_MODE_GPIO: Button will be used as simple IO 
+ 245:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *     @arg BUTTON_MODE_EXTI: Button will be connected to EXTI line with interrupt
+ 246:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *                            generation capability  
+ 247:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 248:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void BSP_PB_Init(Button_TypeDef Button, ButtonMode_TypeDef Mode)
+ 249:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 250:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitTypeDef GPIO_InitStruct;
+ 251:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 252:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Enable the BUTTON Clock */
+ 253:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   BUTTONx_GPIO_CLK_ENABLE(Button);
+ 254:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 255:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   if (Mode == BUTTON_MODE_GPIO)
+ 256:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 257:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     /* Configure Button pin as input */
+ 258:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Pin = BUTTON_PIN[Button];
+ 259:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 6
+
+
+ 260:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 261:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+ 262:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     
+ 263:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     HAL_GPIO_Init(BUTTON_PORT[Button], &GPIO_InitStruct);
+ 264:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 265:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 266:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   if (Mode == BUTTON_MODE_EXTI)
+ 267:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 268:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     /* Configure Button pin as input with External interrupt */
+ 269:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Pin = BUTTON_PIN[Button];
+ 270:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 271:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+ 272:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING; 
+ 273:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     HAL_GPIO_Init(BUTTON_PORT[Button], &GPIO_InitStruct);
+ 274:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     
+ 275:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     /* Enable and set Button EXTI Interrupt to the lowest priority */
+ 276:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     HAL_NVIC_SetPriority((IRQn_Type)(BUTTON_IRQn[Button]), 0x0F, 0);
+ 277:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     HAL_NVIC_EnableIRQ((IRQn_Type)(BUTTON_IRQn[Button]));
+ 278:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 279:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 280:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 281:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 282:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Returns the selected Button state.
+ 283:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Button: Specifies the Button to be checked.
+ 284:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *   This parameter should be: BUTTON_KEY  
+ 285:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @retval The Button GPIO pin value.
+ 286:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 287:Drivers/accelero/BSP/src/stm32f4_discovery.c **** uint32_t BSP_PB_GetState(Button_TypeDef Button)
+ 288:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 289:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   return HAL_GPIO_ReadPin(BUTTON_PORT[Button], BUTTON_PIN[Button]);
+ 290:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 291:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 292:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 293:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @}
+ 294:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+ 295:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 296:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /** @defgroup STM32F4_DISCOVERY_LOW_LEVEL_BUS_Functions STM32F4 DISCOVERY LOW LEVEL BUS Functions
+ 297:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @{
+ 298:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */ 
+ 299:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 300:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /*******************************************************************************
+ 301:Drivers/accelero/BSP/src/stm32f4_discovery.c ****                             BUS OPERATIONS
+ 302:Drivers/accelero/BSP/src/stm32f4_discovery.c **** *******************************************************************************/
+ 303:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 304:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /******************************* SPI Routines *********************************/
+ 305:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 306:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 307:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  SPIx Bus initialization
+ 308:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 309:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void SPIx_Init(void)
+ 310:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 311:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   if(HAL_SPI_GetState(&SpiHandle) == HAL_SPI_STATE_RESET)
+ 312:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 313:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     /* SPI configuration -----------------------------------------------------*/
+ 314:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Instance = DISCOVERY_SPIx;
+ 315:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
+ 316:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.Direction = SPI_DIRECTION_2LINES;
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 7
+
+
+ 317:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.CLKPhase = SPI_PHASE_1EDGE;
+ 318:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.CLKPolarity = SPI_POLARITY_LOW;
+ 319:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLED;
+ 320:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.CRCPolynomial = 7;
+ 321:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.DataSize = SPI_DATASIZE_8BIT;
+ 322:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.FirstBit = SPI_FIRSTBIT_MSB;
+ 323:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.NSS = SPI_NSS_SOFT;
+ 324:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.TIMode = SPI_TIMODE_DISABLED;
+ 325:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.Mode = SPI_MODE_MASTER;
+ 326:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 327:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SPIx_MspInit();
+ 328:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     HAL_SPI_Init(&SpiHandle);
+ 329:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 330:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 331:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 332:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 333:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Sends a Byte through the SPI interface and return the Byte received 
+ 334:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *         from the SPI bus.
+ 335:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Byte: Byte send.
+ 336:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @retval The received byte value
+ 337:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 338:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static uint8_t SPIx_WriteRead(uint8_t Byte)
+ 339:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 340:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   uint8_t receivedbyte = 0;
+ 341:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 342:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Send a Byte through the SPI peripheral */
+ 343:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Read byte from the SPI bus */
+ 344:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   if(HAL_SPI_TransmitReceive(&SpiHandle, (uint8_t*) &Byte, (uint8_t*) &receivedbyte, 1, SpixTimeout
+ 345:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 346:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SPIx_Error();
+ 347:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 348:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 349:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   return receivedbyte;
+ 350:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 351:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 352:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 353:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  SPIx error treatment function.
+ 354:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 355:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void SPIx_Error(void)
+ 356:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 357:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* De-initialize the SPI communication bus */
+ 358:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_SPI_DeInit(&SpiHandle);
+ 359:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 360:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Re-Initialize the SPI communication bus */
+ 361:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   SPIx_Init();
+ 362:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 363:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 364:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 365:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  SPI MSP Init.
+ 366:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 367:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void SPIx_MspInit(void)
+ 368:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+  28              		.loc 1 368 1 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 32
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 00B5     		push	{lr}
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 8
+
+
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 4
+  35              		.cfi_offset 14, -4
+  36 0002 89B0     		sub	sp, sp, #36
+  37              	.LCFI1:
+  38              		.cfi_def_cfa_offset 40
+ 369:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitTypeDef   GPIO_InitStructure;
+  39              		.loc 1 369 3 view .LVU1
+ 370:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 371:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Enable the SPI peripheral */
+ 372:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   DISCOVERY_SPIx_CLK_ENABLE();
+  40              		.loc 1 372 3 view .LVU2
+  41              	.LBB2:
+  42              		.loc 1 372 3 view .LVU3
+  43 0004 0021     		movs	r1, #0
+  44 0006 0191     		str	r1, [sp, #4]
+  45              		.loc 1 372 3 view .LVU4
+  46 0008 114B     		ldr	r3, .L3
+  47 000a 5A6C     		ldr	r2, [r3, #68]
+  48 000c 42F48052 		orr	r2, r2, #4096
+  49 0010 5A64     		str	r2, [r3, #68]
+  50              		.loc 1 372 3 view .LVU5
+  51 0012 5A6C     		ldr	r2, [r3, #68]
+  52 0014 02F48052 		and	r2, r2, #4096
+  53 0018 0192     		str	r2, [sp, #4]
+  54              		.loc 1 372 3 view .LVU6
+  55 001a 019A     		ldr	r2, [sp, #4]
+  56              	.LBE2:
+  57              		.loc 1 372 3 view .LVU7
+ 373:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 374:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Enable SCK, MOSI and MISO GPIO clocks */
+ 375:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   DISCOVERY_SPIx_GPIO_CLK_ENABLE();
+  58              		.loc 1 375 3 view .LVU8
+  59              	.LBB3:
+  60              		.loc 1 375 3 view .LVU9
+  61 001c 0291     		str	r1, [sp, #8]
+  62              		.loc 1 375 3 view .LVU10
+  63 001e 1A6B     		ldr	r2, [r3, #48]
+  64 0020 42F00102 		orr	r2, r2, #1
+  65 0024 1A63     		str	r2, [r3, #48]
+  66              		.loc 1 375 3 view .LVU11
+  67 0026 1B6B     		ldr	r3, [r3, #48]
+  68 0028 03F00103 		and	r3, r3, #1
+  69 002c 0293     		str	r3, [sp, #8]
+  70              		.loc 1 375 3 view .LVU12
+  71 002e 029B     		ldr	r3, [sp, #8]
+  72              	.LBE3:
+  73              		.loc 1 375 3 view .LVU13
+ 376:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 377:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* SPI SCK, MOSI, MISO pin configuration */
+ 378:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Pin = (DISCOVERY_SPIx_SCK_PIN | DISCOVERY_SPIx_MISO_PIN | DISCOVERY_SPIx_MOSI_
+  74              		.loc 1 378 3 view .LVU14
+  75              		.loc 1 378 26 is_stmt 0 view .LVU15
+  76 0030 E023     		movs	r3, #224
+  77 0032 0393     		str	r3, [sp, #12]
+ 379:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Mode = GPIO_MODE_AF_PP;
+  78              		.loc 1 379 3 is_stmt 1 view .LVU16
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 9
+
+
+  79              		.loc 1 379 27 is_stmt 0 view .LVU17
+  80 0034 0223     		movs	r3, #2
+  81 0036 0493     		str	r3, [sp, #16]
+ 380:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Pull  = GPIO_PULLDOWN;
+  82              		.loc 1 380 3 is_stmt 1 view .LVU18
+  83              		.loc 1 380 28 is_stmt 0 view .LVU19
+  84 0038 0593     		str	r3, [sp, #20]
+ 381:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Speed = GPIO_SPEED_MEDIUM;
+  85              		.loc 1 381 3 is_stmt 1 view .LVU20
+  86              		.loc 1 381 28 is_stmt 0 view .LVU21
+  87 003a 0123     		movs	r3, #1
+  88 003c 0693     		str	r3, [sp, #24]
+ 382:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Alternate = DISCOVERY_SPIx_AF;
+  89              		.loc 1 382 3 is_stmt 1 view .LVU22
+  90              		.loc 1 382 32 is_stmt 0 view .LVU23
+  91 003e 0523     		movs	r3, #5
+  92 0040 0793     		str	r3, [sp, #28]
+ 383:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_Init(DISCOVERY_SPIx_GPIO_PORT, &GPIO_InitStructure);
+  93              		.loc 1 383 3 is_stmt 1 view .LVU24
+  94 0042 03A9     		add	r1, sp, #12
+  95 0044 0348     		ldr	r0, .L3+4
+  96 0046 FFF7FEFF 		bl	HAL_GPIO_Init
+  97              	.LVL0:
+ 384:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+  98              		.loc 1 384 1 is_stmt 0 view .LVU25
+  99 004a 09B0     		add	sp, sp, #36
+ 100              	.LCFI2:
+ 101              		.cfi_def_cfa_offset 4
+ 102              		@ sp needed
+ 103 004c 5DF804FB 		ldr	pc, [sp], #4
+ 104              	.L4:
+ 105              		.align	2
+ 106              	.L3:
+ 107 0050 00380240 		.word	1073887232
+ 108 0054 00000240 		.word	1073872896
+ 109              		.cfi_endproc
+ 110              	.LFE245:
+ 112              		.section	.text.I2Cx_MspInit,"ax",%progbits
+ 113              		.align	1
+ 114              		.syntax unified
+ 115              		.thumb
+ 116              		.thumb_func
+ 117              		.fpu fpv4-sp-d16
+ 119              	I2Cx_MspInit:
+ 120              	.LFB250:
+ 385:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 386:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /******************************* I2C Routines**********************************/
+ 387:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 388:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Configures I2C interface.
+ 389:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 390:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void I2Cx_Init(void)
+ 391:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 392:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   if(HAL_I2C_GetState(&I2cHandle) == HAL_I2C_STATE_RESET)
+ 393:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 394:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     /* DISCOVERY_I2Cx peripheral configuration */
+ 395:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Init.ClockSpeed = BSP_I2C_SPEED;
+ 396:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Init.DutyCycle = I2C_DUTYCYCLE_2;
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 10
+
+
+ 397:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Init.OwnAddress1 = 0x33;
+ 398:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+ 399:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Instance = DISCOVERY_I2Cx;
+ 400:Drivers/accelero/BSP/src/stm32f4_discovery.c ****       
+ 401:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     /* Init the I2C */
+ 402:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2Cx_MspInit();
+ 403:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     HAL_I2C_Init(&I2cHandle);
+ 404:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 405:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 406:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 407:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 408:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Write a value in a register of the device through BUS.
+ 409:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Addr: Device address on BUS Bus.  
+ 410:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Reg: The target register address to write
+ 411:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Value: The target register value to be written 
+ 412:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @retval HAL status
+ 413:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 414:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void I2Cx_WriteData(uint8_t Addr, uint8_t Reg, uint8_t Value)
+ 415:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 416:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 417:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 418:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   status = HAL_I2C_Mem_Write(&I2cHandle, Addr, (uint16_t)Reg, I2C_MEMADD_SIZE_8BIT, &Value, 1, I2cx
+ 419:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 420:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Check the communication status */
+ 421:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   if(status != HAL_OK)
+ 422:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 423:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     /* Execute user timeout callback */
+ 424:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2Cx_Error(Addr);
+ 425:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 426:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 427:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 428:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 429:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Read a register of the device through BUS
+ 430:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Addr: Device address on BUS  
+ 431:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Reg: The target register address to read
+ 432:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @retval HAL status
+ 433:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 434:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static uint8_t  I2Cx_ReadData(uint8_t Addr, uint8_t Reg)
+ 435:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 436:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 437:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   uint8_t value = 0;
+ 438:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 439:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   status = HAL_I2C_Mem_Read(&I2cHandle, Addr, (uint16_t)Reg, I2C_MEMADD_SIZE_8BIT, &value, 1,I2cxTi
+ 440:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 441:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Check the communication status */
+ 442:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   if(status != HAL_OK)
+ 443:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 444:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     /* Execute user timeout callback */
+ 445:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2Cx_Error(Addr);
+ 446:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 447:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   return value;
+ 448:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 449:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 450:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 451:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Manages error callback by re-initializing I2C.
+ 452:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Addr: I2C Address 
+ 453:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 11
+
+
+ 454:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void I2Cx_Error(uint8_t Addr)
+ 455:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 456:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* De-initialize the I2C communication bus */
+ 457:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_I2C_DeInit(&I2cHandle);
+ 458:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 459:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Re-Initialize the I2C communication bus */
+ 460:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   I2Cx_Init();
+ 461:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 462:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 463:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 464:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief I2C MSP Initialization
+ 465:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 466:Drivers/accelero/BSP/src/stm32f4_discovery.c **** static void I2Cx_MspInit(void)
+ 467:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 121              		.loc 1 467 1 is_stmt 1 view -0
+ 122              		.cfi_startproc
+ 123              		@ args = 0, pretend = 0, frame = 32
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125 0000 30B5     		push	{r4, r5, lr}
+ 126              	.LCFI3:
+ 127              		.cfi_def_cfa_offset 12
+ 128              		.cfi_offset 4, -12
+ 129              		.cfi_offset 5, -8
+ 130              		.cfi_offset 14, -4
+ 131 0002 89B0     		sub	sp, sp, #36
+ 132              	.LCFI4:
+ 133              		.cfi_def_cfa_offset 48
+ 468:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitTypeDef  GPIO_InitStruct;
+ 134              		.loc 1 468 3 view .LVU27
+ 469:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 470:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Enable I2C GPIO clocks */
+ 471:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   DISCOVERY_I2Cx_SCL_SDA_GPIO_CLK_ENABLE();
+ 135              		.loc 1 471 3 view .LVU28
+ 136              	.LBB4:
+ 137              		.loc 1 471 3 view .LVU29
+ 138 0004 0025     		movs	r5, #0
+ 139 0006 0195     		str	r5, [sp, #4]
+ 140              		.loc 1 471 3 view .LVU30
+ 141 0008 1D4C     		ldr	r4, .L7
+ 142 000a 236B     		ldr	r3, [r4, #48]
+ 143 000c 43F00203 		orr	r3, r3, #2
+ 144 0010 2363     		str	r3, [r4, #48]
+ 145              		.loc 1 471 3 view .LVU31
+ 146 0012 236B     		ldr	r3, [r4, #48]
+ 147 0014 03F00203 		and	r3, r3, #2
+ 148 0018 0193     		str	r3, [sp, #4]
+ 149              		.loc 1 471 3 view .LVU32
+ 150 001a 019B     		ldr	r3, [sp, #4]
+ 151              	.LBE4:
+ 152              		.loc 1 471 3 view .LVU33
+ 472:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 473:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* DISCOVERY_I2Cx SCL and SDA pins configuration ---------------------------*/
+ 474:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Pin = DISCOVERY_I2Cx_SCL_PIN | DISCOVERY_I2Cx_SDA_PIN; 
+ 153              		.loc 1 474 3 view .LVU34
+ 154              		.loc 1 474 23 is_stmt 0 view .LVU35
+ 155 001c 4FF41073 		mov	r3, #576
+ 156 0020 0393     		str	r3, [sp, #12]
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 12
+
+
+ 475:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+ 157              		.loc 1 475 3 is_stmt 1 view .LVU36
+ 158              		.loc 1 475 24 is_stmt 0 view .LVU37
+ 159 0022 1223     		movs	r3, #18
+ 160 0024 0493     		str	r3, [sp, #16]
+ 476:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+ 161              		.loc 1 476 3 is_stmt 1 view .LVU38
+ 162              		.loc 1 476 25 is_stmt 0 view .LVU39
+ 163 0026 0223     		movs	r3, #2
+ 164 0028 0693     		str	r3, [sp, #24]
+ 477:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Pull  = GPIO_NOPULL;
+ 165              		.loc 1 477 3 is_stmt 1 view .LVU40
+ 166              		.loc 1 477 25 is_stmt 0 view .LVU41
+ 167 002a 0595     		str	r5, [sp, #20]
+ 478:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Alternate  = DISCOVERY_I2Cx_SCL_SDA_AF;
+ 168              		.loc 1 478 3 is_stmt 1 view .LVU42
+ 169              		.loc 1 478 30 is_stmt 0 view .LVU43
+ 170 002c 0423     		movs	r3, #4
+ 171 002e 0793     		str	r3, [sp, #28]
+ 479:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_Init(DISCOVERY_I2Cx_SCL_SDA_GPIO_PORT, &GPIO_InitStruct);     
+ 172              		.loc 1 479 3 is_stmt 1 view .LVU44
+ 173 0030 03A9     		add	r1, sp, #12
+ 174 0032 1448     		ldr	r0, .L7+4
+ 175 0034 FFF7FEFF 		bl	HAL_GPIO_Init
+ 176              	.LVL1:
+ 480:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 481:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Enable the DISCOVERY_I2Cx peripheral clock */
+ 482:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   DISCOVERY_I2Cx_CLK_ENABLE();
+ 177              		.loc 1 482 3 view .LVU45
+ 178              	.LBB5:
+ 179              		.loc 1 482 3 view .LVU46
+ 180 0038 0295     		str	r5, [sp, #8]
+ 181              		.loc 1 482 3 view .LVU47
+ 182 003a 236C     		ldr	r3, [r4, #64]
+ 183 003c 43F40013 		orr	r3, r3, #2097152
+ 184 0040 2364     		str	r3, [r4, #64]
+ 185              		.loc 1 482 3 view .LVU48
+ 186 0042 236C     		ldr	r3, [r4, #64]
+ 187 0044 03F40013 		and	r3, r3, #2097152
+ 188 0048 0293     		str	r3, [sp, #8]
+ 189              		.loc 1 482 3 view .LVU49
+ 190 004a 029B     		ldr	r3, [sp, #8]
+ 191              	.LBE5:
+ 192              		.loc 1 482 3 view .LVU50
+ 483:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 484:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Force the I2C peripheral clock reset */
+ 485:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   DISCOVERY_I2Cx_FORCE_RESET();
+ 193              		.loc 1 485 3 view .LVU51
+ 194 004c 236A     		ldr	r3, [r4, #32]
+ 195 004e 43F40013 		orr	r3, r3, #2097152
+ 196 0052 2362     		str	r3, [r4, #32]
+ 486:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 487:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Release the I2C peripheral clock reset */
+ 488:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   DISCOVERY_I2Cx_RELEASE_RESET();
+ 197              		.loc 1 488 3 view .LVU52
+ 198 0054 236A     		ldr	r3, [r4, #32]
+ 199 0056 23F40013 		bic	r3, r3, #2097152
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 13
+
+
+ 200 005a 2362     		str	r3, [r4, #32]
+ 489:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 490:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Enable and set I2Cx Interrupt to the highest priority */
+ 491:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_NVIC_SetPriority(DISCOVERY_I2Cx_EV_IRQn, 0, 0);
+ 201              		.loc 1 491 3 view .LVU53
+ 202 005c 2A46     		mov	r2, r5
+ 203 005e 2946     		mov	r1, r5
+ 204 0060 1F20     		movs	r0, #31
+ 205 0062 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 206              	.LVL2:
+ 492:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_NVIC_EnableIRQ(DISCOVERY_I2Cx_EV_IRQn);
+ 207              		.loc 1 492 3 view .LVU54
+ 208 0066 1F20     		movs	r0, #31
+ 209 0068 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 210              	.LVL3:
+ 493:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 494:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Enable and set I2Cx Interrupt to the highest priority */
+ 495:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_NVIC_SetPriority(DISCOVERY_I2Cx_ER_IRQn, 0, 0);
+ 211              		.loc 1 495 3 view .LVU55
+ 212 006c 2A46     		mov	r2, r5
+ 213 006e 2946     		mov	r1, r5
+ 214 0070 2020     		movs	r0, #32
+ 215 0072 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 216              	.LVL4:
+ 496:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_NVIC_EnableIRQ(DISCOVERY_I2Cx_ER_IRQn); 
+ 217              		.loc 1 496 3 view .LVU56
+ 218 0076 2020     		movs	r0, #32
+ 219 0078 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 220              	.LVL5:
+ 497:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 221              		.loc 1 497 1 is_stmt 0 view .LVU57
+ 222 007c 09B0     		add	sp, sp, #36
+ 223              	.LCFI5:
+ 224              		.cfi_def_cfa_offset 12
+ 225              		@ sp needed
+ 226 007e 30BD     		pop	{r4, r5, pc}
+ 227              	.L8:
+ 228              		.align	2
+ 229              	.L7:
+ 230 0080 00380240 		.word	1073887232
+ 231 0084 00040240 		.word	1073873920
+ 232              		.cfi_endproc
+ 233              	.LFE250:
+ 235              		.section	.text.SPIx_Init,"ax",%progbits
+ 236              		.align	1
+ 237              		.syntax unified
+ 238              		.thumb
+ 239              		.thumb_func
+ 240              		.fpu fpv4-sp-d16
+ 242              	SPIx_Init:
+ 243              	.LFB242:
+ 310:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   if(HAL_SPI_GetState(&SpiHandle) == HAL_SPI_STATE_RESET)
+ 244              		.loc 1 310 1 is_stmt 1 view -0
+ 245              		.cfi_startproc
+ 246              		@ args = 0, pretend = 0, frame = 0
+ 247              		@ frame_needed = 0, uses_anonymous_args = 0
+ 248 0000 10B5     		push	{r4, lr}
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 14
+
+
+ 249              	.LCFI6:
+ 250              		.cfi_def_cfa_offset 8
+ 251              		.cfi_offset 4, -8
+ 252              		.cfi_offset 14, -4
+ 311:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 253              		.loc 1 311 3 view .LVU59
+ 311:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 254              		.loc 1 311 6 is_stmt 0 view .LVU60
+ 255 0002 1048     		ldr	r0, .L13
+ 256 0004 FFF7FEFF 		bl	HAL_SPI_GetState
+ 257              	.LVL6:
+ 311:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 258              		.loc 1 311 5 view .LVU61
+ 259 0008 00B1     		cbz	r0, .L12
+ 260              	.L9:
+ 330:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 261              		.loc 1 330 1 view .LVU62
+ 262 000a 10BD     		pop	{r4, pc}
+ 263              	.L12:
+ 314:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
+ 264              		.loc 1 314 5 is_stmt 1 view .LVU63
+ 314:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_16;
+ 265              		.loc 1 314 24 is_stmt 0 view .LVU64
+ 266 000c 0D4C     		ldr	r4, .L13
+ 267 000e 0E4B     		ldr	r3, .L13+4
+ 268 0010 2360     		str	r3, [r4]
+ 315:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.Direction = SPI_DIRECTION_2LINES;
+ 269              		.loc 1 315 5 is_stmt 1 view .LVU65
+ 315:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.Direction = SPI_DIRECTION_2LINES;
+ 270              		.loc 1 315 38 is_stmt 0 view .LVU66
+ 271 0012 1823     		movs	r3, #24
+ 272 0014 E361     		str	r3, [r4, #28]
+ 316:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.CLKPhase = SPI_PHASE_1EDGE;
+ 273              		.loc 1 316 5 is_stmt 1 view .LVU67
+ 316:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.CLKPhase = SPI_PHASE_1EDGE;
+ 274              		.loc 1 316 30 is_stmt 0 view .LVU68
+ 275 0016 0023     		movs	r3, #0
+ 276 0018 A360     		str	r3, [r4, #8]
+ 317:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.CLKPolarity = SPI_POLARITY_LOW;
+ 277              		.loc 1 317 5 is_stmt 1 view .LVU69
+ 317:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.CLKPolarity = SPI_POLARITY_LOW;
+ 278              		.loc 1 317 29 is_stmt 0 view .LVU70
+ 279 001a 6361     		str	r3, [r4, #20]
+ 318:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLED;
+ 280              		.loc 1 318 5 is_stmt 1 view .LVU71
+ 318:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLED;
+ 281              		.loc 1 318 32 is_stmt 0 view .LVU72
+ 282 001c 2361     		str	r3, [r4, #16]
+ 319:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.CRCPolynomial = 7;
+ 283              		.loc 1 319 5 is_stmt 1 view .LVU73
+ 319:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.CRCPolynomial = 7;
+ 284              		.loc 1 319 35 is_stmt 0 view .LVU74
+ 285 001e A362     		str	r3, [r4, #40]
+ 320:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.DataSize = SPI_DATASIZE_8BIT;
+ 286              		.loc 1 320 5 is_stmt 1 view .LVU75
+ 320:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.DataSize = SPI_DATASIZE_8BIT;
+ 287              		.loc 1 320 34 is_stmt 0 view .LVU76
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 15
+
+
+ 288 0020 0722     		movs	r2, #7
+ 289 0022 E262     		str	r2, [r4, #44]
+ 321:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.FirstBit = SPI_FIRSTBIT_MSB;
+ 290              		.loc 1 321 5 is_stmt 1 view .LVU77
+ 321:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.FirstBit = SPI_FIRSTBIT_MSB;
+ 291              		.loc 1 321 29 is_stmt 0 view .LVU78
+ 292 0024 E360     		str	r3, [r4, #12]
+ 322:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.NSS = SPI_NSS_SOFT;
+ 293              		.loc 1 322 5 is_stmt 1 view .LVU79
+ 322:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.NSS = SPI_NSS_SOFT;
+ 294              		.loc 1 322 29 is_stmt 0 view .LVU80
+ 295 0026 2362     		str	r3, [r4, #32]
+ 323:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.TIMode = SPI_TIMODE_DISABLED;
+ 296              		.loc 1 323 5 is_stmt 1 view .LVU81
+ 323:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.TIMode = SPI_TIMODE_DISABLED;
+ 297              		.loc 1 323 24 is_stmt 0 view .LVU82
+ 298 0028 4FF40072 		mov	r2, #512
+ 299 002c A261     		str	r2, [r4, #24]
+ 324:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.Mode = SPI_MODE_MASTER;
+ 300              		.loc 1 324 5 is_stmt 1 view .LVU83
+ 324:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SpiHandle.Init.Mode = SPI_MODE_MASTER;
+ 301              		.loc 1 324 27 is_stmt 0 view .LVU84
+ 302 002e 6362     		str	r3, [r4, #36]
+ 325:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 303              		.loc 1 325 5 is_stmt 1 view .LVU85
+ 325:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 304              		.loc 1 325 25 is_stmt 0 view .LVU86
+ 305 0030 4FF48273 		mov	r3, #260
+ 306 0034 6360     		str	r3, [r4, #4]
+ 327:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     HAL_SPI_Init(&SpiHandle);
+ 307              		.loc 1 327 5 is_stmt 1 view .LVU87
+ 308 0036 FFF7FEFF 		bl	SPIx_MspInit
+ 309              	.LVL7:
+ 328:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 310              		.loc 1 328 5 view .LVU88
+ 311 003a 2046     		mov	r0, r4
+ 312 003c FFF7FEFF 		bl	HAL_SPI_Init
+ 313              	.LVL8:
+ 330:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 314              		.loc 1 330 1 is_stmt 0 view .LVU89
+ 315 0040 E3E7     		b	.L9
+ 316              	.L14:
+ 317 0042 00BF     		.align	2
+ 318              	.L13:
+ 319 0044 00000000 		.word	.LANCHOR0
+ 320 0048 00300140 		.word	1073819648
+ 321              		.cfi_endproc
+ 322              	.LFE242:
+ 324              		.section	.text.SPIx_Error,"ax",%progbits
+ 325              		.align	1
+ 326              		.syntax unified
+ 327              		.thumb
+ 328              		.thumb_func
+ 329              		.fpu fpv4-sp-d16
+ 331              	SPIx_Error:
+ 332              	.LFB244:
+ 356:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* De-initialize the SPI communication bus */
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 16
+
+
+ 333              		.loc 1 356 1 is_stmt 1 view -0
+ 334              		.cfi_startproc
+ 335              		@ args = 0, pretend = 0, frame = 0
+ 336              		@ frame_needed = 0, uses_anonymous_args = 0
+ 337 0000 08B5     		push	{r3, lr}
+ 338              	.LCFI7:
+ 339              		.cfi_def_cfa_offset 8
+ 340              		.cfi_offset 3, -8
+ 341              		.cfi_offset 14, -4
+ 358:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 342              		.loc 1 358 3 view .LVU91
+ 343 0002 0348     		ldr	r0, .L17
+ 344 0004 FFF7FEFF 		bl	HAL_SPI_DeInit
+ 345              	.LVL9:
+ 361:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 346              		.loc 1 361 3 view .LVU92
+ 347 0008 FFF7FEFF 		bl	SPIx_Init
+ 348              	.LVL10:
+ 362:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 349              		.loc 1 362 1 is_stmt 0 view .LVU93
+ 350 000c 08BD     		pop	{r3, pc}
+ 351              	.L18:
+ 352 000e 00BF     		.align	2
+ 353              	.L17:
+ 354 0010 00000000 		.word	.LANCHOR0
+ 355              		.cfi_endproc
+ 356              	.LFE244:
+ 358              		.section	.text.SPIx_WriteRead,"ax",%progbits
+ 359              		.align	1
+ 360              		.syntax unified
+ 361              		.thumb
+ 362              		.thumb_func
+ 363              		.fpu fpv4-sp-d16
+ 365              	SPIx_WriteRead:
+ 366              	.LVL11:
+ 367              	.LFB243:
+ 339:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   uint8_t receivedbyte = 0;
+ 368              		.loc 1 339 1 is_stmt 1 view -0
+ 369              		.cfi_startproc
+ 370              		@ args = 0, pretend = 0, frame = 16
+ 371              		@ frame_needed = 0, uses_anonymous_args = 0
+ 339:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   uint8_t receivedbyte = 0;
+ 372              		.loc 1 339 1 is_stmt 0 view .LVU95
+ 373 0000 00B5     		push	{lr}
+ 374              	.LCFI8:
+ 375              		.cfi_def_cfa_offset 4
+ 376              		.cfi_offset 14, -4
+ 377 0002 87B0     		sub	sp, sp, #28
+ 378              	.LCFI9:
+ 379              		.cfi_def_cfa_offset 32
+ 380 0004 8DF80F00 		strb	r0, [sp, #15]
+ 340:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 381              		.loc 1 340 3 is_stmt 1 view .LVU96
+ 340:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 382              		.loc 1 340 11 is_stmt 0 view .LVU97
+ 383 0008 0023     		movs	r3, #0
+ 384 000a 8DF81730 		strb	r3, [sp, #23]
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 17
+
+
+ 344:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 385              		.loc 1 344 3 is_stmt 1 view .LVU98
+ 344:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 386              		.loc 1 344 6 is_stmt 0 view .LVU99
+ 387 000e 0A4B     		ldr	r3, .L23
+ 388 0010 1B68     		ldr	r3, [r3]
+ 389 0012 0093     		str	r3, [sp]
+ 390 0014 0123     		movs	r3, #1
+ 391 0016 0DF11702 		add	r2, sp, #23
+ 392 001a 0DF10F01 		add	r1, sp, #15
+ 393 001e 0748     		ldr	r0, .L23+4
+ 394              	.LVL12:
+ 344:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 395              		.loc 1 344 6 view .LVU100
+ 396 0020 FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 397              	.LVL13:
+ 344:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 398              		.loc 1 344 5 view .LVU101
+ 399 0024 20B9     		cbnz	r0, .L22
+ 400              	.L20:
+ 349:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 401              		.loc 1 349 3 is_stmt 1 view .LVU102
+ 350:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 402              		.loc 1 350 1 is_stmt 0 view .LVU103
+ 403 0026 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
+ 404 002a 07B0     		add	sp, sp, #28
+ 405              	.LCFI10:
+ 406              		.cfi_remember_state
+ 407              		.cfi_def_cfa_offset 4
+ 408              		@ sp needed
+ 409 002c 5DF804FB 		ldr	pc, [sp], #4
+ 410              	.L22:
+ 411              	.LCFI11:
+ 412              		.cfi_restore_state
+ 346:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 413              		.loc 1 346 5 is_stmt 1 view .LVU104
+ 414 0030 FFF7FEFF 		bl	SPIx_Error
+ 415              	.LVL14:
+ 416 0034 F7E7     		b	.L20
+ 417              	.L24:
+ 418 0036 00BF     		.align	2
+ 419              	.L23:
+ 420 0038 00000000 		.word	.LANCHOR1
+ 421 003c 00000000 		.word	.LANCHOR0
+ 422              		.cfi_endproc
+ 423              	.LFE243:
+ 425              		.section	.text.I2Cx_Init,"ax",%progbits
+ 426              		.align	1
+ 427              		.syntax unified
+ 428              		.thumb
+ 429              		.thumb_func
+ 430              		.fpu fpv4-sp-d16
+ 432              	I2Cx_Init:
+ 433              	.LFB246:
+ 391:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   if(HAL_I2C_GetState(&I2cHandle) == HAL_I2C_STATE_RESET)
+ 434              		.loc 1 391 1 view -0
+ 435              		.cfi_startproc
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 18
+
+
+ 436              		@ args = 0, pretend = 0, frame = 0
+ 437              		@ frame_needed = 0, uses_anonymous_args = 0
+ 438 0000 10B5     		push	{r4, lr}
+ 439              	.LCFI12:
+ 440              		.cfi_def_cfa_offset 8
+ 441              		.cfi_offset 4, -8
+ 442              		.cfi_offset 14, -4
+ 392:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 443              		.loc 1 392 3 view .LVU106
+ 392:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 444              		.loc 1 392 6 is_stmt 0 view .LVU107
+ 445 0002 0B48     		ldr	r0, .L29
+ 446 0004 FFF7FEFF 		bl	HAL_I2C_GetState
+ 447              	.LVL15:
+ 392:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 448              		.loc 1 392 5 view .LVU108
+ 449 0008 00B1     		cbz	r0, .L28
+ 450              	.L25:
+ 405:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 451              		.loc 1 405 1 view .LVU109
+ 452 000a 10BD     		pop	{r4, pc}
+ 453              	.L28:
+ 395:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Init.DutyCycle = I2C_DUTYCYCLE_2;
+ 454              		.loc 1 395 5 is_stmt 1 view .LVU110
+ 395:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Init.DutyCycle = I2C_DUTYCYCLE_2;
+ 455              		.loc 1 395 31 is_stmt 0 view .LVU111
+ 456 000c 084C     		ldr	r4, .L29
+ 457 000e 094B     		ldr	r3, .L29+4
+ 458 0010 6360     		str	r3, [r4, #4]
+ 396:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Init.OwnAddress1 = 0x33;
+ 459              		.loc 1 396 5 is_stmt 1 view .LVU112
+ 396:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Init.OwnAddress1 = 0x33;
+ 460              		.loc 1 396 30 is_stmt 0 view .LVU113
+ 461 0012 0023     		movs	r3, #0
+ 462 0014 A360     		str	r3, [r4, #8]
+ 397:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+ 463              		.loc 1 397 5 is_stmt 1 view .LVU114
+ 397:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+ 464              		.loc 1 397 32 is_stmt 0 view .LVU115
+ 465 0016 3323     		movs	r3, #51
+ 466 0018 E360     		str	r3, [r4, #12]
+ 398:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Instance = DISCOVERY_I2Cx;
+ 467              		.loc 1 398 5 is_stmt 1 view .LVU116
+ 398:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     I2cHandle.Instance = DISCOVERY_I2Cx;
+ 468              		.loc 1 398 35 is_stmt 0 view .LVU117
+ 469 001a 4FF48043 		mov	r3, #16384
+ 470 001e 2361     		str	r3, [r4, #16]
+ 399:Drivers/accelero/BSP/src/stm32f4_discovery.c ****       
+ 471              		.loc 1 399 5 is_stmt 1 view .LVU118
+ 399:Drivers/accelero/BSP/src/stm32f4_discovery.c ****       
+ 472              		.loc 1 399 24 is_stmt 0 view .LVU119
+ 473 0020 054B     		ldr	r3, .L29+8
+ 474 0022 2360     		str	r3, [r4]
+ 402:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     HAL_I2C_Init(&I2cHandle);
+ 475              		.loc 1 402 5 is_stmt 1 view .LVU120
+ 476 0024 FFF7FEFF 		bl	I2Cx_MspInit
+ 477              	.LVL16:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 19
+
+
+ 403:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 478              		.loc 1 403 5 view .LVU121
+ 479 0028 2046     		mov	r0, r4
+ 480 002a FFF7FEFF 		bl	HAL_I2C_Init
+ 481              	.LVL17:
+ 405:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 482              		.loc 1 405 1 is_stmt 0 view .LVU122
+ 483 002e ECE7     		b	.L25
+ 484              	.L30:
+ 485              		.align	2
+ 486              	.L29:
+ 487 0030 00000000 		.word	.LANCHOR2
+ 488 0034 A0860100 		.word	100000
+ 489 0038 00540040 		.word	1073763328
+ 490              		.cfi_endproc
+ 491              	.LFE246:
+ 493              		.section	.text.I2Cx_Error,"ax",%progbits
+ 494              		.align	1
+ 495              		.syntax unified
+ 496              		.thumb
+ 497              		.thumb_func
+ 498              		.fpu fpv4-sp-d16
+ 500              	I2Cx_Error:
+ 501              	.LVL18:
+ 502              	.LFB249:
+ 455:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* De-initialize the I2C communication bus */
+ 503              		.loc 1 455 1 is_stmt 1 view -0
+ 504              		.cfi_startproc
+ 505              		@ args = 0, pretend = 0, frame = 0
+ 506              		@ frame_needed = 0, uses_anonymous_args = 0
+ 455:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* De-initialize the I2C communication bus */
+ 507              		.loc 1 455 1 is_stmt 0 view .LVU124
+ 508 0000 08B5     		push	{r3, lr}
+ 509              	.LCFI13:
+ 510              		.cfi_def_cfa_offset 8
+ 511              		.cfi_offset 3, -8
+ 512              		.cfi_offset 14, -4
+ 457:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 513              		.loc 1 457 3 is_stmt 1 view .LVU125
+ 514 0002 0348     		ldr	r0, .L33
+ 515              	.LVL19:
+ 457:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 516              		.loc 1 457 3 is_stmt 0 view .LVU126
+ 517 0004 FFF7FEFF 		bl	HAL_I2C_DeInit
+ 518              	.LVL20:
+ 460:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 519              		.loc 1 460 3 is_stmt 1 view .LVU127
+ 520 0008 FFF7FEFF 		bl	I2Cx_Init
+ 521              	.LVL21:
+ 461:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 522              		.loc 1 461 1 is_stmt 0 view .LVU128
+ 523 000c 08BD     		pop	{r3, pc}
+ 524              	.L34:
+ 525 000e 00BF     		.align	2
+ 526              	.L33:
+ 527 0010 00000000 		.word	.LANCHOR2
+ 528              		.cfi_endproc
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 20
+
+
+ 529              	.LFE249:
+ 531              		.section	.text.I2Cx_WriteData,"ax",%progbits
+ 532              		.align	1
+ 533              		.syntax unified
+ 534              		.thumb
+ 535              		.thumb_func
+ 536              		.fpu fpv4-sp-d16
+ 538              	I2Cx_WriteData:
+ 539              	.LVL22:
+ 540              	.LFB247:
+ 415:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 541              		.loc 1 415 1 is_stmt 1 view -0
+ 542              		.cfi_startproc
+ 543              		@ args = 0, pretend = 0, frame = 8
+ 544              		@ frame_needed = 0, uses_anonymous_args = 0
+ 415:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 545              		.loc 1 415 1 is_stmt 0 view .LVU130
+ 546 0000 10B5     		push	{r4, lr}
+ 547              	.LCFI14:
+ 548              		.cfi_def_cfa_offset 8
+ 549              		.cfi_offset 4, -8
+ 550              		.cfi_offset 14, -4
+ 551 0002 86B0     		sub	sp, sp, #24
+ 552              	.LCFI15:
+ 553              		.cfi_def_cfa_offset 32
+ 554 0004 0446     		mov	r4, r0
+ 555 0006 8DF81720 		strb	r2, [sp, #23]
+ 416:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 556              		.loc 1 416 3 is_stmt 1 view .LVU131
+ 557              	.LVL23:
+ 418:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 558              		.loc 1 418 3 view .LVU132
+ 418:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 559              		.loc 1 418 12 is_stmt 0 view .LVU133
+ 560 000a 0A4B     		ldr	r3, .L39
+ 561 000c 1B68     		ldr	r3, [r3]
+ 562 000e 0293     		str	r3, [sp, #8]
+ 563 0010 0123     		movs	r3, #1
+ 564 0012 0193     		str	r3, [sp, #4]
+ 565 0014 0DF11702 		add	r2, sp, #23
+ 566              	.LVL24:
+ 418:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 567              		.loc 1 418 12 view .LVU134
+ 568 0018 0092     		str	r2, [sp]
+ 569 001a 0A46     		mov	r2, r1
+ 570              	.LVL25:
+ 418:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 571              		.loc 1 418 12 view .LVU135
+ 572 001c 0146     		mov	r1, r0
+ 573              	.LVL26:
+ 418:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 574              		.loc 1 418 12 view .LVU136
+ 575 001e 0648     		ldr	r0, .L39+4
+ 576              	.LVL27:
+ 418:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 577              		.loc 1 418 12 view .LVU137
+ 578 0020 FFF7FEFF 		bl	HAL_I2C_Mem_Write
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 21
+
+
+ 579              	.LVL28:
+ 421:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 580              		.loc 1 421 3 is_stmt 1 view .LVU138
+ 421:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 581              		.loc 1 421 5 is_stmt 0 view .LVU139
+ 582 0024 08B9     		cbnz	r0, .L38
+ 583              	.LVL29:
+ 584              	.L35:
+ 426:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 585              		.loc 1 426 1 view .LVU140
+ 586 0026 06B0     		add	sp, sp, #24
+ 587              	.LCFI16:
+ 588              		.cfi_remember_state
+ 589              		.cfi_def_cfa_offset 8
+ 590              		@ sp needed
+ 591 0028 10BD     		pop	{r4, pc}
+ 592              	.LVL30:
+ 593              	.L38:
+ 594              	.LCFI17:
+ 595              		.cfi_restore_state
+ 424:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 596              		.loc 1 424 5 is_stmt 1 view .LVU141
+ 597 002a 2046     		mov	r0, r4
+ 598              	.LVL31:
+ 424:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 599              		.loc 1 424 5 is_stmt 0 view .LVU142
+ 600 002c FFF7FEFF 		bl	I2Cx_Error
+ 601              	.LVL32:
+ 426:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 602              		.loc 1 426 1 view .LVU143
+ 603 0030 F9E7     		b	.L35
+ 604              	.L40:
+ 605 0032 00BF     		.align	2
+ 606              	.L39:
+ 607 0034 00000000 		.word	.LANCHOR3
+ 608 0038 00000000 		.word	.LANCHOR2
+ 609              		.cfi_endproc
+ 610              	.LFE247:
+ 612              		.section	.text.I2Cx_ReadData,"ax",%progbits
+ 613              		.align	1
+ 614              		.syntax unified
+ 615              		.thumb
+ 616              		.thumb_func
+ 617              		.fpu fpv4-sp-d16
+ 619              	I2Cx_ReadData:
+ 620              	.LVL33:
+ 621              	.LFB248:
+ 435:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 622              		.loc 1 435 1 is_stmt 1 view -0
+ 623              		.cfi_startproc
+ 624              		@ args = 0, pretend = 0, frame = 8
+ 625              		@ frame_needed = 0, uses_anonymous_args = 0
+ 435:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_StatusTypeDef status = HAL_OK;
+ 626              		.loc 1 435 1 is_stmt 0 view .LVU145
+ 627 0000 10B5     		push	{r4, lr}
+ 628              	.LCFI18:
+ 629              		.cfi_def_cfa_offset 8
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 22
+
+
+ 630              		.cfi_offset 4, -8
+ 631              		.cfi_offset 14, -4
+ 632 0002 86B0     		sub	sp, sp, #24
+ 633              	.LCFI19:
+ 634              		.cfi_def_cfa_offset 32
+ 635 0004 0446     		mov	r4, r0
+ 636 0006 0A46     		mov	r2, r1
+ 436:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   uint8_t value = 0;
+ 637              		.loc 1 436 3 is_stmt 1 view .LVU146
+ 638              	.LVL34:
+ 437:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 639              		.loc 1 437 3 view .LVU147
+ 437:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 640              		.loc 1 437 11 is_stmt 0 view .LVU148
+ 641 0008 0023     		movs	r3, #0
+ 642 000a 8DF81730 		strb	r3, [sp, #23]
+ 439:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 643              		.loc 1 439 3 is_stmt 1 view .LVU149
+ 439:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 644              		.loc 1 439 12 is_stmt 0 view .LVU150
+ 645 000e 0A4B     		ldr	r3, .L45
+ 646 0010 1B68     		ldr	r3, [r3]
+ 647 0012 0293     		str	r3, [sp, #8]
+ 648 0014 0123     		movs	r3, #1
+ 649 0016 0193     		str	r3, [sp, #4]
+ 650 0018 0DF11701 		add	r1, sp, #23
+ 651              	.LVL35:
+ 439:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 652              		.loc 1 439 12 view .LVU151
+ 653 001c 0091     		str	r1, [sp]
+ 654 001e 0146     		mov	r1, r0
+ 655 0020 0648     		ldr	r0, .L45+4
+ 656              	.LVL36:
+ 439:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 657              		.loc 1 439 12 view .LVU152
+ 658 0022 FFF7FEFF 		bl	HAL_I2C_Mem_Read
+ 659              	.LVL37:
+ 442:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 660              		.loc 1 442 3 is_stmt 1 view .LVU153
+ 442:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 661              		.loc 1 442 5 is_stmt 0 view .LVU154
+ 662 0026 18B9     		cbnz	r0, .L44
+ 663              	.LVL38:
+ 664              	.L42:
+ 447:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 665              		.loc 1 447 3 is_stmt 1 view .LVU155
+ 448:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 666              		.loc 1 448 1 is_stmt 0 view .LVU156
+ 667 0028 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
+ 668 002c 06B0     		add	sp, sp, #24
+ 669              	.LCFI20:
+ 670              		.cfi_remember_state
+ 671              		.cfi_def_cfa_offset 8
+ 672              		@ sp needed
+ 673 002e 10BD     		pop	{r4, pc}
+ 674              	.LVL39:
+ 675              	.L44:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 23
+
+
+ 676              	.LCFI21:
+ 677              		.cfi_restore_state
+ 445:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 678              		.loc 1 445 5 is_stmt 1 view .LVU157
+ 679 0030 2046     		mov	r0, r4
+ 680              	.LVL40:
+ 445:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 681              		.loc 1 445 5 is_stmt 0 view .LVU158
+ 682 0032 FFF7FEFF 		bl	I2Cx_Error
+ 683              	.LVL41:
+ 684 0036 F7E7     		b	.L42
+ 685              	.L46:
+ 686              		.align	2
+ 687              	.L45:
+ 688 0038 00000000 		.word	.LANCHOR3
+ 689 003c 00000000 		.word	.LANCHOR2
+ 690              		.cfi_endproc
+ 691              	.LFE248:
+ 693              		.section	.text.BSP_GetVersion,"ax",%progbits
+ 694              		.align	1
+ 695              		.global	BSP_GetVersion
+ 696              		.syntax unified
+ 697              		.thumb
+ 698              		.thumb_func
+ 699              		.fpu fpv4-sp-d16
+ 701              	BSP_GetVersion:
+ 702              	.LFB235:
+ 157:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   return __STM32F4_DISCO_BSP_VERSION;
+ 703              		.loc 1 157 1 is_stmt 1 view -0
+ 704              		.cfi_startproc
+ 705              		@ args = 0, pretend = 0, frame = 0
+ 706              		@ frame_needed = 0, uses_anonymous_args = 0
+ 707              		@ link register save eliminated.
+ 158:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 708              		.loc 1 158 3 view .LVU160
+ 159:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 709              		.loc 1 159 1 is_stmt 0 view .LVU161
+ 710 0000 0048     		ldr	r0, .L48
+ 711 0002 7047     		bx	lr
+ 712              	.L49:
+ 713              		.align	2
+ 714              	.L48:
+ 715 0004 00030102 		.word	33620736
+ 716              		.cfi_endproc
+ 717              	.LFE235:
+ 719              		.section	.text.BSP_LED_Init,"ax",%progbits
+ 720              		.align	1
+ 721              		.global	BSP_LED_Init
+ 722              		.syntax unified
+ 723              		.thumb
+ 724              		.thumb_func
+ 725              		.fpu fpv4-sp-d16
+ 727              	BSP_LED_Init:
+ 728              	.LVL42:
+ 729              	.LFB236:
+ 171:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitTypeDef  GPIO_InitStruct;
+ 730              		.loc 1 171 1 is_stmt 1 view -0
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 24
+
+
+ 731              		.cfi_startproc
+ 732              		@ args = 0, pretend = 0, frame = 40
+ 733              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitTypeDef  GPIO_InitStruct;
+ 734              		.loc 1 171 1 is_stmt 0 view .LVU163
+ 735 0000 70B5     		push	{r4, r5, r6, lr}
+ 736              	.LCFI22:
+ 737              		.cfi_def_cfa_offset 16
+ 738              		.cfi_offset 4, -16
+ 739              		.cfi_offset 5, -12
+ 740              		.cfi_offset 6, -8
+ 741              		.cfi_offset 14, -4
+ 742 0002 8AB0     		sub	sp, sp, #40
+ 743              	.LCFI23:
+ 744              		.cfi_def_cfa_offset 56
+ 172:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 745              		.loc 1 172 3 is_stmt 1 view .LVU164
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 746              		.loc 1 175 3 view .LVU165
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 747              		.loc 1 175 3 view .LVU166
+ 748 0004 0446     		mov	r4, r0
+ 749 0006 10BB     		cbnz	r0, .L51
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 750              		.loc 1 175 3 discriminator 1 view .LVU167
+ 751              	.LBB6:
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 752              		.loc 1 175 3 discriminator 1 view .LVU168
+ 753 0008 0023     		movs	r3, #0
+ 754 000a 0193     		str	r3, [sp, #4]
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 755              		.loc 1 175 3 discriminator 1 view .LVU169
+ 756 000c 264B     		ldr	r3, .L58
+ 757 000e 1A6B     		ldr	r2, [r3, #48]
+ 758 0010 42F00802 		orr	r2, r2, #8
+ 759 0014 1A63     		str	r2, [r3, #48]
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 760              		.loc 1 175 3 discriminator 1 view .LVU170
+ 761 0016 1B6B     		ldr	r3, [r3, #48]
+ 762 0018 03F00803 		and	r3, r3, #8
+ 763 001c 0193     		str	r3, [sp, #4]
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 764              		.loc 1 175 3 discriminator 1 view .LVU171
+ 765 001e 019B     		ldr	r3, [sp, #4]
+ 766              	.LBE6:
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 767              		.loc 1 175 3 discriminator 1 view .LVU172
+ 768              	.L52:
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 769              		.loc 1 175 3 discriminator 12 view .LVU173
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 770              		.loc 1 175 3 discriminator 12 view .LVU174
+ 178:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 771              		.loc 1 178 3 discriminator 12 view .LVU175
+ 178:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 772              		.loc 1 178 33 is_stmt 0 discriminator 12 view .LVU176
+ 773 0020 224B     		ldr	r3, .L58+4
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 25
+
+
+ 774 0022 33F81460 		ldrh	r6, [r3, r4, lsl #1]
+ 178:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 775              		.loc 1 178 23 discriminator 12 view .LVU177
+ 776 0026 0596     		str	r6, [sp, #20]
+ 179:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 777              		.loc 1 179 3 is_stmt 1 discriminator 12 view .LVU178
+ 179:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 778              		.loc 1 179 24 is_stmt 0 discriminator 12 view .LVU179
+ 779 0028 0123     		movs	r3, #1
+ 780 002a 0693     		str	r3, [sp, #24]
+ 180:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+ 781              		.loc 1 180 3 is_stmt 1 discriminator 12 view .LVU180
+ 180:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+ 782              		.loc 1 180 24 is_stmt 0 discriminator 12 view .LVU181
+ 783 002c 0793     		str	r3, [sp, #28]
+ 181:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 784              		.loc 1 181 3 is_stmt 1 discriminator 12 view .LVU182
+ 181:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 785              		.loc 1 181 25 is_stmt 0 discriminator 12 view .LVU183
+ 786 002e 0223     		movs	r3, #2
+ 787 0030 0893     		str	r3, [sp, #32]
+ 183:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 788              		.loc 1 183 3 is_stmt 1 discriminator 12 view .LVU184
+ 789 0032 1F4D     		ldr	r5, .L58+8
+ 790 0034 05A9     		add	r1, sp, #20
+ 791 0036 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 792              	.LVL43:
+ 183:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 793              		.loc 1 183 3 is_stmt 0 discriminator 12 view .LVU185
+ 794 003a FFF7FEFF 		bl	HAL_GPIO_Init
+ 795              	.LVL44:
+ 185:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 796              		.loc 1 185 3 is_stmt 1 discriminator 12 view .LVU186
+ 797 003e 0022     		movs	r2, #0
+ 798 0040 3146     		mov	r1, r6
+ 799 0042 55F82400 		ldr	r0, [r5, r4, lsl #2]
+ 800 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 801              	.LVL45:
+ 186:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 802              		.loc 1 186 1 is_stmt 0 discriminator 12 view .LVU187
+ 803 004a 0AB0     		add	sp, sp, #40
+ 804              	.LCFI24:
+ 805              		.cfi_remember_state
+ 806              		.cfi_def_cfa_offset 16
+ 807              		@ sp needed
+ 808 004c 70BD     		pop	{r4, r5, r6, pc}
+ 809              	.LVL46:
+ 810              	.L51:
+ 811              	.LCFI25:
+ 812              		.cfi_restore_state
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 813              		.loc 1 175 3 is_stmt 1 discriminator 2 view .LVU188
+ 814 004e 0128     		cmp	r0, #1
+ 815 0050 10D0     		beq	.L56
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 816              		.loc 1 175 3 discriminator 5 view .LVU189
+ 817 0052 0228     		cmp	r0, #2
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 26
+
+
+ 818 0054 1BD0     		beq	.L57
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 819              		.loc 1 175 3 discriminator 8 view .LVU190
+ 820 0056 0328     		cmp	r0, #3
+ 821 0058 E2D1     		bne	.L52
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 822              		.loc 1 175 3 discriminator 10 view .LVU191
+ 823              	.LBB7:
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 824              		.loc 1 175 3 discriminator 10 view .LVU192
+ 825 005a 0023     		movs	r3, #0
+ 826 005c 0493     		str	r3, [sp, #16]
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 827              		.loc 1 175 3 discriminator 10 view .LVU193
+ 828 005e 124B     		ldr	r3, .L58
+ 829 0060 1A6B     		ldr	r2, [r3, #48]
+ 830 0062 42F00802 		orr	r2, r2, #8
+ 831 0066 1A63     		str	r2, [r3, #48]
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 832              		.loc 1 175 3 discriminator 10 view .LVU194
+ 833 0068 1B6B     		ldr	r3, [r3, #48]
+ 834 006a 03F00803 		and	r3, r3, #8
+ 835 006e 0493     		str	r3, [sp, #16]
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 836              		.loc 1 175 3 discriminator 10 view .LVU195
+ 837 0070 049B     		ldr	r3, [sp, #16]
+ 838 0072 D5E7     		b	.L52
+ 839              	.L56:
+ 840              	.LBE7:
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 841              		.loc 1 175 3 discriminator 4 view .LVU196
+ 842              	.LBB8:
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 843              		.loc 1 175 3 discriminator 4 view .LVU197
+ 844 0074 0023     		movs	r3, #0
+ 845 0076 0293     		str	r3, [sp, #8]
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 846              		.loc 1 175 3 discriminator 4 view .LVU198
+ 847 0078 0B4B     		ldr	r3, .L58
+ 848 007a 1A6B     		ldr	r2, [r3, #48]
+ 849 007c 42F00802 		orr	r2, r2, #8
+ 850 0080 1A63     		str	r2, [r3, #48]
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 851              		.loc 1 175 3 discriminator 4 view .LVU199
+ 852 0082 1B6B     		ldr	r3, [r3, #48]
+ 853 0084 03F00803 		and	r3, r3, #8
+ 854 0088 0293     		str	r3, [sp, #8]
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 855              		.loc 1 175 3 discriminator 4 view .LVU200
+ 856 008a 029B     		ldr	r3, [sp, #8]
+ 857              	.LBE8:
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 858              		.loc 1 175 3 discriminator 4 view .LVU201
+ 859 008c C8E7     		b	.L52
+ 860              	.L57:
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 861              		.loc 1 175 3 discriminator 7 view .LVU202
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 27
+
+
+ 862              	.LBB9:
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 863              		.loc 1 175 3 discriminator 7 view .LVU203
+ 864 008e 0023     		movs	r3, #0
+ 865 0090 0393     		str	r3, [sp, #12]
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 866              		.loc 1 175 3 discriminator 7 view .LVU204
+ 867 0092 054B     		ldr	r3, .L58
+ 868 0094 1A6B     		ldr	r2, [r3, #48]
+ 869 0096 42F00802 		orr	r2, r2, #8
+ 870 009a 1A63     		str	r2, [r3, #48]
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 871              		.loc 1 175 3 discriminator 7 view .LVU205
+ 872 009c 1B6B     		ldr	r3, [r3, #48]
+ 873 009e 03F00803 		and	r3, r3, #8
+ 874 00a2 0393     		str	r3, [sp, #12]
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 875              		.loc 1 175 3 discriminator 7 view .LVU206
+ 876 00a4 039B     		ldr	r3, [sp, #12]
+ 877              	.LBE9:
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 878              		.loc 1 175 3 discriminator 7 view .LVU207
+ 879 00a6 BBE7     		b	.L52
+ 880              	.L59:
+ 881              		.align	2
+ 882              	.L58:
+ 883 00a8 00380240 		.word	1073887232
+ 884 00ac 00000000 		.word	.LANCHOR4
+ 885 00b0 00000000 		.word	.LANCHOR5
+ 886              		.cfi_endproc
+ 887              	.LFE236:
+ 889              		.section	.text.BSP_LED_On,"ax",%progbits
+ 890              		.align	1
+ 891              		.global	BSP_LED_On
+ 892              		.syntax unified
+ 893              		.thumb
+ 894              		.thumb_func
+ 895              		.fpu fpv4-sp-d16
+ 897              	BSP_LED_On:
+ 898              	.LVL47:
+ 899              	.LFB237:
+ 198:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_WritePin(GPIO_PORT[Led], GPIO_PIN[Led], GPIO_PIN_SET); 
+ 900              		.loc 1 198 1 view -0
+ 901              		.cfi_startproc
+ 902              		@ args = 0, pretend = 0, frame = 0
+ 903              		@ frame_needed = 0, uses_anonymous_args = 0
+ 198:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_WritePin(GPIO_PORT[Led], GPIO_PIN[Led], GPIO_PIN_SET); 
+ 904              		.loc 1 198 1 is_stmt 0 view .LVU209
+ 905 0000 08B5     		push	{r3, lr}
+ 906              	.LCFI26:
+ 907              		.cfi_def_cfa_offset 8
+ 908              		.cfi_offset 3, -8
+ 909              		.cfi_offset 14, -4
+ 199:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 910              		.loc 1 199 3 is_stmt 1 view .LVU210
+ 911 0002 0122     		movs	r2, #1
+ 912 0004 044B     		ldr	r3, .L62
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 28
+
+
+ 913 0006 33F81010 		ldrh	r1, [r3, r0, lsl #1]
+ 914 000a 044B     		ldr	r3, .L62+4
+ 915 000c 53F82000 		ldr	r0, [r3, r0, lsl #2]
+ 916              	.LVL48:
+ 199:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 917              		.loc 1 199 3 is_stmt 0 view .LVU211
+ 918 0010 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 919              	.LVL49:
+ 200:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 920              		.loc 1 200 1 view .LVU212
+ 921 0014 08BD     		pop	{r3, pc}
+ 922              	.L63:
+ 923 0016 00BF     		.align	2
+ 924              	.L62:
+ 925 0018 00000000 		.word	.LANCHOR4
+ 926 001c 00000000 		.word	.LANCHOR5
+ 927              		.cfi_endproc
+ 928              	.LFE237:
+ 930              		.section	.text.BSP_LED_Off,"ax",%progbits
+ 931              		.align	1
+ 932              		.global	BSP_LED_Off
+ 933              		.syntax unified
+ 934              		.thumb
+ 935              		.thumb_func
+ 936              		.fpu fpv4-sp-d16
+ 938              	BSP_LED_Off:
+ 939              	.LVL50:
+ 940              	.LFB238:
+ 212:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_WritePin(GPIO_PORT[Led], GPIO_PIN[Led], GPIO_PIN_RESET); 
+ 941              		.loc 1 212 1 is_stmt 1 view -0
+ 942              		.cfi_startproc
+ 943              		@ args = 0, pretend = 0, frame = 0
+ 944              		@ frame_needed = 0, uses_anonymous_args = 0
+ 212:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_WritePin(GPIO_PORT[Led], GPIO_PIN[Led], GPIO_PIN_RESET); 
+ 945              		.loc 1 212 1 is_stmt 0 view .LVU214
+ 946 0000 08B5     		push	{r3, lr}
+ 947              	.LCFI27:
+ 948              		.cfi_def_cfa_offset 8
+ 949              		.cfi_offset 3, -8
+ 950              		.cfi_offset 14, -4
+ 213:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 951              		.loc 1 213 3 is_stmt 1 view .LVU215
+ 952 0002 0022     		movs	r2, #0
+ 953 0004 044B     		ldr	r3, .L66
+ 954 0006 33F81010 		ldrh	r1, [r3, r0, lsl #1]
+ 955 000a 044B     		ldr	r3, .L66+4
+ 956 000c 53F82000 		ldr	r0, [r3, r0, lsl #2]
+ 957              	.LVL51:
+ 213:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 958              		.loc 1 213 3 is_stmt 0 view .LVU216
+ 959 0010 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 960              	.LVL52:
+ 214:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 961              		.loc 1 214 1 view .LVU217
+ 962 0014 08BD     		pop	{r3, pc}
+ 963              	.L67:
+ 964 0016 00BF     		.align	2
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 29
+
+
+ 965              	.L66:
+ 966 0018 00000000 		.word	.LANCHOR4
+ 967 001c 00000000 		.word	.LANCHOR5
+ 968              		.cfi_endproc
+ 969              	.LFE238:
+ 971              		.section	.text.BSP_LED_Toggle,"ax",%progbits
+ 972              		.align	1
+ 973              		.global	BSP_LED_Toggle
+ 974              		.syntax unified
+ 975              		.thumb
+ 976              		.thumb_func
+ 977              		.fpu fpv4-sp-d16
+ 979              	BSP_LED_Toggle:
+ 980              	.LVL53:
+ 981              	.LFB239:
+ 226:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_TogglePin(GPIO_PORT[Led], GPIO_PIN[Led]);
+ 982              		.loc 1 226 1 is_stmt 1 view -0
+ 983              		.cfi_startproc
+ 984              		@ args = 0, pretend = 0, frame = 0
+ 985              		@ frame_needed = 0, uses_anonymous_args = 0
+ 226:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_TogglePin(GPIO_PORT[Led], GPIO_PIN[Led]);
+ 986              		.loc 1 226 1 is_stmt 0 view .LVU219
+ 987 0000 08B5     		push	{r3, lr}
+ 988              	.LCFI28:
+ 989              		.cfi_def_cfa_offset 8
+ 990              		.cfi_offset 3, -8
+ 991              		.cfi_offset 14, -4
+ 227:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 992              		.loc 1 227 3 is_stmt 1 view .LVU220
+ 993 0002 044B     		ldr	r3, .L70
+ 994 0004 33F81010 		ldrh	r1, [r3, r0, lsl #1]
+ 995 0008 034B     		ldr	r3, .L70+4
+ 996 000a 53F82000 		ldr	r0, [r3, r0, lsl #2]
+ 997              	.LVL54:
+ 227:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 998              		.loc 1 227 3 is_stmt 0 view .LVU221
+ 999 000e FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 1000              	.LVL55:
+ 228:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 1001              		.loc 1 228 1 view .LVU222
+ 1002 0012 08BD     		pop	{r3, pc}
+ 1003              	.L71:
+ 1004              		.align	2
+ 1005              	.L70:
+ 1006 0014 00000000 		.word	.LANCHOR4
+ 1007 0018 00000000 		.word	.LANCHOR5
+ 1008              		.cfi_endproc
+ 1009              	.LFE239:
+ 1011              		.section	.text.BSP_PB_Init,"ax",%progbits
+ 1012              		.align	1
+ 1013              		.global	BSP_PB_Init
+ 1014              		.syntax unified
+ 1015              		.thumb
+ 1016              		.thumb_func
+ 1017              		.fpu fpv4-sp-d16
+ 1019              	BSP_PB_Init:
+ 1020              	.LVL56:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 30
+
+
+ 1021              	.LFB240:
+ 249:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitTypeDef GPIO_InitStruct;
+ 1022              		.loc 1 249 1 is_stmt 1 view -0
+ 1023              		.cfi_startproc
+ 1024              		@ args = 0, pretend = 0, frame = 24
+ 1025              		@ frame_needed = 0, uses_anonymous_args = 0
+ 249:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitTypeDef GPIO_InitStruct;
+ 1026              		.loc 1 249 1 is_stmt 0 view .LVU224
+ 1027 0000 30B5     		push	{r4, r5, lr}
+ 1028              	.LCFI29:
+ 1029              		.cfi_def_cfa_offset 12
+ 1030              		.cfi_offset 4, -12
+ 1031              		.cfi_offset 5, -8
+ 1032              		.cfi_offset 14, -4
+ 1033 0002 87B0     		sub	sp, sp, #28
+ 1034              	.LCFI30:
+ 1035              		.cfi_def_cfa_offset 40
+ 1036 0004 0C46     		mov	r4, r1
+ 250:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 1037              		.loc 1 250 3 is_stmt 1 view .LVU225
+ 253:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 1038              		.loc 1 253 3 view .LVU226
+ 253:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 1039              		.loc 1 253 3 view .LVU227
+ 1040 0006 0546     		mov	r5, r0
+ 1041 0008 58B9     		cbnz	r0, .L73
+ 253:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 1042              		.loc 1 253 3 discriminator 1 view .LVU228
+ 1043              	.LBB10:
+ 253:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 1044              		.loc 1 253 3 discriminator 1 view .LVU229
+ 1045 000a 0023     		movs	r3, #0
+ 1046 000c 0093     		str	r3, [sp]
+ 253:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 1047              		.loc 1 253 3 discriminator 1 view .LVU230
+ 1048 000e 1A4B     		ldr	r3, .L79
+ 1049 0010 1A6B     		ldr	r2, [r3, #48]
+ 1050 0012 42F00102 		orr	r2, r2, #1
+ 1051 0016 1A63     		str	r2, [r3, #48]
+ 253:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 1052              		.loc 1 253 3 discriminator 1 view .LVU231
+ 1053 0018 1B6B     		ldr	r3, [r3, #48]
+ 1054 001a 03F00103 		and	r3, r3, #1
+ 1055 001e 0093     		str	r3, [sp]
+ 253:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 1056              		.loc 1 253 3 discriminator 1 view .LVU232
+ 1057 0020 009B     		ldr	r3, [sp]
+ 1058              	.L73:
+ 1059              	.LBE10:
+ 253:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 1060              		.loc 1 253 3 discriminator 3 view .LVU233
+ 253:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 1061              		.loc 1 253 3 discriminator 3 view .LVU234
+ 255:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 1062              		.loc 1 255 3 discriminator 3 view .LVU235
+ 255:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 1063              		.loc 1 255 6 is_stmt 0 discriminator 3 view .LVU236
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 31
+
+
+ 1064 0022 1CB1     		cbz	r4, .L77
+ 1065              	.LVL57:
+ 1066              	.L74:
+ 266:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 1067              		.loc 1 266 3 is_stmt 1 view .LVU237
+ 266:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 1068              		.loc 1 266 6 is_stmt 0 view .LVU238
+ 1069 0024 012C     		cmp	r4, #1
+ 1070 0026 0FD0     		beq	.L78
+ 1071              	.L72:
+ 279:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 1072              		.loc 1 279 1 view .LVU239
+ 1073 0028 07B0     		add	sp, sp, #28
+ 1074              	.LCFI31:
+ 1075              		.cfi_remember_state
+ 1076              		.cfi_def_cfa_offset 12
+ 1077              		@ sp needed
+ 1078 002a 30BD     		pop	{r4, r5, pc}
+ 1079              	.LVL58:
+ 1080              	.L77:
+ 1081              	.LCFI32:
+ 1082              		.cfi_restore_state
+ 258:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ 1083              		.loc 1 258 5 is_stmt 1 view .LVU240
+ 258:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+ 1084              		.loc 1 258 25 is_stmt 0 view .LVU241
+ 1085 002c 0123     		movs	r3, #1
+ 1086 002e 0193     		str	r3, [sp, #4]
+ 259:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 1087              		.loc 1 259 5 is_stmt 1 view .LVU242
+ 259:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 1088              		.loc 1 259 26 is_stmt 0 view .LVU243
+ 1089 0030 0023     		movs	r3, #0
+ 1090 0032 0293     		str	r3, [sp, #8]
+ 260:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+ 1091              		.loc 1 260 5 is_stmt 1 view .LVU244
+ 260:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+ 1092              		.loc 1 260 26 is_stmt 0 view .LVU245
+ 1093 0034 0393     		str	r3, [sp, #12]
+ 261:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     
+ 1094              		.loc 1 261 5 is_stmt 1 view .LVU246
+ 261:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     
+ 1095              		.loc 1 261 27 is_stmt 0 view .LVU247
+ 1096 0036 0223     		movs	r3, #2
+ 1097 0038 0493     		str	r3, [sp, #16]
+ 263:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 1098              		.loc 1 263 5 is_stmt 1 view .LVU248
+ 1099 003a 01A9     		add	r1, sp, #4
+ 1100              	.LVL59:
+ 263:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 1101              		.loc 1 263 5 is_stmt 0 view .LVU249
+ 1102 003c 0F4B     		ldr	r3, .L79+4
+ 1103 003e 53F82500 		ldr	r0, [r3, r5, lsl #2]
+ 1104              	.LVL60:
+ 263:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 1105              		.loc 1 263 5 view .LVU250
+ 1106 0042 FFF7FEFF 		bl	HAL_GPIO_Init
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 32
+
+
+ 1107              	.LVL61:
+ 1108 0046 EDE7     		b	.L74
+ 1109              	.L78:
+ 269:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 1110              		.loc 1 269 5 is_stmt 1 view .LVU251
+ 269:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 1111              		.loc 1 269 25 is_stmt 0 view .LVU252
+ 1112 0048 0123     		movs	r3, #1
+ 1113 004a 0193     		str	r3, [sp, #4]
+ 270:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+ 1114              		.loc 1 270 5 is_stmt 1 view .LVU253
+ 270:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+ 1115              		.loc 1 270 26 is_stmt 0 view .LVU254
+ 1116 004c 0024     		movs	r4, #0
+ 1117 004e 0394     		str	r4, [sp, #12]
+ 271:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING; 
+ 1118              		.loc 1 271 5 is_stmt 1 view .LVU255
+ 271:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING; 
+ 1119              		.loc 1 271 27 is_stmt 0 view .LVU256
+ 1120 0050 0223     		movs	r3, #2
+ 1121 0052 0493     		str	r3, [sp, #16]
+ 272:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     HAL_GPIO_Init(BUTTON_PORT[Button], &GPIO_InitStruct);
+ 1122              		.loc 1 272 5 is_stmt 1 view .LVU257
+ 272:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     HAL_GPIO_Init(BUTTON_PORT[Button], &GPIO_InitStruct);
+ 1123              		.loc 1 272 26 is_stmt 0 view .LVU258
+ 1124 0054 0A4B     		ldr	r3, .L79+8
+ 1125 0056 0293     		str	r3, [sp, #8]
+ 273:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     
+ 1126              		.loc 1 273 5 is_stmt 1 view .LVU259
+ 1127 0058 01A9     		add	r1, sp, #4
+ 1128 005a 084B     		ldr	r3, .L79+4
+ 1129 005c 53F82500 		ldr	r0, [r3, r5, lsl #2]
+ 1130 0060 FFF7FEFF 		bl	HAL_GPIO_Init
+ 1131              	.LVL62:
+ 276:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     HAL_NVIC_EnableIRQ((IRQn_Type)(BUTTON_IRQn[Button]));
+ 1132              		.loc 1 276 5 view .LVU260
+ 1133 0064 2246     		mov	r2, r4
+ 1134 0066 0F21     		movs	r1, #15
+ 1135 0068 0620     		movs	r0, #6
+ 1136 006a FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 1137              	.LVL63:
+ 277:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 1138              		.loc 1 277 5 view .LVU261
+ 1139 006e 0620     		movs	r0, #6
+ 1140 0070 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 1141              	.LVL64:
+ 279:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 1142              		.loc 1 279 1 is_stmt 0 view .LVU262
+ 1143 0074 D8E7     		b	.L72
+ 1144              	.L80:
+ 1145 0076 00BF     		.align	2
+ 1146              	.L79:
+ 1147 0078 00380240 		.word	1073887232
+ 1148 007c 00000000 		.word	.LANCHOR6
+ 1149 0080 00001110 		.word	269549568
+ 1150              		.cfi_endproc
+ 1151              	.LFE240:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 33
+
+
+ 1153              		.section	.text.BSP_PB_GetState,"ax",%progbits
+ 1154              		.align	1
+ 1155              		.global	BSP_PB_GetState
+ 1156              		.syntax unified
+ 1157              		.thumb
+ 1158              		.thumb_func
+ 1159              		.fpu fpv4-sp-d16
+ 1161              	BSP_PB_GetState:
+ 1162              	.LVL65:
+ 1163              	.LFB241:
+ 288:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   return HAL_GPIO_ReadPin(BUTTON_PORT[Button], BUTTON_PIN[Button]);
+ 1164              		.loc 1 288 1 is_stmt 1 view -0
+ 1165              		.cfi_startproc
+ 1166              		@ args = 0, pretend = 0, frame = 0
+ 1167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 288:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   return HAL_GPIO_ReadPin(BUTTON_PORT[Button], BUTTON_PIN[Button]);
+ 1168              		.loc 1 288 1 is_stmt 0 view .LVU264
+ 1169 0000 08B5     		push	{r3, lr}
+ 1170              	.LCFI33:
+ 1171              		.cfi_def_cfa_offset 8
+ 1172              		.cfi_offset 3, -8
+ 1173              		.cfi_offset 14, -4
+ 289:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 1174              		.loc 1 289 3 is_stmt 1 view .LVU265
+ 289:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 1175              		.loc 1 289 10 is_stmt 0 view .LVU266
+ 1176 0002 0121     		movs	r1, #1
+ 1177 0004 024B     		ldr	r3, .L83
+ 1178 0006 53F82000 		ldr	r0, [r3, r0, lsl #2]
+ 1179              	.LVL66:
+ 289:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 1180              		.loc 1 289 10 view .LVU267
+ 1181 000a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1182              	.LVL67:
+ 290:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 1183              		.loc 1 290 1 view .LVU268
+ 1184 000e 08BD     		pop	{r3, pc}
+ 1185              	.L84:
+ 1186              		.align	2
+ 1187              	.L83:
+ 1188 0010 00000000 		.word	.LANCHOR6
+ 1189              		.cfi_endproc
+ 1190              	.LFE241:
+ 1192              		.section	.text.ACCELERO_IO_Init,"ax",%progbits
+ 1193              		.align	1
+ 1194              		.global	ACCELERO_IO_Init
+ 1195              		.syntax unified
+ 1196              		.thumb
+ 1197              		.thumb_func
+ 1198              		.fpu fpv4-sp-d16
+ 1200              	ACCELERO_IO_Init:
+ 1201              	.LFB251:
+ 498:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 499:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /*******************************************************************************
+ 500:Drivers/accelero/BSP/src/stm32f4_discovery.c ****                             LINK OPERATIONS
+ 501:Drivers/accelero/BSP/src/stm32f4_discovery.c **** *******************************************************************************/
+ 502:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 34
+
+
+ 503:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /***************************** LINK ACCELEROMETER *****************************/
+ 504:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 505:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 506:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Configures the Accelerometer SPI interface.
+ 507:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 508:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void ACCELERO_IO_Init(void)
+ 509:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 1202              		.loc 1 509 1 is_stmt 1 view -0
+ 1203              		.cfi_startproc
+ 1204              		@ args = 0, pretend = 0, frame = 24
+ 1205              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1206 0000 70B5     		push	{r4, r5, r6, lr}
+ 1207              	.LCFI34:
+ 1208              		.cfi_def_cfa_offset 16
+ 1209              		.cfi_offset 4, -16
+ 1210              		.cfi_offset 5, -12
+ 1211              		.cfi_offset 6, -8
+ 1212              		.cfi_offset 14, -4
+ 1213 0002 86B0     		sub	sp, sp, #24
+ 1214              	.LCFI35:
+ 1215              		.cfi_def_cfa_offset 40
+ 510:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitTypeDef GPIO_InitStructure;
+ 1216              		.loc 1 510 3 view .LVU270
+ 511:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 512:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Configure the Accelerometer Control pins --------------------------------*/
+ 513:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Enable CS GPIO clock and configure GPIO pin for Accelerometer Chip select */  
+ 514:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   ACCELERO_CS_GPIO_CLK_ENABLE();
+ 1217              		.loc 1 514 3 view .LVU271
+ 1218              	.LBB11:
+ 1219              		.loc 1 514 3 view .LVU272
+ 1220 0004 0021     		movs	r1, #0
+ 1221 0006 0091     		str	r1, [sp]
+ 1222              		.loc 1 514 3 view .LVU273
+ 1223 0008 0E4B     		ldr	r3, .L87
+ 1224 000a 1A6B     		ldr	r2, [r3, #48]
+ 1225 000c 42F01002 		orr	r2, r2, #16
+ 1226 0010 1A63     		str	r2, [r3, #48]
+ 1227              		.loc 1 514 3 view .LVU274
+ 1228 0012 1B6B     		ldr	r3, [r3, #48]
+ 1229 0014 03F01003 		and	r3, r3, #16
+ 1230 0018 0093     		str	r3, [sp]
+ 1231              		.loc 1 514 3 view .LVU275
+ 1232 001a 009B     		ldr	r3, [sp]
+ 1233              	.LBE11:
+ 1234              		.loc 1 514 3 view .LVU276
+ 515:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 516:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Configure GPIO PIN for LIS Chip select */
+ 517:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Pin = ACCELERO_CS_PIN;
+ 1235              		.loc 1 517 3 view .LVU277
+ 1236              		.loc 1 517 26 is_stmt 0 view .LVU278
+ 1237 001c 0826     		movs	r6, #8
+ 1238 001e 0196     		str	r6, [sp, #4]
+ 518:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Mode = GPIO_MODE_OUTPUT_PP;
+ 1239              		.loc 1 518 3 is_stmt 1 view .LVU279
+ 1240              		.loc 1 518 27 is_stmt 0 view .LVU280
+ 1241 0020 0124     		movs	r4, #1
+ 1242 0022 0294     		str	r4, [sp, #8]
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 35
+
+
+ 519:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Pull  = GPIO_NOPULL;
+ 1243              		.loc 1 519 3 is_stmt 1 view .LVU281
+ 1244              		.loc 1 519 28 is_stmt 0 view .LVU282
+ 1245 0024 0391     		str	r1, [sp, #12]
+ 520:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Speed = GPIO_SPEED_MEDIUM;
+ 1246              		.loc 1 520 3 is_stmt 1 view .LVU283
+ 1247              		.loc 1 520 28 is_stmt 0 view .LVU284
+ 1248 0026 0494     		str	r4, [sp, #16]
+ 521:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_Init(ACCELERO_CS_GPIO_PORT, &GPIO_InitStructure);
+ 1249              		.loc 1 521 3 is_stmt 1 view .LVU285
+ 1250 0028 074D     		ldr	r5, .L87+4
+ 1251 002a 01A9     		add	r1, sp, #4
+ 1252 002c 2846     		mov	r0, r5
+ 1253 002e FFF7FEFF 		bl	HAL_GPIO_Init
+ 1254              	.LVL68:
+ 522:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 523:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Deselect: Chip Select high */
+ 524:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   ACCELERO_CS_HIGH();
+ 1255              		.loc 1 524 3 view .LVU286
+ 1256 0032 2246     		mov	r2, r4
+ 1257 0034 3146     		mov	r1, r6
+ 1258 0036 2846     		mov	r0, r5
+ 1259 0038 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1260              	.LVL69:
+ 525:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 526:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   SPIx_Init();
+ 1261              		.loc 1 526 3 view .LVU287
+ 1262 003c FFF7FEFF 		bl	SPIx_Init
+ 1263              	.LVL70:
+ 527:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 1264              		.loc 1 527 1 is_stmt 0 view .LVU288
+ 1265 0040 06B0     		add	sp, sp, #24
+ 1266              	.LCFI36:
+ 1267              		.cfi_def_cfa_offset 16
+ 1268              		@ sp needed
+ 1269 0042 70BD     		pop	{r4, r5, r6, pc}
+ 1270              	.L88:
+ 1271              		.align	2
+ 1272              	.L87:
+ 1273 0044 00380240 		.word	1073887232
+ 1274 0048 00100240 		.word	1073876992
+ 1275              		.cfi_endproc
+ 1276              	.LFE251:
+ 1278              		.section	.text.ACCELERO_IO_ITConfig,"ax",%progbits
+ 1279              		.align	1
+ 1280              		.global	ACCELERO_IO_ITConfig
+ 1281              		.syntax unified
+ 1282              		.thumb
+ 1283              		.thumb_func
+ 1284              		.fpu fpv4-sp-d16
+ 1286              	ACCELERO_IO_ITConfig:
+ 1287              	.LFB252:
+ 528:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 529:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 530:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Configures the Accelerometer INT2.
+ 531:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   *         EXTI0 is already used by user button so INT1 is not configured here.
+ 532:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 36
+
+
+ 533:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void ACCELERO_IO_ITConfig(void)
+ 534:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 1288              		.loc 1 534 1 is_stmt 1 view -0
+ 1289              		.cfi_startproc
+ 1290              		@ args = 0, pretend = 0, frame = 24
+ 1291              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1292 0000 10B5     		push	{r4, lr}
+ 1293              	.LCFI37:
+ 1294              		.cfi_def_cfa_offset 8
+ 1295              		.cfi_offset 4, -8
+ 1296              		.cfi_offset 14, -4
+ 1297 0002 86B0     		sub	sp, sp, #24
+ 1298              	.LCFI38:
+ 1299              		.cfi_def_cfa_offset 32
+ 535:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitTypeDef GPIO_InitStructure;
+ 1300              		.loc 1 535 3 view .LVU290
+ 536:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 537:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Enable INT2 GPIO clock and configure GPIO PINs to detect Interrupts */
+ 538:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   ACCELERO_INT_GPIO_CLK_ENABLE();
+ 1301              		.loc 1 538 3 view .LVU291
+ 1302              	.LBB12:
+ 1303              		.loc 1 538 3 view .LVU292
+ 1304 0004 0024     		movs	r4, #0
+ 1305 0006 0094     		str	r4, [sp]
+ 1306              		.loc 1 538 3 view .LVU293
+ 1307 0008 0E4B     		ldr	r3, .L91
+ 1308 000a 1A6B     		ldr	r2, [r3, #48]
+ 1309 000c 42F01002 		orr	r2, r2, #16
+ 1310 0010 1A63     		str	r2, [r3, #48]
+ 1311              		.loc 1 538 3 view .LVU294
+ 1312 0012 1B6B     		ldr	r3, [r3, #48]
+ 1313 0014 03F01003 		and	r3, r3, #16
+ 1314 0018 0093     		str	r3, [sp]
+ 1315              		.loc 1 538 3 view .LVU295
+ 1316 001a 009B     		ldr	r3, [sp]
+ 1317              	.LBE12:
+ 1318              		.loc 1 538 3 view .LVU296
+ 539:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 540:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Configure GPIO PINs to detect Interrupts */
+ 541:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Pin = ACCELERO_INT2_PIN;
+ 1319              		.loc 1 541 3 view .LVU297
+ 1320              		.loc 1 541 26 is_stmt 0 view .LVU298
+ 1321 001c 0223     		movs	r3, #2
+ 1322 001e 0193     		str	r3, [sp, #4]
+ 542:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Mode = GPIO_MODE_IT_RISING;
+ 1323              		.loc 1 542 3 is_stmt 1 view .LVU299
+ 1324              		.loc 1 542 27 is_stmt 0 view .LVU300
+ 1325 0020 094A     		ldr	r2, .L91+4
+ 1326 0022 0292     		str	r2, [sp, #8]
+ 543:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Speed = GPIO_SPEED_FAST;
+ 1327              		.loc 1 543 3 is_stmt 1 view .LVU301
+ 1328              		.loc 1 543 28 is_stmt 0 view .LVU302
+ 1329 0024 0493     		str	r3, [sp, #16]
+ 544:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStructure.Pull = GPIO_NOPULL;
+ 1330              		.loc 1 544 3 is_stmt 1 view .LVU303
+ 1331              		.loc 1 544 27 is_stmt 0 view .LVU304
+ 1332 0026 0394     		str	r4, [sp, #12]
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 37
+
+
+ 545:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_Init(ACCELERO_INT_GPIO_PORT, &GPIO_InitStructure);
+ 1333              		.loc 1 545 3 is_stmt 1 view .LVU305
+ 1334 0028 01A9     		add	r1, sp, #4
+ 1335 002a 0848     		ldr	r0, .L91+8
+ 1336 002c FFF7FEFF 		bl	HAL_GPIO_Init
+ 1337              	.LVL71:
+ 546:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 547:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Enable and set Accelerometer INT2 to the lowest priority */
+ 548:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_NVIC_SetPriority((IRQn_Type)ACCELERO_INT2_EXTI_IRQn, 0x0F, 0);
+ 1338              		.loc 1 548 3 view .LVU306
+ 1339 0030 2246     		mov	r2, r4
+ 1340 0032 0F21     		movs	r1, #15
+ 1341 0034 0720     		movs	r0, #7
+ 1342 0036 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 1343              	.LVL72:
+ 549:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_NVIC_EnableIRQ((IRQn_Type)ACCELERO_INT2_EXTI_IRQn);
+ 1344              		.loc 1 549 3 view .LVU307
+ 1345 003a 0720     		movs	r0, #7
+ 1346 003c FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 1347              	.LVL73:
+ 550:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 1348              		.loc 1 550 1 is_stmt 0 view .LVU308
+ 1349 0040 06B0     		add	sp, sp, #24
+ 1350              	.LCFI39:
+ 1351              		.cfi_def_cfa_offset 8
+ 1352              		@ sp needed
+ 1353 0042 10BD     		pop	{r4, pc}
+ 1354              	.L92:
+ 1355              		.align	2
+ 1356              	.L91:
+ 1357 0044 00380240 		.word	1073887232
+ 1358 0048 00001110 		.word	269549568
+ 1359 004c 00100240 		.word	1073876992
+ 1360              		.cfi_endproc
+ 1361              	.LFE252:
+ 1363              		.section	.text.ACCELERO_IO_Write,"ax",%progbits
+ 1364              		.align	1
+ 1365              		.global	ACCELERO_IO_Write
+ 1366              		.syntax unified
+ 1367              		.thumb
+ 1368              		.thumb_func
+ 1369              		.fpu fpv4-sp-d16
+ 1371              	ACCELERO_IO_Write:
+ 1372              	.LVL74:
+ 1373              	.LFB253:
+ 551:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 552:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 553:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Writes one byte to the Accelerometer.
+ 554:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  pBuffer: pointer to the buffer containing the data to be written to the Accelerometer.
+ 555:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  WriteAddr: Accelerometer's internal address to write to.
+ 556:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  NumByteToWrite: Number of bytes to write.
+ 557:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 558:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void ACCELERO_IO_Write(uint8_t *pBuffer, uint8_t WriteAddr, uint16_t NumByteToWrite)
+ 559:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 1374              		.loc 1 559 1 is_stmt 1 view -0
+ 1375              		.cfi_startproc
+ 1376              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 38
+
+
+ 1377              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1378              		.loc 1 559 1 is_stmt 0 view .LVU310
+ 1379 0000 70B5     		push	{r4, r5, r6, lr}
+ 1380              	.LCFI40:
+ 1381              		.cfi_def_cfa_offset 16
+ 1382              		.cfi_offset 4, -16
+ 1383              		.cfi_offset 5, -12
+ 1384              		.cfi_offset 6, -8
+ 1385              		.cfi_offset 14, -4
+ 1386 0002 0546     		mov	r5, r0
+ 1387 0004 0E46     		mov	r6, r1
+ 1388 0006 1446     		mov	r4, r2
+ 560:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Configure the MS bit: 
+ 561:Drivers/accelero/BSP/src/stm32f4_discovery.c ****      - When 0, the address will remain unchanged in multiple read/write commands.
+ 562:Drivers/accelero/BSP/src/stm32f4_discovery.c ****      - When 1, the address will be auto incremented in multiple read/write commands.
+ 563:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 564:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   if(NumByteToWrite > 0x01)
+ 1389              		.loc 1 564 3 is_stmt 1 view .LVU311
+ 1390              		.loc 1 564 5 is_stmt 0 view .LVU312
+ 1391 0008 012A     		cmp	r2, #1
+ 1392 000a 01D9     		bls	.L94
+ 565:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 566:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     WriteAddr |= (uint8_t)MULTIPLEBYTE_CMD;
+ 1393              		.loc 1 566 5 is_stmt 1 view .LVU313
+ 1394              		.loc 1 566 15 is_stmt 0 view .LVU314
+ 1395 000c 41F04006 		orr	r6, r1, #64
+ 1396              	.LVL75:
+ 1397              	.L94:
+ 567:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 568:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Set chip select Low at the start of the transmission */
+ 569:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   ACCELERO_CS_LOW();
+ 1398              		.loc 1 569 3 is_stmt 1 view .LVU315
+ 1399 0010 0022     		movs	r2, #0
+ 1400              	.LVL76:
+ 1401              		.loc 1 569 3 is_stmt 0 view .LVU316
+ 1402 0012 0821     		movs	r1, #8
+ 1403 0014 0948     		ldr	r0, .L99
+ 1404              	.LVL77:
+ 1405              		.loc 1 569 3 view .LVU317
+ 1406 0016 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1407              	.LVL78:
+ 570:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 571:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Send the Address of the indexed register */
+ 572:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   SPIx_WriteRead(WriteAddr);
+ 1408              		.loc 1 572 3 is_stmt 1 view .LVU318
+ 1409 001a 3046     		mov	r0, r6
+ 1410 001c FFF7FEFF 		bl	SPIx_WriteRead
+ 1411              	.LVL79:
+ 573:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 574:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Send the data that will be written into the device (MSB First) */
+ 575:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   while(NumByteToWrite >= 0x01)
+ 1412              		.loc 1 575 3 view .LVU319
+ 1413              	.L95:
+ 1414              		.loc 1 575 8 view .LVU320
+ 1415 0020 34B1     		cbz	r4, .L98
+ 576:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 577:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     SPIx_WriteRead(*pBuffer);
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 39
+
+
+ 1416              		.loc 1 577 5 view .LVU321
+ 1417 0022 15F8010B 		ldrb	r0, [r5], #1	@ zero_extendqisi2
+ 1418              	.LVL80:
+ 1419              		.loc 1 577 5 is_stmt 0 view .LVU322
+ 1420 0026 FFF7FEFF 		bl	SPIx_WriteRead
+ 1421              	.LVL81:
+ 578:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     NumByteToWrite--;
+ 1422              		.loc 1 578 5 is_stmt 1 view .LVU323
+ 1423              		.loc 1 578 19 is_stmt 0 view .LVU324
+ 1424 002a 013C     		subs	r4, r4, #1
+ 1425              	.LVL82:
+ 1426              		.loc 1 578 19 view .LVU325
+ 1427 002c A4B2     		uxth	r4, r4
+ 1428              	.LVL83:
+ 579:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     pBuffer++;
+ 1429              		.loc 1 579 5 is_stmt 1 view .LVU326
+ 1430              		.loc 1 579 5 is_stmt 0 view .LVU327
+ 1431 002e F7E7     		b	.L95
+ 1432              	.L98:
+ 580:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 581:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 582:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Set chip select High at the end of the transmission */ 
+ 583:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   ACCELERO_CS_HIGH();
+ 1433              		.loc 1 583 3 is_stmt 1 view .LVU328
+ 1434 0030 0122     		movs	r2, #1
+ 1435 0032 0821     		movs	r1, #8
+ 1436 0034 0148     		ldr	r0, .L99
+ 1437 0036 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1438              	.LVL84:
+ 584:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 1439              		.loc 1 584 1 is_stmt 0 view .LVU329
+ 1440 003a 70BD     		pop	{r4, r5, r6, pc}
+ 1441              	.LVL85:
+ 1442              	.L100:
+ 1443              		.loc 1 584 1 view .LVU330
+ 1444              		.align	2
+ 1445              	.L99:
+ 1446 003c 00100240 		.word	1073876992
+ 1447              		.cfi_endproc
+ 1448              	.LFE253:
+ 1450              		.section	.text.ACCELERO_IO_Read,"ax",%progbits
+ 1451              		.align	1
+ 1452              		.global	ACCELERO_IO_Read
+ 1453              		.syntax unified
+ 1454              		.thumb
+ 1455              		.thumb_func
+ 1456              		.fpu fpv4-sp-d16
+ 1458              	ACCELERO_IO_Read:
+ 1459              	.LVL86:
+ 1460              	.LFB254:
+ 585:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 586:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 587:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Reads a block of data from the Accelerometer.
+ 588:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  pBuffer: pointer to the buffer that receives the data read from the Accelerometer.
+ 589:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  ReadAddr: Accelerometer's internal address to read from.
+ 590:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  NumByteToRead: number of bytes to read from the Accelerometer.
+ 591:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 40
+
+
+ 592:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void ACCELERO_IO_Read(uint8_t *pBuffer, uint8_t ReadAddr, uint16_t NumByteToRead)
+ 593:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {  
+ 1461              		.loc 1 593 1 is_stmt 1 view -0
+ 1462              		.cfi_startproc
+ 1463              		@ args = 0, pretend = 0, frame = 0
+ 1464              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1465              		.loc 1 593 1 is_stmt 0 view .LVU332
+ 1466 0000 70B5     		push	{r4, r5, r6, lr}
+ 1467              	.LCFI41:
+ 1468              		.cfi_def_cfa_offset 16
+ 1469              		.cfi_offset 4, -16
+ 1470              		.cfi_offset 5, -12
+ 1471              		.cfi_offset 6, -8
+ 1472              		.cfi_offset 14, -4
+ 1473 0002 0546     		mov	r5, r0
+ 1474 0004 1446     		mov	r4, r2
+ 594:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   if(NumByteToRead > 0x01)
+ 1475              		.loc 1 594 3 is_stmt 1 view .LVU333
+ 1476              		.loc 1 594 5 is_stmt 0 view .LVU334
+ 1477 0006 012A     		cmp	r2, #1
+ 1478 0008 12D9     		bls	.L102
+ 595:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 596:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     ReadAddr |= (uint8_t)(READWRITE_CMD | MULTIPLEBYTE_CMD);
+ 1479              		.loc 1 596 5 is_stmt 1 view .LVU335
+ 1480              		.loc 1 596 14 is_stmt 0 view .LVU336
+ 1481 000a 41F0C006 		orr	r6, r1, #192
+ 1482              	.LVL87:
+ 1483              	.L103:
+ 597:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 598:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   else
+ 599:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 600:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     ReadAddr |= (uint8_t)READWRITE_CMD;
+ 601:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 602:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Set chip select Low at the start of the transmission */
+ 603:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   ACCELERO_CS_LOW();
+ 1484              		.loc 1 603 3 is_stmt 1 view .LVU337
+ 1485 000e 0022     		movs	r2, #0
+ 1486              	.LVL88:
+ 1487              		.loc 1 603 3 is_stmt 0 view .LVU338
+ 1488 0010 0821     		movs	r1, #8
+ 1489 0012 0C48     		ldr	r0, .L108
+ 1490              	.LVL89:
+ 1491              		.loc 1 603 3 view .LVU339
+ 1492 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1493              	.LVL90:
+ 604:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 605:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Send the Address of the indexed register */
+ 606:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   SPIx_WriteRead(ReadAddr);
+ 1494              		.loc 1 606 3 is_stmt 1 view .LVU340
+ 1495 0018 3046     		mov	r0, r6
+ 1496 001a FFF7FEFF 		bl	SPIx_WriteRead
+ 1497              	.LVL91:
+ 607:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 608:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Receive the data that will be read from the device (MSB First) */
+ 609:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   while(NumByteToRead > 0x00)
+ 1498              		.loc 1 609 3 view .LVU341
+ 1499              	.L104:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 41
+
+
+ 1500              		.loc 1 609 8 view .LVU342
+ 1501 001e 54B1     		cbz	r4, .L107
+ 610:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   {
+ 611:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     /* Send dummy byte (0x00) to generate the SPI clock to ACCELEROMETER (Slave device) */
+ 612:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     *pBuffer = SPIx_WriteRead(DUMMY_BYTE);
+ 1502              		.loc 1 612 5 view .LVU343
+ 1503              		.loc 1 612 16 is_stmt 0 view .LVU344
+ 1504 0020 0020     		movs	r0, #0
+ 1505 0022 FFF7FEFF 		bl	SPIx_WriteRead
+ 1506              	.LVL92:
+ 1507              		.loc 1 612 14 view .LVU345
+ 1508 0026 05F8010B 		strb	r0, [r5], #1
+ 1509              	.LVL93:
+ 613:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     NumByteToRead--;
+ 1510              		.loc 1 613 5 is_stmt 1 view .LVU346
+ 1511              		.loc 1 613 18 is_stmt 0 view .LVU347
+ 1512 002a 013C     		subs	r4, r4, #1
+ 1513              	.LVL94:
+ 1514              		.loc 1 613 18 view .LVU348
+ 1515 002c A4B2     		uxth	r4, r4
+ 1516              	.LVL95:
+ 614:Drivers/accelero/BSP/src/stm32f4_discovery.c ****     pBuffer++;
+ 1517              		.loc 1 614 5 is_stmt 1 view .LVU349
+ 1518              		.loc 1 614 5 is_stmt 0 view .LVU350
+ 1519 002e F6E7     		b	.L104
+ 1520              	.LVL96:
+ 1521              	.L102:
+ 600:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 1522              		.loc 1 600 5 is_stmt 1 view .LVU351
+ 600:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 1523              		.loc 1 600 14 is_stmt 0 view .LVU352
+ 1524 0030 41F08006 		orr	r6, r1, #128
+ 1525              	.LVL97:
+ 600:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 1526              		.loc 1 600 14 view .LVU353
+ 1527 0034 EBE7     		b	.L103
+ 1528              	.LVL98:
+ 1529              	.L107:
+ 615:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   }
+ 616:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 617:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Set chip select High at the end of the transmission */ 
+ 618:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   ACCELERO_CS_HIGH();
+ 1530              		.loc 1 618 3 is_stmt 1 view .LVU354
+ 1531 0036 0122     		movs	r2, #1
+ 1532 0038 0821     		movs	r1, #8
+ 1533 003a 0248     		ldr	r0, .L108
+ 1534 003c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1535              	.LVL99:
+ 619:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 1536              		.loc 1 619 1 is_stmt 0 view .LVU355
+ 1537 0040 70BD     		pop	{r4, r5, r6, pc}
+ 1538              	.LVL100:
+ 1539              	.L109:
+ 1540              		.loc 1 619 1 view .LVU356
+ 1541 0042 00BF     		.align	2
+ 1542              	.L108:
+ 1543 0044 00100240 		.word	1073876992
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 42
+
+
+ 1544              		.cfi_endproc
+ 1545              	.LFE254:
+ 1547              		.section	.text.AUDIO_IO_Init,"ax",%progbits
+ 1548              		.align	1
+ 1549              		.global	AUDIO_IO_Init
+ 1550              		.syntax unified
+ 1551              		.thumb
+ 1552              		.thumb_func
+ 1553              		.fpu fpv4-sp-d16
+ 1555              	AUDIO_IO_Init:
+ 1556              	.LFB255:
+ 620:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 621:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /********************************* LINK AUDIO *********************************/
+ 622:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 623:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 624:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Initializes Audio low level.
+ 625:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 626:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void AUDIO_IO_Init(void) 
+ 627:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 1557              		.loc 1 627 1 is_stmt 1 view -0
+ 1558              		.cfi_startproc
+ 1559              		@ args = 0, pretend = 0, frame = 24
+ 1560              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1561 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 1562              	.LCFI42:
+ 1563              		.cfi_def_cfa_offset 20
+ 1564              		.cfi_offset 4, -20
+ 1565              		.cfi_offset 5, -16
+ 1566              		.cfi_offset 6, -12
+ 1567              		.cfi_offset 7, -8
+ 1568              		.cfi_offset 14, -4
+ 1569 0002 87B0     		sub	sp, sp, #28
+ 1570              	.LCFI43:
+ 1571              		.cfi_def_cfa_offset 48
+ 628:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitTypeDef  GPIO_InitStruct;
+ 1572              		.loc 1 628 3 view .LVU358
+ 629:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 630:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Enable Reset GPIO Clock */
+ 631:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   AUDIO_RESET_GPIO_CLK_ENABLE();
+ 1573              		.loc 1 631 3 view .LVU359
+ 1574              	.LBB13:
+ 1575              		.loc 1 631 3 view .LVU360
+ 1576 0004 0026     		movs	r6, #0
+ 1577 0006 0096     		str	r6, [sp]
+ 1578              		.loc 1 631 3 view .LVU361
+ 1579 0008 144B     		ldr	r3, .L112
+ 1580 000a 1A6B     		ldr	r2, [r3, #48]
+ 1581 000c 42F00802 		orr	r2, r2, #8
+ 1582 0010 1A63     		str	r2, [r3, #48]
+ 1583              		.loc 1 631 3 view .LVU362
+ 1584 0012 1B6B     		ldr	r3, [r3, #48]
+ 1585 0014 03F00803 		and	r3, r3, #8
+ 1586 0018 0093     		str	r3, [sp]
+ 1587              		.loc 1 631 3 view .LVU363
+ 1588 001a 009B     		ldr	r3, [sp]
+ 1589              	.LBE13:
+ 1590              		.loc 1 631 3 view .LVU364
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 43
+
+
+ 632:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 633:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Audio reset pin configuration */
+ 634:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Pin = AUDIO_RESET_PIN; 
+ 1591              		.loc 1 634 3 view .LVU365
+ 1592              		.loc 1 634 23 is_stmt 0 view .LVU366
+ 1593 001c 1025     		movs	r5, #16
+ 1594 001e 0195     		str	r5, [sp, #4]
+ 635:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+ 1595              		.loc 1 635 3 is_stmt 1 view .LVU367
+ 1596              		.loc 1 635 24 is_stmt 0 view .LVU368
+ 1597 0020 0127     		movs	r7, #1
+ 1598 0022 0297     		str	r7, [sp, #8]
+ 636:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+ 1599              		.loc 1 636 3 is_stmt 1 view .LVU369
+ 1600              		.loc 1 636 25 is_stmt 0 view .LVU370
+ 1601 0024 0223     		movs	r3, #2
+ 1602 0026 0493     		str	r3, [sp, #16]
+ 637:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   GPIO_InitStruct.Pull  = GPIO_NOPULL;
+ 1603              		.loc 1 637 3 is_stmt 1 view .LVU371
+ 1604              		.loc 1 637 25 is_stmt 0 view .LVU372
+ 1605 0028 0396     		str	r6, [sp, #12]
+ 638:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_Init(AUDIO_RESET_GPIO, &GPIO_InitStruct);    
+ 1606              		.loc 1 638 3 is_stmt 1 view .LVU373
+ 1607 002a 0D4C     		ldr	r4, .L112+4
+ 1608 002c 01A9     		add	r1, sp, #4
+ 1609 002e 2046     		mov	r0, r4
+ 1610 0030 FFF7FEFF 		bl	HAL_GPIO_Init
+ 1611              	.LVL101:
+ 639:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 640:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   I2Cx_Init();
+ 1612              		.loc 1 640 3 view .LVU374
+ 1613 0034 FFF7FEFF 		bl	I2Cx_Init
+ 1614              	.LVL102:
+ 641:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 642:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Power Down the codec */
+ 643:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_WritePin(AUDIO_RESET_GPIO, AUDIO_RESET_PIN, GPIO_PIN_RESET);
+ 1615              		.loc 1 643 3 view .LVU375
+ 1616 0038 3246     		mov	r2, r6
+ 1617 003a 2946     		mov	r1, r5
+ 1618 003c 2046     		mov	r0, r4
+ 1619 003e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1620              	.LVL103:
+ 644:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 645:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Wait for a delay to insure registers erasing */
+ 646:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_Delay(5); 
+ 1621              		.loc 1 646 3 view .LVU376
+ 1622 0042 0520     		movs	r0, #5
+ 1623 0044 FFF7FEFF 		bl	HAL_Delay
+ 1624              	.LVL104:
+ 647:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 648:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Power on the codec */
+ 649:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_GPIO_WritePin(AUDIO_RESET_GPIO, AUDIO_RESET_PIN, GPIO_PIN_SET);
+ 1625              		.loc 1 649 3 view .LVU377
+ 1626 0048 3A46     		mov	r2, r7
+ 1627 004a 2946     		mov	r1, r5
+ 1628 004c 2046     		mov	r0, r4
+ 1629 004e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 44
+
+
+ 1630              	.LVL105:
+ 650:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 651:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   /* Wait for a delay to insure registers erasing */
+ 652:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   HAL_Delay(5); 
+ 1631              		.loc 1 652 3 view .LVU378
+ 1632 0052 0520     		movs	r0, #5
+ 1633 0054 FFF7FEFF 		bl	HAL_Delay
+ 1634              	.LVL106:
+ 653:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 1635              		.loc 1 653 1 is_stmt 0 view .LVU379
+ 1636 0058 07B0     		add	sp, sp, #28
+ 1637              	.LCFI44:
+ 1638              		.cfi_def_cfa_offset 20
+ 1639              		@ sp needed
+ 1640 005a F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1641              	.L113:
+ 1642              		.align	2
+ 1643              	.L112:
+ 1644 005c 00380240 		.word	1073887232
+ 1645 0060 000C0240 		.word	1073875968
+ 1646              		.cfi_endproc
+ 1647              	.LFE255:
+ 1649              		.section	.text.AUDIO_IO_DeInit,"ax",%progbits
+ 1650              		.align	1
+ 1651              		.global	AUDIO_IO_DeInit
+ 1652              		.syntax unified
+ 1653              		.thumb
+ 1654              		.thumb_func
+ 1655              		.fpu fpv4-sp-d16
+ 1657              	AUDIO_IO_DeInit:
+ 1658              	.LFB256:
+ 654:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 655:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 656:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  DeInitializes Audio low level.
+ 657:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 658:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void AUDIO_IO_DeInit(void)
+ 659:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 1659              		.loc 1 659 1 is_stmt 1 view -0
+ 1660              		.cfi_startproc
+ 1661              		@ args = 0, pretend = 0, frame = 0
+ 1662              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1663              		@ link register save eliminated.
+ 660:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   
+ 661:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 1664              		.loc 1 661 1 view .LVU381
+ 1665 0000 7047     		bx	lr
+ 1666              		.cfi_endproc
+ 1667              	.LFE256:
+ 1669              		.section	.text.AUDIO_IO_Write,"ax",%progbits
+ 1670              		.align	1
+ 1671              		.global	AUDIO_IO_Write
+ 1672              		.syntax unified
+ 1673              		.thumb
+ 1674              		.thumb_func
+ 1675              		.fpu fpv4-sp-d16
+ 1677              	AUDIO_IO_Write:
+ 1678              	.LVL107:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 45
+
+
+ 1679              	.LFB257:
+ 662:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 663:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 664:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Writes a single data.
+ 665:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Addr: I2C address
+ 666:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Reg: Reg address 
+ 667:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Value: Data to be written
+ 668:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 669:Drivers/accelero/BSP/src/stm32f4_discovery.c **** void AUDIO_IO_Write (uint8_t Addr, uint8_t Reg, uint8_t Value)
+ 670:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 1680              		.loc 1 670 1 view -0
+ 1681              		.cfi_startproc
+ 1682              		@ args = 0, pretend = 0, frame = 0
+ 1683              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1684              		.loc 1 670 1 is_stmt 0 view .LVU383
+ 1685 0000 08B5     		push	{r3, lr}
+ 1686              	.LCFI45:
+ 1687              		.cfi_def_cfa_offset 8
+ 1688              		.cfi_offset 3, -8
+ 1689              		.cfi_offset 14, -4
+ 671:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   I2Cx_WriteData(Addr, Reg, Value);
+ 1690              		.loc 1 671 3 is_stmt 1 view .LVU384
+ 1691 0002 FFF7FEFF 		bl	I2Cx_WriteData
+ 1692              	.LVL108:
+ 672:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 1693              		.loc 1 672 1 is_stmt 0 view .LVU385
+ 1694 0006 08BD     		pop	{r3, pc}
+ 1695              		.cfi_endproc
+ 1696              	.LFE257:
+ 1698              		.section	.text.AUDIO_IO_Read,"ax",%progbits
+ 1699              		.align	1
+ 1700              		.global	AUDIO_IO_Read
+ 1701              		.syntax unified
+ 1702              		.thumb
+ 1703              		.thumb_func
+ 1704              		.fpu fpv4-sp-d16
+ 1706              	AUDIO_IO_Read:
+ 1707              	.LVL109:
+ 1708              	.LFB258:
+ 673:Drivers/accelero/BSP/src/stm32f4_discovery.c **** 
+ 674:Drivers/accelero/BSP/src/stm32f4_discovery.c **** /**
+ 675:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @brief  Reads a single data.
+ 676:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Addr: I2C address
+ 677:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @param  Reg: Reg address 
+ 678:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   * @retval Data to be read
+ 679:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   */
+ 680:Drivers/accelero/BSP/src/stm32f4_discovery.c **** uint8_t AUDIO_IO_Read(uint8_t Addr, uint8_t Reg)
+ 681:Drivers/accelero/BSP/src/stm32f4_discovery.c **** {
+ 1709              		.loc 1 681 1 is_stmt 1 view -0
+ 1710              		.cfi_startproc
+ 1711              		@ args = 0, pretend = 0, frame = 0
+ 1712              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1713              		.loc 1 681 1 is_stmt 0 view .LVU387
+ 1714 0000 08B5     		push	{r3, lr}
+ 1715              	.LCFI46:
+ 1716              		.cfi_def_cfa_offset 8
+ 1717              		.cfi_offset 3, -8
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 46
+
+
+ 1718              		.cfi_offset 14, -4
+ 682:Drivers/accelero/BSP/src/stm32f4_discovery.c ****   return I2Cx_ReadData(Addr, Reg);
+ 1719              		.loc 1 682 3 is_stmt 1 view .LVU388
+ 1720              		.loc 1 682 10 is_stmt 0 view .LVU389
+ 1721 0002 FFF7FEFF 		bl	I2Cx_ReadData
+ 1722              	.LVL110:
+ 683:Drivers/accelero/BSP/src/stm32f4_discovery.c **** }
+ 1723              		.loc 1 683 1 view .LVU390
+ 1724 0006 08BD     		pop	{r3, pc}
+ 1725              		.cfi_endproc
+ 1726              	.LFE258:
+ 1728              		.global	SpixTimeout
+ 1729              		.global	I2cxTimeout
+ 1730              		.global	BUTTON_IRQn
+ 1731              		.global	BUTTON_PIN
+ 1732              		.global	BUTTON_PORT
+ 1733              		.global	GPIO_PIN
+ 1734              		.global	GPIO_PORT
+ 1735              		.section	.bss.I2cHandle,"aw",%nobits
+ 1736              		.align	2
+ 1737              		.set	.LANCHOR2,. + 0
+ 1740              	I2cHandle:
+ 1741 0000 00000000 		.space	84
+ 1741      00000000 
+ 1741      00000000 
+ 1741      00000000 
+ 1741      00000000 
+ 1742              		.section	.bss.SpiHandle,"aw",%nobits
+ 1743              		.align	2
+ 1744              		.set	.LANCHOR0,. + 0
+ 1747              	SpiHandle:
+ 1748 0000 00000000 		.space	88
+ 1748      00000000 
+ 1748      00000000 
+ 1748      00000000 
+ 1748      00000000 
+ 1749              		.section	.data.BUTTON_PORT,"aw"
+ 1750              		.align	2
+ 1751              		.set	.LANCHOR6,. + 0
+ 1754              	BUTTON_PORT:
+ 1755 0000 00000240 		.word	1073872896
+ 1756              		.section	.data.GPIO_PORT,"aw"
+ 1757              		.align	2
+ 1758              		.set	.LANCHOR5,. + 0
+ 1761              	GPIO_PORT:
+ 1762 0000 000C0240 		.word	1073875968
+ 1763 0004 000C0240 		.word	1073875968
+ 1764 0008 000C0240 		.word	1073875968
+ 1765 000c 000C0240 		.word	1073875968
+ 1766              		.section	.data.I2cxTimeout,"aw"
+ 1767              		.align	2
+ 1768              		.set	.LANCHOR3,. + 0
+ 1771              	I2cxTimeout:
+ 1772 0000 00100000 		.word	4096
+ 1773              		.section	.data.SpixTimeout,"aw"
+ 1774              		.align	2
+ 1775              		.set	.LANCHOR1,. + 0
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 47
+
+
+ 1778              	SpixTimeout:
+ 1779 0000 00100000 		.word	4096
+ 1780              		.section	.rodata.BUTTON_IRQn,"a"
+ 1781              		.align	2
+ 1784              	BUTTON_IRQn:
+ 1785 0000 06       		.ascii	"\006"
+ 1786              		.section	.rodata.BUTTON_PIN,"a"
+ 1787              		.align	2
+ 1790              	BUTTON_PIN:
+ 1791 0000 0100     		.short	1
+ 1792              		.section	.rodata.GPIO_PIN,"a"
+ 1793              		.align	2
+ 1794              		.set	.LANCHOR4,. + 0
+ 1797              	GPIO_PIN:
+ 1798 0000 0010     		.short	4096
+ 1799 0002 0020     		.short	8192
+ 1800 0004 0040     		.short	16384
+ 1801 0006 0080     		.short	-32768
+ 1802              		.text
+ 1803              	.Letext0:
+ 1804              		.file 2 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 1805              		.file 3 "/usr/local/Cellar/gcc-arm-none-eabi/20200630/arm-none-eabi/include/machine/_default_types
+ 1806              		.file 4 "/usr/local/Cellar/gcc-arm-none-eabi/20200630/arm-none-eabi/include/sys/_stdint.h"
+ 1807              		.file 5 "Drivers/CMSIS/Include/core_cm4.h"
+ 1808              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1809              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1810              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1811              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1812              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 1813              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 1814              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 1815              		.file 13 "Drivers/accelero/BSP/inc/stm32f4_discovery.h"
+ 1816              		.file 14 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 48
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f4_discovery.c
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:18     .text.SPIx_MspInit:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:25     .text.SPIx_MspInit:0000000000000000 SPIx_MspInit
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:107    .text.SPIx_MspInit:0000000000000050 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:113    .text.I2Cx_MspInit:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:119    .text.I2Cx_MspInit:0000000000000000 I2Cx_MspInit
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:230    .text.I2Cx_MspInit:0000000000000080 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:236    .text.SPIx_Init:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:242    .text.SPIx_Init:0000000000000000 SPIx_Init
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:319    .text.SPIx_Init:0000000000000044 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:325    .text.SPIx_Error:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:331    .text.SPIx_Error:0000000000000000 SPIx_Error
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:354    .text.SPIx_Error:0000000000000010 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:359    .text.SPIx_WriteRead:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:365    .text.SPIx_WriteRead:0000000000000000 SPIx_WriteRead
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:420    .text.SPIx_WriteRead:0000000000000038 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:426    .text.I2Cx_Init:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:432    .text.I2Cx_Init:0000000000000000 I2Cx_Init
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:487    .text.I2Cx_Init:0000000000000030 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:494    .text.I2Cx_Error:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:500    .text.I2Cx_Error:0000000000000000 I2Cx_Error
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:527    .text.I2Cx_Error:0000000000000010 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:532    .text.I2Cx_WriteData:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:538    .text.I2Cx_WriteData:0000000000000000 I2Cx_WriteData
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:607    .text.I2Cx_WriteData:0000000000000034 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:613    .text.I2Cx_ReadData:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:619    .text.I2Cx_ReadData:0000000000000000 I2Cx_ReadData
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:688    .text.I2Cx_ReadData:0000000000000038 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:694    .text.BSP_GetVersion:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:701    .text.BSP_GetVersion:0000000000000000 BSP_GetVersion
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:715    .text.BSP_GetVersion:0000000000000004 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:720    .text.BSP_LED_Init:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:727    .text.BSP_LED_Init:0000000000000000 BSP_LED_Init
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:883    .text.BSP_LED_Init:00000000000000a8 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:890    .text.BSP_LED_On:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:897    .text.BSP_LED_On:0000000000000000 BSP_LED_On
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:925    .text.BSP_LED_On:0000000000000018 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:931    .text.BSP_LED_Off:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:938    .text.BSP_LED_Off:0000000000000000 BSP_LED_Off
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:966    .text.BSP_LED_Off:0000000000000018 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:972    .text.BSP_LED_Toggle:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:979    .text.BSP_LED_Toggle:0000000000000000 BSP_LED_Toggle
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1006   .text.BSP_LED_Toggle:0000000000000014 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1012   .text.BSP_PB_Init:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1019   .text.BSP_PB_Init:0000000000000000 BSP_PB_Init
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1147   .text.BSP_PB_Init:0000000000000078 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1154   .text.BSP_PB_GetState:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1161   .text.BSP_PB_GetState:0000000000000000 BSP_PB_GetState
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1188   .text.BSP_PB_GetState:0000000000000010 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1193   .text.ACCELERO_IO_Init:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1200   .text.ACCELERO_IO_Init:0000000000000000 ACCELERO_IO_Init
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1273   .text.ACCELERO_IO_Init:0000000000000044 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1279   .text.ACCELERO_IO_ITConfig:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1286   .text.ACCELERO_IO_ITConfig:0000000000000000 ACCELERO_IO_ITConfig
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1357   .text.ACCELERO_IO_ITConfig:0000000000000044 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1364   .text.ACCELERO_IO_Write:0000000000000000 $t
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s 			page 49
+
+
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1371   .text.ACCELERO_IO_Write:0000000000000000 ACCELERO_IO_Write
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1446   .text.ACCELERO_IO_Write:000000000000003c $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1451   .text.ACCELERO_IO_Read:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1458   .text.ACCELERO_IO_Read:0000000000000000 ACCELERO_IO_Read
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1543   .text.ACCELERO_IO_Read:0000000000000044 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1548   .text.AUDIO_IO_Init:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1555   .text.AUDIO_IO_Init:0000000000000000 AUDIO_IO_Init
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1644   .text.AUDIO_IO_Init:000000000000005c $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1650   .text.AUDIO_IO_DeInit:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1657   .text.AUDIO_IO_DeInit:0000000000000000 AUDIO_IO_DeInit
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1670   .text.AUDIO_IO_Write:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1677   .text.AUDIO_IO_Write:0000000000000000 AUDIO_IO_Write
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1699   .text.AUDIO_IO_Read:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1706   .text.AUDIO_IO_Read:0000000000000000 AUDIO_IO_Read
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1778   .data.SpixTimeout:0000000000000000 SpixTimeout
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1771   .data.I2cxTimeout:0000000000000000 I2cxTimeout
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1784   .rodata.BUTTON_IRQn:0000000000000000 BUTTON_IRQn
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1790   .rodata.BUTTON_PIN:0000000000000000 BUTTON_PIN
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1754   .data.BUTTON_PORT:0000000000000000 BUTTON_PORT
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1797   .rodata.GPIO_PIN:0000000000000000 GPIO_PIN
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1761   .data.GPIO_PORT:0000000000000000 GPIO_PORT
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1736   .bss.I2cHandle:0000000000000000 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1740   .bss.I2cHandle:0000000000000000 I2cHandle
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1743   .bss.SpiHandle:0000000000000000 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1747   .bss.SpiHandle:0000000000000000 SpiHandle
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1750   .data.BUTTON_PORT:0000000000000000 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1757   .data.GPIO_PORT:0000000000000000 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1767   .data.I2cxTimeout:0000000000000000 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1774   .data.SpixTimeout:0000000000000000 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1781   .rodata.BUTTON_IRQn:0000000000000000 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1787   .rodata.BUTTON_PIN:0000000000000000 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccPqAdGV.s:1793   .rodata.GPIO_PIN:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_Init
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+HAL_SPI_GetState
+HAL_SPI_Init
+HAL_SPI_DeInit
+HAL_SPI_TransmitReceive
+HAL_I2C_GetState
+HAL_I2C_Init
+HAL_I2C_DeInit
+HAL_I2C_Mem_Write
+HAL_I2C_Mem_Read
+HAL_GPIO_WritePin
+HAL_GPIO_TogglePin
+HAL_GPIO_ReadPin
+HAL_Delay

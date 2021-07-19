@@ -1,0 +1,1490 @@
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"lis3dsh.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.LIS3DSH_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	LIS3DSH_DeInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	LIS3DSH_DeInit:
+  27              	.LFB1:
+  28              		.file 1 "Drivers/accelero/Components/lis3dsh/lis3dsh.c"
+   1:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+   2:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ******************************************************************************
+   3:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @file    lis3dsh.c
+   4:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @author  MCD Application Team
+   5:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @version V2.0.0
+   6:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @date    03-August-2015
+   7:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @brief   This file provides a set of functions needed to manage the LIS3DSH
+   8:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *          MEMS Accelerometer.
+   9:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ******************************************************************************
+  10:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @attention
+  11:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *
+  12:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
+  13:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *
+  14:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  15:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * are permitted provided that the following conditions are met:
+  16:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  17:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *      this list of conditions and the following disclaimer.
+  18:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  19:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *      this list of conditions and the following disclaimer in the documentation
+  20:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *      and/or other materials provided with the distribution.
+  21:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  22:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *      may be used to endorse or promote products derived from this software
+  23:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *      without specific prior written permission.
+  24:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *
+  25:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  26:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  27:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  28:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  29:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  30:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 2
+
+
+  31:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  32:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  33:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  34:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  35:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *
+  36:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ******************************************************************************
+  37:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+  38:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+  39:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /* Includes ------------------------------------------------------------------*/
+  40:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** #include "lis3dsh.h"
+  41:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+  42:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /** @addtogroup BSP
+  43:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @{
+  44:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */ 
+  45:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+  46:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /** @addtogroup Components
+  47:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @{
+  48:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */ 
+  49:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+  50:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /** @addtogroup LIS3DSH
+  51:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @brief  This file includes the motion sensor driver for LIS3DSH motion sensor 
+  52:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *         devices.
+  53:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @{
+  54:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+  55:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+  56:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /** @defgroup LIS3DSH_Private_TypesDefinitions
+  57:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @{
+  58:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+  59:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+  60:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+  61:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @}
+  62:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+  63:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+  64:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /** @defgroup LIS3DSH_Private_Defines
+  65:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @{
+  66:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+  67:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+  68:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+  69:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @}
+  70:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+  71:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+  72:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /** @defgroup LIS3DSH_Private_Macros
+  73:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @{
+  74:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+  75:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+  76:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+  77:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @}
+  78:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */ 
+  79:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+  80:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /** @defgroup LIS3DSH_Private_Variables
+  81:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @{
+  82:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+  83:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** ACCELERO_DrvTypeDef Lis3dshDrv =
+  84:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** {
+  85:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_Init,
+  86:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_DeInit,
+  87:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_ReadID,
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 3
+
+
+  88:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_RebootCmd,
+  89:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_Click_IntConfig,
+  90:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   0,
+  91:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   0,
+  92:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   0,
+  93:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   0,
+  94:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   0,
+  95:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   0,
+  96:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   0,
+  97:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_ReadACC,
+  98:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** };
+  99:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 100:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+ 101:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @}
+ 102:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 103:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 104:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /** @defgroup LIS3DSH_Private_FunctionPrototypes
+ 105:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @{
+ 106:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 107:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 108:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+ 109:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @}
+ 110:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 111:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 112:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /** @defgroup LIS3DSH_Private_Functions
+ 113:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @{
+ 114:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 115:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 116:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+ 117:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @brief  Set LIS3DSH Initialization.
+ 118:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @param  InitStruct: contains mask of different init parameters
+ 119:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @retval None
+ 120:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 121:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** void LIS3DSH_Init(uint16_t InitStruct)
+ 122:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** {
+ 123:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t ctrl = 0x00;
+ 124:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 125:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Configure the low level interface */
+ 126:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Init();
+ 127:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 128:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Configure MEMS: power mode(ODR) and axes enable */
+ 129:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl = (uint8_t) (InitStruct);
+ 130:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 131:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Write value to MEMS CTRL_REG4 register */
+ 132:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_CTRL_REG4_ADDR, 1);
+ 133:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 134:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Configure MEMS: full scale and self test */
+ 135:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl = (uint8_t) (InitStruct >> 8);
+ 136:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 137:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Write value to MEMS CTRL_REG5 register */
+ 138:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_CTRL_REG5_ADDR, 1);
+ 139:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 140:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 141:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+ 142:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @brief  LIS3DSH De-Initialization.
+ 143:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @param  None
+ 144:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @retval None.
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 4
+
+
+ 145:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 146:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** void LIS3DSH_DeInit(void)
+ 147:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** {
+  29              		.loc 1 147 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+ 148:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 149:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+  34              		.loc 1 149 1 view .LVU1
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE1:
+  39              		.section	.text.LIS3DSH_Init,"ax",%progbits
+  40              		.align	1
+  41              		.global	LIS3DSH_Init
+  42              		.syntax unified
+  43              		.thumb
+  44              		.thumb_func
+  45              		.fpu fpv4-sp-d16
+  47              	LIS3DSH_Init:
+  48              	.LVL0:
+  49              	.LFB0:
+ 122:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t ctrl = 0x00;
+  50              		.loc 1 122 1 view -0
+  51              		.cfi_startproc
+  52              		@ args = 0, pretend = 0, frame = 8
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+ 122:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t ctrl = 0x00;
+  54              		.loc 1 122 1 is_stmt 0 view .LVU3
+  55 0000 10B5     		push	{r4, lr}
+  56              	.LCFI0:
+  57              		.cfi_def_cfa_offset 8
+  58              		.cfi_offset 4, -8
+  59              		.cfi_offset 14, -4
+  60 0002 82B0     		sub	sp, sp, #8
+  61              	.LCFI1:
+  62              		.cfi_def_cfa_offset 16
+  63 0004 0446     		mov	r4, r0
+ 123:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+  64              		.loc 1 123 3 is_stmt 1 view .LVU4
+ 123:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+  65              		.loc 1 123 11 is_stmt 0 view .LVU5
+  66 0006 0023     		movs	r3, #0
+  67 0008 8DF80730 		strb	r3, [sp, #7]
+ 126:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+  68              		.loc 1 126 3 is_stmt 1 view .LVU6
+  69 000c FFF7FEFF 		bl	ACCELERO_IO_Init
+  70              	.LVL1:
+ 129:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+  71              		.loc 1 129 3 view .LVU7
+ 129:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+  72              		.loc 1 129 8 is_stmt 0 view .LVU8
+  73 0010 8DF80740 		strb	r4, [sp, #7]
+ 132:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+  74              		.loc 1 132 3 is_stmt 1 view .LVU9
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 5
+
+
+  75 0014 0122     		movs	r2, #1
+  76 0016 2021     		movs	r1, #32
+  77 0018 0DF10700 		add	r0, sp, #7
+  78 001c FFF7FEFF 		bl	ACCELERO_IO_Write
+  79              	.LVL2:
+ 135:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+  80              		.loc 1 135 3 view .LVU10
+ 135:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+  81              		.loc 1 135 10 is_stmt 0 view .LVU11
+  82 0020 240A     		lsrs	r4, r4, #8
+ 135:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+  83              		.loc 1 135 8 view .LVU12
+  84 0022 8DF80740 		strb	r4, [sp, #7]
+ 138:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+  85              		.loc 1 138 3 is_stmt 1 view .LVU13
+  86 0026 0122     		movs	r2, #1
+  87 0028 2421     		movs	r1, #36
+  88 002a 0DF10700 		add	r0, sp, #7
+  89 002e FFF7FEFF 		bl	ACCELERO_IO_Write
+  90              	.LVL3:
+ 139:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+  91              		.loc 1 139 1 is_stmt 0 view .LVU14
+  92 0032 02B0     		add	sp, sp, #8
+  93              	.LCFI2:
+  94              		.cfi_def_cfa_offset 8
+  95              		@ sp needed
+  96 0034 10BD     		pop	{r4, pc}
+  97              		.cfi_endproc
+  98              	.LFE0:
+ 100              		.section	.text.LIS3DSH_ReadID,"ax",%progbits
+ 101              		.align	1
+ 102              		.global	LIS3DSH_ReadID
+ 103              		.syntax unified
+ 104              		.thumb
+ 105              		.thumb_func
+ 106              		.fpu fpv4-sp-d16
+ 108              	LIS3DSH_ReadID:
+ 109              	.LFB2:
+ 150:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 151:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+ 152:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @brief  Read LIS3DSH device ID.
+ 153:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @param  None
+ 154:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @retval The Device ID (two bytes).
+ 155:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 156:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** uint8_t LIS3DSH_ReadID(void)
+ 157:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** {
+ 110              		.loc 1 157 1 is_stmt 1 view -0
+ 111              		.cfi_startproc
+ 112              		@ args = 0, pretend = 0, frame = 8
+ 113              		@ frame_needed = 0, uses_anonymous_args = 0
+ 114 0000 00B5     		push	{lr}
+ 115              	.LCFI3:
+ 116              		.cfi_def_cfa_offset 4
+ 117              		.cfi_offset 14, -4
+ 118 0002 83B0     		sub	sp, sp, #12
+ 119              	.LCFI4:
+ 120              		.cfi_def_cfa_offset 16
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 6
+
+
+ 158:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t tmp = 0;
+ 121              		.loc 1 158 3 view .LVU16
+ 122              		.loc 1 158 11 is_stmt 0 view .LVU17
+ 123 0004 0023     		movs	r3, #0
+ 124 0006 8DF80730 		strb	r3, [sp, #7]
+ 159:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 160:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Configure the low level interface */
+ 161:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Init();
+ 125              		.loc 1 161 3 is_stmt 1 view .LVU18
+ 126 000a FFF7FEFF 		bl	ACCELERO_IO_Init
+ 127              	.LVL4:
+ 162:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 163:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Read WHO_AM_I register */
+ 164:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Read(&tmp, LIS3DSH_WHO_AM_I_ADDR, 1);
+ 128              		.loc 1 164 3 view .LVU19
+ 129 000e 0122     		movs	r2, #1
+ 130 0010 0F21     		movs	r1, #15
+ 131 0012 0DF10700 		add	r0, sp, #7
+ 132 0016 FFF7FEFF 		bl	ACCELERO_IO_Read
+ 133              	.LVL5:
+ 165:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 166:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Return the ID */
+ 167:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   return (uint16_t)tmp;
+ 134              		.loc 1 167 3 view .LVU20
+ 168:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 135              		.loc 1 168 1 is_stmt 0 view .LVU21
+ 136 001a 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 137 001e 03B0     		add	sp, sp, #12
+ 138              	.LCFI5:
+ 139              		.cfi_def_cfa_offset 4
+ 140              		@ sp needed
+ 141 0020 5DF804FB 		ldr	pc, [sp], #4
+ 142              		.cfi_endproc
+ 143              	.LFE2:
+ 145              		.section	.text.LIS3DSH_RebootCmd,"ax",%progbits
+ 146              		.align	1
+ 147              		.global	LIS3DSH_RebootCmd
+ 148              		.syntax unified
+ 149              		.thumb
+ 150              		.thumb_func
+ 151              		.fpu fpv4-sp-d16
+ 153              	LIS3DSH_RebootCmd:
+ 154              	.LFB8:
+ 169:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 170:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+ 171:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @brief  Set LIS3DSH Interrupt configuration
+ 172:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @param  LIS3DSH_InterruptConfig_TypeDef: pointer to a LIS3DSH_InterruptConfig_TypeDef 
+ 173:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *         structure that contains the configuration setting for the LIS3DSH Interrupt.
+ 174:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @retval None
+ 175:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 176:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** void LIS3DSH_InterruptConfig(LIS3DSH_InterruptConfigTypeDef *LIS3DSH_IntConfigStruct)
+ 177:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** {
+ 178:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t ctrl = 0x00;
+ 179:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 180:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Configure Interrupt Selection , Request and Signal */                   
+ 181:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl = (uint8_t)(LIS3DSH_IntConfigStruct->Interrupt_Selection_Enable | \
+ 182:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->Interrupt_Request | \
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 7
+
+
+ 183:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->Interrupt_Signal);
+ 184:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 185:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Write value to MEMS CTRL_REG3 register */
+ 186:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_CTRL_REG3_ADDR, 1);
+ 187:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 188:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Configure State Machine 1 */                   
+ 189:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl = (uint8_t)(LIS3DSH_IntConfigStruct->State_Machine1_Enable | \
+ 190:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->State_Machine1_Interrupt);
+ 191:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 192:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Write value to MEMS CTRL_REG1 register */
+ 193:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_CTRL_REG1_ADDR, 1);
+ 194:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 195:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Configure State Machine 2 */                   
+ 196:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl = (uint8_t)(LIS3DSH_IntConfigStruct->State_Machine2_Enable | \
+ 197:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->State_Machine2_Interrupt);
+ 198:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 199:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Write value to MEMS CTRL_REG2 register */
+ 200:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_CTRL_REG2_ADDR, 1);
+ 201:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 202:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 203:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+ 204:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @brief  Set LIS3DSH for click detection
+ 205:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @param  None
+ 206:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @retval None
+ 207:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 208:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** void LIS3DSH_Click_IntConfig(void)
+ 209:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** {
+ 210:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t ctrl = 0x00;
+ 211:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptConfigTypeDef   LIS3DSH_InterruptStruct; 
+ 212:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 213:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_ITConfig();
+ 214:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 215:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Set LIS3DSH Interrupt configuration */
+ 216:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.Interrupt_Selection_Enable = LIS3DSH_INTERRUPT_2_ENABLE;
+ 217:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.Interrupt_Request = LIS3DSH_INTERRUPT_REQUEST_LATCHED;
+ 218:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.Interrupt_Signal = LIS3DSH_INTERRUPT_SIGNAL_HIGH;
+ 219:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.State_Machine1_Enable = LIS3DSH_SM_DISABLE;
+ 220:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.State_Machine2_Enable = LIS3DSH_SM_ENABLE;
+ 221:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.State_Machine2_Interrupt = LIS3DSH_SM_INT1;
+ 222:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptConfig(&LIS3DSH_InterruptStruct);
+ 223:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 224:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Set LIS3DSH State Machines configuration */
+ 225:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0x03; 
+ 226:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_TIM2_1_L_ADDR,1);
+ 227:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0xC8; 
+ 228:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_TIM1_1_L_ADDR,1);
+ 229:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0x45; 
+ 230:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_THRS2_1_ADDR,1);
+ 231:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0xFC; 
+ 232:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_MASK1_A_ADDR,1);
+ 233:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0xA1; 
+ 234:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_SETT1_ADDR,1);
+ 235:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0x01; 
+ 236:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_PR1_ADDR,1);
+ 237:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 238:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_SETT2_ADDR,1);
+ 239:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 8
+
+
+ 240:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Configure State Machine 2 to detect single click */
+ 241:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_ST2_1_ADDR,1);
+ 242:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0x06; 
+ 243:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_ST2_2_ADDR,1);
+ 244:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0x28; 
+ 245:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_ST2_3_ADDR,1);
+ 246:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0x11; 
+ 247:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_ST2_4_ADDR,1);
+ 248:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 249:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 250:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+ 251:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @brief  Change the lowpower mode for LIS3DSH.
+ 252:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @param  LowPowerMode: new state for the lowpower mode.
+ 253:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *   This parameter can be one of the following values:
+ 254:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_POWERDOWN: Power down mode
+ 255:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_3_125: Normal mode. ODR: 3.125 Hz
+ 256:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_6_25: Normal mode. ODR: 6.25 Hz
+ 257:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_12_5: Normal mode. ODR: 12.5 Hz
+ 258:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_25: Normal mode. ODR: 25 Hz
+ 259:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_50: Normal mode. ODR: 50 Hz
+ 260:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_100: Normal mode. ODR: 100 Hz
+ 261:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_400: Normal mode. ODR: 400 Hz
+ 262:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_800: Normal mode. ODR: 800 Hz
+ 263:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_1600: Normal mode. ODR: 1600 Hz
+ 264:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @retval None
+ 265:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 266:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** void LIS3DSH_ODR_LowpowerCmd(uint8_t ODR_LowPowerMode)
+ 267:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** {
+ 268:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t tmpreg;
+ 269:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 270:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Read CTRL_REG4 register */
+ 271:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Read(&tmpreg, LIS3DSH_CTRL_REG4_ADDR, 1);
+ 272:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 273:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Set new low power mode configuration */
+ 274:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg &= (uint8_t)~LIS3DSH_DATARATE_100;
+ 275:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg |= ODR_LowPowerMode;
+ 276:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 277:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Write value to MEMS CTRL_REG4 register */
+ 278:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&tmpreg, LIS3DSH_CTRL_REG4_ADDR, 1);
+ 279:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 280:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 281:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+ 282:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @brief  Data Rate command. 
+ 283:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @param  DataRateValue: Data rate value.
+ 284:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *   This parameter can be one of the following values:
+ 285:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_3_125: 3.125 Hz output data rate 
+ 286:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_6_25: 6.25 Hz output data rate
+ 287:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_12_5: 12.5  Hz output data rate
+ 288:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_25: 25 Hz output data rate
+ 289:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_50: 50 Hz output data rate 
+ 290:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_100: 100 Hz output data rate
+ 291:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_400: 400 Hz output data rate 
+ 292:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_800: 800 Hz output data rate
+ 293:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_DATARATE_1600: 1600 Hz output data rate
+ 294:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @retval None
+ 295:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 296:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** void LIS3DSH_DataRateCmd(uint8_t DataRateValue)
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 9
+
+
+ 297:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** {
+ 298:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t tmpreg;
+ 299:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 300:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Read CTRL_REG4 register */
+ 301:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Read(&tmpreg, LIS3DSH_CTRL_REG4_ADDR, 1);
+ 302:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 303:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Set new data rate configuration from 100 to 400Hz */
+ 304:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg &= (uint8_t)~LIS3DSH_DATARATE_400; 
+ 305:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg |= DataRateValue;
+ 306:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 307:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Write value to MEMS CTRL_REG4 register */
+ 308:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&tmpreg, LIS3DSH_CTRL_REG4_ADDR, 1);
+ 309:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 310:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 311:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+ 312:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @brief  Change the Full Scale of LIS3DSH.
+ 313:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @param  FS_value: new full scale value. 
+ 314:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *   This parameter can be one of the following values:
+ 315:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_FULLSCALE_2: +-2g
+ 316:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_FULLSCALE_4: +-4g
+ 317:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_FULLSCALE_6: +-6g
+ 318:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_FULLSCALE_8: +-8g
+ 319:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *     @arg LIS3DSH_FULLSCALE_16: +-16g
+ 320:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @retval None
+ 321:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 322:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** void LIS3DSH_FullScaleCmd(uint8_t FS_value)
+ 323:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** {
+ 324:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t tmpreg;
+ 325:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 326:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Read CTRL_REG5 register */
+ 327:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Read(&tmpreg, LIS3DSH_CTRL_REG5_ADDR, 1);
+ 328:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 329:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Set new full scale configuration */
+ 330:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg &= (uint8_t)~LIS3DSH_FULLSCALE_16;
+ 331:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg |= FS_value;
+ 332:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 333:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Write value to MEMS CTRL_REG5 register */
+ 334:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&tmpreg, LIS3DSH_CTRL_REG5_ADDR, 1);
+ 335:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 336:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 337:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+ 338:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @brief  Reboot memory content of LIS3DSH.
+ 339:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @param  None
+ 340:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @retval None
+ 341:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 342:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** void LIS3DSH_RebootCmd(void)
+ 343:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** {
+ 155              		.loc 1 343 1 is_stmt 1 view -0
+ 156              		.cfi_startproc
+ 157              		@ args = 0, pretend = 0, frame = 8
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159 0000 00B5     		push	{lr}
+ 160              	.LCFI6:
+ 161              		.cfi_def_cfa_offset 4
+ 162              		.cfi_offset 14, -4
+ 163 0002 83B0     		sub	sp, sp, #12
+ 164              	.LCFI7:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 10
+
+
+ 165              		.cfi_def_cfa_offset 16
+ 344:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t tmpreg;
+ 166              		.loc 1 344 3 view .LVU23
+ 345:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Read CTRL_REG6 register */
+ 346:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Read(&tmpreg, LIS3DSH_CTRL_REG6_ADDR, 1);
+ 167              		.loc 1 346 3 view .LVU24
+ 168 0004 0122     		movs	r2, #1
+ 169 0006 2521     		movs	r1, #37
+ 170 0008 0DF10700 		add	r0, sp, #7
+ 171 000c FFF7FEFF 		bl	ACCELERO_IO_Read
+ 172              	.LVL6:
+ 347:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 348:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Enable or Disable the reboot memory */
+ 349:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg |= LIS3DSH_BOOT_FORCED;
+ 173              		.loc 1 349 3 view .LVU25
+ 174              		.loc 1 349 10 is_stmt 0 view .LVU26
+ 175 0010 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 176 0014 63F07F03 		orn	r3, r3, #127
+ 177 0018 8DF80730 		strb	r3, [sp, #7]
+ 350:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 351:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Write value to MEMS CTRL_REG6 register */
+ 352:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&tmpreg, LIS3DSH_CTRL_REG6_ADDR, 1);
+ 178              		.loc 1 352 3 is_stmt 1 view .LVU27
+ 179 001c 0122     		movs	r2, #1
+ 180 001e 2521     		movs	r1, #37
+ 181 0020 0DF10700 		add	r0, sp, #7
+ 182 0024 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 183              	.LVL7:
+ 353:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 184              		.loc 1 353 1 is_stmt 0 view .LVU28
+ 185 0028 03B0     		add	sp, sp, #12
+ 186              	.LCFI8:
+ 187              		.cfi_def_cfa_offset 4
+ 188              		@ sp needed
+ 189 002a 5DF804FB 		ldr	pc, [sp], #4
+ 190              		.cfi_endproc
+ 191              	.LFE8:
+ 193              		.section	.text.LIS3DSH_ReadACC,"ax",%progbits
+ 194              		.align	1
+ 195              		.global	LIS3DSH_ReadACC
+ 196              		.syntax unified
+ 197              		.thumb
+ 198              		.thumb_func
+ 199              		.fpu fpv4-sp-d16
+ 201              	LIS3DSH_ReadACC:
+ 202              	.LVL8:
+ 203              	.LFB9:
+ 354:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 355:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** /**
+ 356:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @brief  Read LIS3DSH output register, and calculate the acceleration 
+ 357:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   *         ACC[mg]=SENSITIVITY* (out_h*256+out_l)/16 (12 bit representation).
+ 358:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @param  pointer on floating buffer.
+ 359:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   * @retval None
+ 360:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   */
+ 361:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** void LIS3DSH_ReadACC(int16_t *pData)
+ 362:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** {
+ 204              		.loc 1 362 1 is_stmt 1 view -0
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 11
+
+
+ 205              		.cfi_startproc
+ 206              		@ args = 0, pretend = 0, frame = 16
+ 207              		@ frame_needed = 0, uses_anonymous_args = 0
+ 208              		.loc 1 362 1 is_stmt 0 view .LVU30
+ 209 0000 10B5     		push	{r4, lr}
+ 210              	.LCFI9:
+ 211              		.cfi_def_cfa_offset 8
+ 212              		.cfi_offset 4, -8
+ 213              		.cfi_offset 14, -4
+ 214 0002 84B0     		sub	sp, sp, #16
+ 215              	.LCFI10:
+ 216              		.cfi_def_cfa_offset 24
+ 217 0004 0446     		mov	r4, r0
+ 363:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   int8_t buffer[6];
+ 218              		.loc 1 363 3 is_stmt 1 view .LVU31
+ 364:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t crtl, i = 0x00;
+ 219              		.loc 1 364 3 view .LVU32
+ 220              	.LVL9:
+ 365:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   float sensitivity = LIS3DSH_SENSITIVITY_0_06G;
+ 221              		.loc 1 365 3 view .LVU33
+ 366:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   float valueinfloat = 0;
+ 222              		.loc 1 366 3 view .LVU34
+ 367:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 368:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Read(&crtl, LIS3DSH_CTRL_REG5_ADDR, 1);  
+ 223              		.loc 1 368 3 view .LVU35
+ 224 0006 0122     		movs	r2, #1
+ 225 0008 2421     		movs	r1, #36
+ 226 000a 0DF10700 		add	r0, sp, #7
+ 227              	.LVL10:
+ 228              		.loc 1 368 3 is_stmt 0 view .LVU36
+ 229 000e FFF7FEFF 		bl	ACCELERO_IO_Read
+ 230              	.LVL11:
+ 369:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Read((uint8_t*)&buffer[0], LIS3DSH_OUT_X_L_ADDR, 1);
+ 231              		.loc 1 369 3 is_stmt 1 view .LVU37
+ 232 0012 0122     		movs	r2, #1
+ 233 0014 2821     		movs	r1, #40
+ 234 0016 02A8     		add	r0, sp, #8
+ 235 0018 FFF7FEFF 		bl	ACCELERO_IO_Read
+ 236              	.LVL12:
+ 370:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Read((uint8_t*)&buffer[1], LIS3DSH_OUT_X_H_ADDR, 1);
+ 237              		.loc 1 370 3 view .LVU38
+ 238 001c 0122     		movs	r2, #1
+ 239 001e 2921     		movs	r1, #41
+ 240 0020 0DF10900 		add	r0, sp, #9
+ 241 0024 FFF7FEFF 		bl	ACCELERO_IO_Read
+ 242              	.LVL13:
+ 371:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Read((uint8_t*)&buffer[2], LIS3DSH_OUT_Y_L_ADDR, 1);
+ 243              		.loc 1 371 3 view .LVU39
+ 244 0028 0122     		movs	r2, #1
+ 245 002a 2A21     		movs	r1, #42
+ 246 002c 0DF10A00 		add	r0, sp, #10
+ 247 0030 FFF7FEFF 		bl	ACCELERO_IO_Read
+ 248              	.LVL14:
+ 372:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Read((uint8_t*)&buffer[3], LIS3DSH_OUT_Y_H_ADDR, 1);
+ 249              		.loc 1 372 3 view .LVU40
+ 250 0034 0122     		movs	r2, #1
+ 251 0036 2B21     		movs	r1, #43
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 12
+
+
+ 252 0038 0DF10B00 		add	r0, sp, #11
+ 253 003c FFF7FEFF 		bl	ACCELERO_IO_Read
+ 254              	.LVL15:
+ 373:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Read((uint8_t*)&buffer[4], LIS3DSH_OUT_Z_L_ADDR, 1);
+ 255              		.loc 1 373 3 view .LVU41
+ 256 0040 0122     		movs	r2, #1
+ 257 0042 2C21     		movs	r1, #44
+ 258 0044 03A8     		add	r0, sp, #12
+ 259 0046 FFF7FEFF 		bl	ACCELERO_IO_Read
+ 260              	.LVL16:
+ 374:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Read((uint8_t*)&buffer[5], LIS3DSH_OUT_Z_H_ADDR, 1);
+ 261              		.loc 1 374 3 view .LVU42
+ 262 004a 0122     		movs	r2, #1
+ 263 004c 2D21     		movs	r1, #45
+ 264 004e 0DF10D00 		add	r0, sp, #13
+ 265 0052 FFF7FEFF 		bl	ACCELERO_IO_Read
+ 266              	.LVL17:
+ 375:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 376:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   switch(crtl & LIS3DSH__FULLSCALE_SELECTION) 
+ 267              		.loc 1 376 3 view .LVU43
+ 268              		.loc 1 376 15 is_stmt 0 view .LVU44
+ 269 0056 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 270 005a 03F03803 		and	r3, r3, #56
+ 271 005e 083B     		subs	r3, r3, #8
+ 272 0060 182B     		cmp	r3, #24
+ 273 0062 0ED8     		bhi	.L9
+ 274 0064 DFE803F0 		tbb	[pc, r3]
+ 275              	.L11:
+ 276 0068 1A       		.byte	(.L17-.L11)/2
+ 277 0069 0D       		.byte	(.L9-.L11)/2
+ 278 006a 0D       		.byte	(.L9-.L11)/2
+ 279 006b 0D       		.byte	(.L9-.L11)/2
+ 280 006c 0D       		.byte	(.L9-.L11)/2
+ 281 006d 0D       		.byte	(.L9-.L11)/2
+ 282 006e 0D       		.byte	(.L9-.L11)/2
+ 283 006f 0D       		.byte	(.L9-.L11)/2
+ 284 0070 11       		.byte	(.L13-.L11)/2
+ 285 0071 0D       		.byte	(.L9-.L11)/2
+ 286 0072 0D       		.byte	(.L9-.L11)/2
+ 287 0073 0D       		.byte	(.L9-.L11)/2
+ 288 0074 0D       		.byte	(.L9-.L11)/2
+ 289 0075 0D       		.byte	(.L9-.L11)/2
+ 290 0076 0D       		.byte	(.L9-.L11)/2
+ 291 0077 0D       		.byte	(.L9-.L11)/2
+ 292 0078 14       		.byte	(.L12-.L11)/2
+ 293 0079 0D       		.byte	(.L9-.L11)/2
+ 294 007a 0D       		.byte	(.L9-.L11)/2
+ 295 007b 0D       		.byte	(.L9-.L11)/2
+ 296 007c 0D       		.byte	(.L9-.L11)/2
+ 297 007d 0D       		.byte	(.L9-.L11)/2
+ 298 007e 0D       		.byte	(.L9-.L11)/2
+ 299 007f 0D       		.byte	(.L9-.L11)/2
+ 300 0080 17       		.byte	(.L10-.L11)/2
+ 301 0081 00       		.p2align 1
+ 302              	.L9:
+ 303 0082 9FED177A 		vldr.32	s14, .L19
+ 304              	.LVL18:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 13
+
+
+ 305              	.L14:
+ 377:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   {
+ 378:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     /* FS bit = 000 ==> Sensitivity typical value = 0.06milligals/digit */ 
+ 379:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   case LIS3DSH_FULLSCALE_2:
+ 380:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     sensitivity = LIS3DSH_SENSITIVITY_0_06G;
+ 381:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ 382:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 383:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     /* FS bit = 001 ==> Sensitivity typical value = 0.12milligals/digit */ 
+ 384:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   case LIS3DSH_FULLSCALE_4:
+ 385:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     sensitivity = LIS3DSH_SENSITIVITY_0_12G;
+ 386:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ 387:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 388:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     /* FS bit = 010 ==> Sensitivity typical value = 0.18milligals/digit */ 
+ 389:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   case LIS3DSH_FULLSCALE_6:
+ 390:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     sensitivity = LIS3DSH_SENSITIVITY_0_18G;
+ 391:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ 392:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 393:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     /* FS bit = 011 ==> Sensitivity typical value = 0.24milligals/digit */ 
+ 394:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   case LIS3DSH_FULLSCALE_8:
+ 395:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     sensitivity = LIS3DSH_SENSITIVITY_0_24G;
+ 396:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ 397:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 398:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     /* FS bit = 100 ==> Sensitivity typical value = 0.73milligals/digit */ 
+ 399:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   case LIS3DSH_FULLSCALE_16:
+ 400:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     sensitivity = LIS3DSH_SENSITIVITY_0_73G;
+ 401:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ 402:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 403:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   default:
+ 404:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ 405:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   }
+ 406:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 407:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   /* Obtain the mg value for the three axis */
+ 408:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   for(i=0; i<3; i++)
+ 306              		.loc 1 408 3 is_stmt 1 view .LVU45
+ 307              		.loc 1 408 8 is_stmt 0 view .LVU46
+ 308 0086 0022     		movs	r2, #0
+ 309              		.loc 1 408 3 view .LVU47
+ 310 0088 25E0     		b	.L15
+ 311              	.LVL19:
+ 312              	.L13:
+ 390:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ 313              		.loc 1 390 5 is_stmt 1 view .LVU48
+ 391:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 314              		.loc 1 391 5 view .LVU49
+ 390:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ 315              		.loc 1 390 17 is_stmt 0 view .LVU50
+ 316 008a 9FED167A 		vldr.32	s14, .L19+4
+ 391:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 317              		.loc 1 391 5 view .LVU51
+ 318 008e FAE7     		b	.L14
+ 319              	.LVL20:
+ 320              	.L12:
+ 395:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ 321              		.loc 1 395 5 is_stmt 1 view .LVU52
+ 396:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 322              		.loc 1 396 5 view .LVU53
+ 395:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 14
+
+
+ 323              		.loc 1 395 17 is_stmt 0 view .LVU54
+ 324 0090 9FED157A 		vldr.32	s14, .L19+8
+ 396:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 325              		.loc 1 396 5 view .LVU55
+ 326 0094 F7E7     		b	.L14
+ 327              	.LVL21:
+ 328              	.L10:
+ 400:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ 329              		.loc 1 400 5 is_stmt 1 view .LVU56
+ 401:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 330              		.loc 1 401 5 view .LVU57
+ 400:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ 331              		.loc 1 400 17 is_stmt 0 view .LVU58
+ 332 0096 9FED157A 		vldr.32	s14, .L19+12
+ 401:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 333              		.loc 1 401 5 view .LVU59
+ 334 009a F4E7     		b	.L14
+ 335              	.LVL22:
+ 336              	.L17:
+ 385:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     break;
+ 337              		.loc 1 385 17 view .LVU60
+ 338 009c 9FED147A 		vldr.32	s14, .L19+16
+ 339 00a0 F1E7     		b	.L14
+ 340              	.LVL23:
+ 341              	.L16:
+ 409:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   {
+ 410:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     valueinfloat = ((buffer[2*i+1] << 8) + buffer[2*i]) * sensitivity;
+ 342              		.loc 1 410 5 is_stmt 1 discriminator 3 view .LVU61
+ 343              		.loc 1 410 30 is_stmt 0 discriminator 3 view .LVU62
+ 344 00a2 5100     		lsls	r1, r2, #1
+ 345              		.loc 1 410 32 discriminator 3 view .LVU63
+ 346 00a4 4B1C     		adds	r3, r1, #1
+ 347              		.loc 1 410 28 discriminator 3 view .LVU64
+ 348 00a6 04A8     		add	r0, sp, #16
+ 349 00a8 0344     		add	r3, r3, r0
+ 350 00aa 13F9080C 		ldrsb	r0, [r3, #-8]
+ 351              		.loc 1 410 50 discriminator 3 view .LVU65
+ 352 00ae 04AB     		add	r3, sp, #16
+ 353 00b0 1944     		add	r1, r1, r3
+ 354 00b2 11F9083C 		ldrsb	r3, [r1, #-8]
+ 355              		.loc 1 410 42 discriminator 3 view .LVU66
+ 356 00b6 03EB0023 		add	r3, r3, r0, lsl #8
+ 357 00ba 07EE903A 		vmov	s15, r3	@ int
+ 358              		.loc 1 410 57 discriminator 3 view .LVU67
+ 359 00be F8EEE77A 		vcvt.f32.s32	s15, s15
+ 360              		.loc 1 410 18 discriminator 3 view .LVU68
+ 361 00c2 67EE877A 		vmul.f32	s15, s15, s14
+ 362              	.LVL24:
+ 411:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     pData[i] = (int16_t)valueinfloat;
+ 363              		.loc 1 411 5 is_stmt 1 discriminator 3 view .LVU69
+ 364              		.loc 1 411 16 is_stmt 0 discriminator 3 view .LVU70
+ 365 00c6 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 366              	.LVL25:
+ 367              		.loc 1 411 14 discriminator 3 view .LVU71
+ 368 00ca 17EE903A 		vmov	r3, s15	@ int
+ 369              	.LVL26:
+ 370              		.loc 1 411 14 discriminator 3 view .LVU72
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 15
+
+
+ 371 00ce 24F81230 		strh	r3, [r4, r2, lsl #1]	@ movhi
+ 372              	.LVL27:
+ 408:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   {
+ 373              		.loc 1 408 17 is_stmt 1 discriminator 3 view .LVU73
+ 408:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   {
+ 374              		.loc 1 408 18 is_stmt 0 discriminator 3 view .LVU74
+ 375 00d2 0132     		adds	r2, r2, #1
+ 376              	.LVL28:
+ 408:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   {
+ 377              		.loc 1 408 18 discriminator 3 view .LVU75
+ 378 00d4 D2B2     		uxtb	r2, r2
+ 379              	.LVL29:
+ 380              	.L15:
+ 408:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   {
+ 381              		.loc 1 408 12 is_stmt 1 discriminator 1 view .LVU76
+ 408:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   {
+ 382              		.loc 1 408 3 is_stmt 0 discriminator 1 view .LVU77
+ 383 00d6 022A     		cmp	r2, #2
+ 384 00d8 E3D9     		bls	.L16
+ 412:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   }
+ 413:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 385              		.loc 1 413 1 view .LVU78
+ 386 00da 04B0     		add	sp, sp, #16
+ 387              	.LCFI11:
+ 388              		.cfi_def_cfa_offset 8
+ 389              		@ sp needed
+ 390 00dc 10BD     		pop	{r4, pc}
+ 391              	.LVL30:
+ 392              	.L20:
+ 393              		.loc 1 413 1 view .LVU79
+ 394 00de 00BF     		.align	2
+ 395              	.L19:
+ 396 00e0 8FC2753D 		.word	1031127695
+ 397 00e4 EC51383E 		.word	1043878380
+ 398 00e8 8FC2753E 		.word	1047904911
+ 399 00ec 48E13A3F 		.word	1060823368
+ 400 00f0 8FC2F53D 		.word	1039516303
+ 401              		.cfi_endproc
+ 402              	.LFE9:
+ 404              		.section	.text.LIS3DSH_InterruptConfig,"ax",%progbits
+ 405              		.align	1
+ 406              		.global	LIS3DSH_InterruptConfig
+ 407              		.syntax unified
+ 408              		.thumb
+ 409              		.thumb_func
+ 410              		.fpu fpv4-sp-d16
+ 412              	LIS3DSH_InterruptConfig:
+ 413              	.LVL31:
+ 414              	.LFB3:
+ 177:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t ctrl = 0x00;
+ 415              		.loc 1 177 1 is_stmt 1 view -0
+ 416              		.cfi_startproc
+ 417              		@ args = 0, pretend = 0, frame = 8
+ 418              		@ frame_needed = 0, uses_anonymous_args = 0
+ 177:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t ctrl = 0x00;
+ 419              		.loc 1 177 1 is_stmt 0 view .LVU81
+ 420 0000 10B5     		push	{r4, lr}
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 16
+
+
+ 421              	.LCFI12:
+ 422              		.cfi_def_cfa_offset 8
+ 423              		.cfi_offset 4, -8
+ 424              		.cfi_offset 14, -4
+ 425 0002 82B0     		sub	sp, sp, #8
+ 426              	.LCFI13:
+ 427              		.cfi_def_cfa_offset 16
+ 428 0004 0446     		mov	r4, r0
+ 178:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 429              		.loc 1 178 3 is_stmt 1 view .LVU82
+ 181:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->Interrupt_Request | \
+ 430              		.loc 1 181 3 view .LVU83
+ 181:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->Interrupt_Request | \
+ 431              		.loc 1 181 43 is_stmt 0 view .LVU84
+ 432 0006 4278     		ldrb	r2, [r0, #1]	@ zero_extendqisi2
+ 182:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->Interrupt_Signal);
+ 433              		.loc 1 182 43 view .LVU85
+ 434 0008 0178     		ldrb	r1, [r0]	@ zero_extendqisi2
+ 183:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 435              		.loc 1 183 43 view .LVU86
+ 436 000a 8378     		ldrb	r3, [r0, #2]	@ zero_extendqisi2
+ 181:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->Interrupt_Request | \
+ 437              		.loc 1 181 10 view .LVU87
+ 438 000c 0A43     		orrs	r2, r2, r1
+ 439 000e 1343     		orrs	r3, r3, r2
+ 181:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->Interrupt_Request | \
+ 440              		.loc 1 181 8 view .LVU88
+ 441 0010 8DF80730 		strb	r3, [sp, #7]
+ 186:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 442              		.loc 1 186 3 is_stmt 1 view .LVU89
+ 443 0014 0122     		movs	r2, #1
+ 444 0016 2321     		movs	r1, #35
+ 445 0018 0DF10700 		add	r0, sp, #7
+ 446              	.LVL32:
+ 186:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 447              		.loc 1 186 3 is_stmt 0 view .LVU90
+ 448 001c FFF7FEFF 		bl	ACCELERO_IO_Write
+ 449              	.LVL33:
+ 189:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->State_Machine1_Interrupt);
+ 450              		.loc 1 189 3 is_stmt 1 view .LVU91
+ 189:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->State_Machine1_Interrupt);
+ 451              		.loc 1 189 43 is_stmt 0 view .LVU92
+ 452 0020 E378     		ldrb	r3, [r4, #3]	@ zero_extendqisi2
+ 190:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 453              		.loc 1 190 43 view .LVU93
+ 454 0022 2279     		ldrb	r2, [r4, #4]	@ zero_extendqisi2
+ 189:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->State_Machine1_Interrupt);
+ 455              		.loc 1 189 10 view .LVU94
+ 456 0024 1343     		orrs	r3, r3, r2
+ 189:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->State_Machine1_Interrupt);
+ 457              		.loc 1 189 8 view .LVU95
+ 458 0026 8DF80730 		strb	r3, [sp, #7]
+ 193:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 459              		.loc 1 193 3 is_stmt 1 view .LVU96
+ 460 002a 0122     		movs	r2, #1
+ 461 002c 2121     		movs	r1, #33
+ 462 002e 0DF10700 		add	r0, sp, #7
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 17
+
+
+ 463 0032 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 464              	.LVL34:
+ 196:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->State_Machine2_Interrupt);
+ 465              		.loc 1 196 3 view .LVU97
+ 196:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->State_Machine2_Interrupt);
+ 466              		.loc 1 196 43 is_stmt 0 view .LVU98
+ 467 0036 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+ 197:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 468              		.loc 1 197 43 view .LVU99
+ 469 0038 A279     		ldrb	r2, [r4, #6]	@ zero_extendqisi2
+ 196:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->State_Machine2_Interrupt);
+ 470              		.loc 1 196 10 view .LVU100
+ 471 003a 1343     		orrs	r3, r3, r2
+ 196:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****                    LIS3DSH_IntConfigStruct->State_Machine2_Interrupt);
+ 472              		.loc 1 196 8 view .LVU101
+ 473 003c 8DF80730 		strb	r3, [sp, #7]
+ 200:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 474              		.loc 1 200 3 is_stmt 1 view .LVU102
+ 475 0040 0122     		movs	r2, #1
+ 476 0042 2221     		movs	r1, #34
+ 477 0044 0DF10700 		add	r0, sp, #7
+ 478 0048 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 479              	.LVL35:
+ 201:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 480              		.loc 1 201 1 is_stmt 0 view .LVU103
+ 481 004c 02B0     		add	sp, sp, #8
+ 482              	.LCFI14:
+ 483              		.cfi_def_cfa_offset 8
+ 484              		@ sp needed
+ 485 004e 10BD     		pop	{r4, pc}
+ 201:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 486              		.loc 1 201 1 view .LVU104
+ 487              		.cfi_endproc
+ 488              	.LFE3:
+ 490              		.section	.text.LIS3DSH_Click_IntConfig,"ax",%progbits
+ 491              		.align	1
+ 492              		.global	LIS3DSH_Click_IntConfig
+ 493              		.syntax unified
+ 494              		.thumb
+ 495              		.thumb_func
+ 496              		.fpu fpv4-sp-d16
+ 498              	LIS3DSH_Click_IntConfig:
+ 499              	.LFB4:
+ 209:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t ctrl = 0x00;
+ 500              		.loc 1 209 1 is_stmt 1 view -0
+ 501              		.cfi_startproc
+ 502              		@ args = 0, pretend = 0, frame = 8
+ 503              		@ frame_needed = 0, uses_anonymous_args = 0
+ 504 0000 30B5     		push	{r4, r5, lr}
+ 505              	.LCFI15:
+ 506              		.cfi_def_cfa_offset 12
+ 507              		.cfi_offset 4, -12
+ 508              		.cfi_offset 5, -8
+ 509              		.cfi_offset 14, -4
+ 510 0002 83B0     		sub	sp, sp, #12
+ 511              	.LCFI16:
+ 512              		.cfi_def_cfa_offset 24
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 18
+
+
+ 210:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptConfigTypeDef   LIS3DSH_InterruptStruct; 
+ 513              		.loc 1 210 3 view .LVU106
+ 210:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptConfigTypeDef   LIS3DSH_InterruptStruct; 
+ 514              		.loc 1 210 11 is_stmt 0 view .LVU107
+ 515 0004 0025     		movs	r5, #0
+ 516 0006 8DF80750 		strb	r5, [sp, #7]
+ 211:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 517              		.loc 1 211 3 is_stmt 1 view .LVU108
+ 213:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 518              		.loc 1 213 3 view .LVU109
+ 519 000a FFF7FEFF 		bl	ACCELERO_IO_ITConfig
+ 520              	.LVL36:
+ 216:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.Interrupt_Request = LIS3DSH_INTERRUPT_REQUEST_LATCHED;
+ 521              		.loc 1 216 3 view .LVU110
+ 216:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.Interrupt_Request = LIS3DSH_INTERRUPT_REQUEST_LATCHED;
+ 522              		.loc 1 216 54 is_stmt 0 view .LVU111
+ 523 000e 8DF80150 		strb	r5, [sp, #1]
+ 217:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.Interrupt_Signal = LIS3DSH_INTERRUPT_SIGNAL_HIGH;
+ 524              		.loc 1 217 3 is_stmt 1 view .LVU112
+ 217:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.Interrupt_Signal = LIS3DSH_INTERRUPT_SIGNAL_HIGH;
+ 525              		.loc 1 217 45 is_stmt 0 view .LVU113
+ 526 0012 8DF80050 		strb	r5, [sp]
+ 218:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.State_Machine1_Enable = LIS3DSH_SM_DISABLE;
+ 527              		.loc 1 218 3 is_stmt 1 view .LVU114
+ 218:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.State_Machine1_Enable = LIS3DSH_SM_DISABLE;
+ 528              		.loc 1 218 44 is_stmt 0 view .LVU115
+ 529 0016 4023     		movs	r3, #64
+ 530 0018 8DF80230 		strb	r3, [sp, #2]
+ 219:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.State_Machine2_Enable = LIS3DSH_SM_ENABLE;
+ 531              		.loc 1 219 3 is_stmt 1 view .LVU116
+ 219:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.State_Machine2_Enable = LIS3DSH_SM_ENABLE;
+ 532              		.loc 1 219 49 is_stmt 0 view .LVU117
+ 533 001c 8DF80350 		strb	r5, [sp, #3]
+ 220:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.State_Machine2_Interrupt = LIS3DSH_SM_INT1;
+ 534              		.loc 1 220 3 is_stmt 1 view .LVU118
+ 220:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptStruct.State_Machine2_Interrupt = LIS3DSH_SM_INT1;
+ 535              		.loc 1 220 49 is_stmt 0 view .LVU119
+ 536 0020 0124     		movs	r4, #1
+ 537 0022 8DF80540 		strb	r4, [sp, #5]
+ 221:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptConfig(&LIS3DSH_InterruptStruct);
+ 538              		.loc 1 221 3 is_stmt 1 view .LVU120
+ 221:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   LIS3DSH_InterruptConfig(&LIS3DSH_InterruptStruct);
+ 539              		.loc 1 221 52 is_stmt 0 view .LVU121
+ 540 0026 8DF80650 		strb	r5, [sp, #6]
+ 222:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****     
+ 541              		.loc 1 222 3 is_stmt 1 view .LVU122
+ 542 002a 6846     		mov	r0, sp
+ 543 002c FFF7FEFF 		bl	LIS3DSH_InterruptConfig
+ 544              	.LVL37:
+ 225:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_TIM2_1_L_ADDR,1);
+ 545              		.loc 1 225 3 view .LVU123
+ 225:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_TIM2_1_L_ADDR,1);
+ 546              		.loc 1 225 7 is_stmt 0 view .LVU124
+ 547 0030 0323     		movs	r3, #3
+ 548 0032 8DF80730 		strb	r3, [sp, #7]
+ 226:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0xC8; 
+ 549              		.loc 1 226 3 is_stmt 1 view .LVU125
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 19
+
+
+ 550 0036 2246     		mov	r2, r4
+ 551 0038 5221     		movs	r1, #82
+ 552 003a 0DF10700 		add	r0, sp, #7
+ 553 003e FFF7FEFF 		bl	ACCELERO_IO_Write
+ 554              	.LVL38:
+ 227:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_TIM1_1_L_ADDR,1);
+ 555              		.loc 1 227 3 view .LVU126
+ 227:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_TIM1_1_L_ADDR,1);
+ 556              		.loc 1 227 7 is_stmt 0 view .LVU127
+ 557 0042 C823     		movs	r3, #200
+ 558 0044 8DF80730 		strb	r3, [sp, #7]
+ 228:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0x45; 
+ 559              		.loc 1 228 3 is_stmt 1 view .LVU128
+ 560 0048 2246     		mov	r2, r4
+ 561 004a 5421     		movs	r1, #84
+ 562 004c 0DF10700 		add	r0, sp, #7
+ 563 0050 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 564              	.LVL39:
+ 229:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_THRS2_1_ADDR,1);
+ 565              		.loc 1 229 3 view .LVU129
+ 229:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_THRS2_1_ADDR,1);
+ 566              		.loc 1 229 7 is_stmt 0 view .LVU130
+ 567 0054 4523     		movs	r3, #69
+ 568 0056 8DF80730 		strb	r3, [sp, #7]
+ 230:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0xFC; 
+ 569              		.loc 1 230 3 is_stmt 1 view .LVU131
+ 570 005a 2246     		mov	r2, r4
+ 571 005c 5621     		movs	r1, #86
+ 572 005e 0DF10700 		add	r0, sp, #7
+ 573 0062 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 574              	.LVL40:
+ 231:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_MASK1_A_ADDR,1);
+ 575              		.loc 1 231 3 view .LVU132
+ 231:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_MASK1_A_ADDR,1);
+ 576              		.loc 1 231 7 is_stmt 0 view .LVU133
+ 577 0066 FC23     		movs	r3, #252
+ 578 0068 8DF80730 		strb	r3, [sp, #7]
+ 232:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0xA1; 
+ 579              		.loc 1 232 3 is_stmt 1 view .LVU134
+ 580 006c 2246     		mov	r2, r4
+ 581 006e 5A21     		movs	r1, #90
+ 582 0070 0DF10700 		add	r0, sp, #7
+ 583 0074 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 584              	.LVL41:
+ 233:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_SETT1_ADDR,1);
+ 585              		.loc 1 233 3 view .LVU135
+ 233:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_SETT1_ADDR,1);
+ 586              		.loc 1 233 7 is_stmt 0 view .LVU136
+ 587 0078 A123     		movs	r3, #161
+ 588 007a 8DF80730 		strb	r3, [sp, #7]
+ 234:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0x01; 
+ 589              		.loc 1 234 3 is_stmt 1 view .LVU137
+ 590 007e 2246     		mov	r2, r4
+ 591 0080 5B21     		movs	r1, #91
+ 592 0082 0DF10700 		add	r0, sp, #7
+ 593 0086 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 594              	.LVL42:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 20
+
+
+ 235:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_PR1_ADDR,1);
+ 595              		.loc 1 235 3 view .LVU138
+ 235:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_PR1_ADDR,1);
+ 596              		.loc 1 235 7 is_stmt 0 view .LVU139
+ 597 008a 8DF80740 		strb	r4, [sp, #7]
+ 236:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 598              		.loc 1 236 3 is_stmt 1 view .LVU140
+ 599 008e 2246     		mov	r2, r4
+ 600 0090 5C21     		movs	r1, #92
+ 601 0092 0DF10700 		add	r0, sp, #7
+ 602 0096 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 603              	.LVL43:
+ 238:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 604              		.loc 1 238 3 view .LVU141
+ 605 009a 2246     		mov	r2, r4
+ 606 009c 7B21     		movs	r1, #123
+ 607 009e 0DF10700 		add	r0, sp, #7
+ 608 00a2 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 609              	.LVL44:
+ 241:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0x06; 
+ 610              		.loc 1 241 3 view .LVU142
+ 611 00a6 2246     		mov	r2, r4
+ 612 00a8 6021     		movs	r1, #96
+ 613 00aa 0DF10700 		add	r0, sp, #7
+ 614 00ae FFF7FEFF 		bl	ACCELERO_IO_Write
+ 615              	.LVL45:
+ 242:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_ST2_2_ADDR,1);
+ 616              		.loc 1 242 3 view .LVU143
+ 242:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_ST2_2_ADDR,1);
+ 617              		.loc 1 242 7 is_stmt 0 view .LVU144
+ 618 00b2 0623     		movs	r3, #6
+ 619 00b4 8DF80730 		strb	r3, [sp, #7]
+ 243:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0x28; 
+ 620              		.loc 1 243 3 is_stmt 1 view .LVU145
+ 621 00b8 2246     		mov	r2, r4
+ 622 00ba 6121     		movs	r1, #97
+ 623 00bc 0DF10700 		add	r0, sp, #7
+ 624 00c0 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 625              	.LVL46:
+ 244:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_ST2_3_ADDR,1);
+ 626              		.loc 1 244 3 view .LVU146
+ 244:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_ST2_3_ADDR,1);
+ 627              		.loc 1 244 7 is_stmt 0 view .LVU147
+ 628 00c4 2823     		movs	r3, #40
+ 629 00c6 8DF80730 		strb	r3, [sp, #7]
+ 245:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ctrl=0x11; 
+ 630              		.loc 1 245 3 is_stmt 1 view .LVU148
+ 631 00ca 2246     		mov	r2, r4
+ 632 00cc 6221     		movs	r1, #98
+ 633 00ce 0DF10700 		add	r0, sp, #7
+ 634 00d2 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 635              	.LVL47:
+ 246:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_ST2_4_ADDR,1);
+ 636              		.loc 1 246 3 view .LVU149
+ 246:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   ACCELERO_IO_Write(&ctrl, LIS3DSH_ST2_4_ADDR,1);
+ 637              		.loc 1 246 7 is_stmt 0 view .LVU150
+ 638 00d6 1123     		movs	r3, #17
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 21
+
+
+ 639 00d8 8DF80730 		strb	r3, [sp, #7]
+ 247:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 640              		.loc 1 247 3 is_stmt 1 view .LVU151
+ 641 00dc 2246     		mov	r2, r4
+ 642 00de 6321     		movs	r1, #99
+ 643 00e0 0DF10700 		add	r0, sp, #7
+ 644 00e4 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 645              	.LVL48:
+ 248:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 646              		.loc 1 248 1 is_stmt 0 view .LVU152
+ 647 00e8 03B0     		add	sp, sp, #12
+ 648              	.LCFI17:
+ 649              		.cfi_def_cfa_offset 12
+ 650              		@ sp needed
+ 651 00ea 30BD     		pop	{r4, r5, pc}
+ 652              		.cfi_endproc
+ 653              	.LFE4:
+ 655              		.section	.text.LIS3DSH_ODR_LowpowerCmd,"ax",%progbits
+ 656              		.align	1
+ 657              		.global	LIS3DSH_ODR_LowpowerCmd
+ 658              		.syntax unified
+ 659              		.thumb
+ 660              		.thumb_func
+ 661              		.fpu fpv4-sp-d16
+ 663              	LIS3DSH_ODR_LowpowerCmd:
+ 664              	.LVL49:
+ 665              	.LFB5:
+ 267:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t tmpreg;
+ 666              		.loc 1 267 1 is_stmt 1 view -0
+ 667              		.cfi_startproc
+ 668              		@ args = 0, pretend = 0, frame = 8
+ 669              		@ frame_needed = 0, uses_anonymous_args = 0
+ 267:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t tmpreg;
+ 670              		.loc 1 267 1 is_stmt 0 view .LVU154
+ 671 0000 10B5     		push	{r4, lr}
+ 672              	.LCFI18:
+ 673              		.cfi_def_cfa_offset 8
+ 674              		.cfi_offset 4, -8
+ 675              		.cfi_offset 14, -4
+ 676 0002 82B0     		sub	sp, sp, #8
+ 677              	.LCFI19:
+ 678              		.cfi_def_cfa_offset 16
+ 679 0004 0446     		mov	r4, r0
+ 268:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 680              		.loc 1 268 3 is_stmt 1 view .LVU155
+ 271:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 681              		.loc 1 271 3 view .LVU156
+ 682 0006 0122     		movs	r2, #1
+ 683 0008 2021     		movs	r1, #32
+ 684 000a 0DF10700 		add	r0, sp, #7
+ 685              	.LVL50:
+ 271:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 686              		.loc 1 271 3 is_stmt 0 view .LVU157
+ 687 000e FFF7FEFF 		bl	ACCELERO_IO_Read
+ 688              	.LVL51:
+ 274:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg |= ODR_LowPowerMode;
+ 689              		.loc 1 274 3 is_stmt 1 view .LVU158
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 22
+
+
+ 274:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg |= ODR_LowPowerMode;
+ 690              		.loc 1 274 10 is_stmt 0 view .LVU159
+ 691 0012 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 692 0016 03F09F03 		and	r3, r3, #159
+ 275:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 693              		.loc 1 275 3 is_stmt 1 view .LVU160
+ 275:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 694              		.loc 1 275 10 is_stmt 0 view .LVU161
+ 695 001a 43EA0400 		orr	r0, r3, r4
+ 696 001e 8DF80700 		strb	r0, [sp, #7]
+ 278:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 697              		.loc 1 278 3 is_stmt 1 view .LVU162
+ 698 0022 0122     		movs	r2, #1
+ 699 0024 2021     		movs	r1, #32
+ 700 0026 0DF10700 		add	r0, sp, #7
+ 701 002a FFF7FEFF 		bl	ACCELERO_IO_Write
+ 702              	.LVL52:
+ 279:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 703              		.loc 1 279 1 is_stmt 0 view .LVU163
+ 704 002e 02B0     		add	sp, sp, #8
+ 705              	.LCFI20:
+ 706              		.cfi_def_cfa_offset 8
+ 707              		@ sp needed
+ 708 0030 10BD     		pop	{r4, pc}
+ 709              		.cfi_endproc
+ 710              	.LFE5:
+ 712              		.section	.text.LIS3DSH_DataRateCmd,"ax",%progbits
+ 713              		.align	1
+ 714              		.global	LIS3DSH_DataRateCmd
+ 715              		.syntax unified
+ 716              		.thumb
+ 717              		.thumb_func
+ 718              		.fpu fpv4-sp-d16
+ 720              	LIS3DSH_DataRateCmd:
+ 721              	.LVL53:
+ 722              	.LFB6:
+ 297:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t tmpreg;
+ 723              		.loc 1 297 1 is_stmt 1 view -0
+ 724              		.cfi_startproc
+ 725              		@ args = 0, pretend = 0, frame = 8
+ 726              		@ frame_needed = 0, uses_anonymous_args = 0
+ 297:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t tmpreg;
+ 727              		.loc 1 297 1 is_stmt 0 view .LVU165
+ 728 0000 10B5     		push	{r4, lr}
+ 729              	.LCFI21:
+ 730              		.cfi_def_cfa_offset 8
+ 731              		.cfi_offset 4, -8
+ 732              		.cfi_offset 14, -4
+ 733 0002 82B0     		sub	sp, sp, #8
+ 734              	.LCFI22:
+ 735              		.cfi_def_cfa_offset 16
+ 736 0004 0446     		mov	r4, r0
+ 298:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 737              		.loc 1 298 3 is_stmt 1 view .LVU166
+ 301:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 738              		.loc 1 301 3 view .LVU167
+ 739 0006 0122     		movs	r2, #1
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 23
+
+
+ 740 0008 2021     		movs	r1, #32
+ 741 000a 0DF10700 		add	r0, sp, #7
+ 742              	.LVL54:
+ 301:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 743              		.loc 1 301 3 is_stmt 0 view .LVU168
+ 744 000e FFF7FEFF 		bl	ACCELERO_IO_Read
+ 745              	.LVL55:
+ 304:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg |= DataRateValue;
+ 746              		.loc 1 304 3 is_stmt 1 view .LVU169
+ 304:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg |= DataRateValue;
+ 747              		.loc 1 304 10 is_stmt 0 view .LVU170
+ 748 0012 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 749 0016 03F08F03 		and	r3, r3, #143
+ 305:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 750              		.loc 1 305 3 is_stmt 1 view .LVU171
+ 305:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 751              		.loc 1 305 10 is_stmt 0 view .LVU172
+ 752 001a 43EA0400 		orr	r0, r3, r4
+ 753 001e 8DF80700 		strb	r0, [sp, #7]
+ 308:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 754              		.loc 1 308 3 is_stmt 1 view .LVU173
+ 755 0022 0122     		movs	r2, #1
+ 756 0024 2021     		movs	r1, #32
+ 757 0026 0DF10700 		add	r0, sp, #7
+ 758 002a FFF7FEFF 		bl	ACCELERO_IO_Write
+ 759              	.LVL56:
+ 309:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 760              		.loc 1 309 1 is_stmt 0 view .LVU174
+ 761 002e 02B0     		add	sp, sp, #8
+ 762              	.LCFI23:
+ 763              		.cfi_def_cfa_offset 8
+ 764              		@ sp needed
+ 765 0030 10BD     		pop	{r4, pc}
+ 766              		.cfi_endproc
+ 767              	.LFE6:
+ 769              		.section	.text.LIS3DSH_FullScaleCmd,"ax",%progbits
+ 770              		.align	1
+ 771              		.global	LIS3DSH_FullScaleCmd
+ 772              		.syntax unified
+ 773              		.thumb
+ 774              		.thumb_func
+ 775              		.fpu fpv4-sp-d16
+ 777              	LIS3DSH_FullScaleCmd:
+ 778              	.LVL57:
+ 779              	.LFB7:
+ 323:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t tmpreg;
+ 780              		.loc 1 323 1 is_stmt 1 view -0
+ 781              		.cfi_startproc
+ 782              		@ args = 0, pretend = 0, frame = 8
+ 783              		@ frame_needed = 0, uses_anonymous_args = 0
+ 323:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   uint8_t tmpreg;
+ 784              		.loc 1 323 1 is_stmt 0 view .LVU176
+ 785 0000 10B5     		push	{r4, lr}
+ 786              	.LCFI24:
+ 787              		.cfi_def_cfa_offset 8
+ 788              		.cfi_offset 4, -8
+ 789              		.cfi_offset 14, -4
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 24
+
+
+ 790 0002 82B0     		sub	sp, sp, #8
+ 791              	.LCFI25:
+ 792              		.cfi_def_cfa_offset 16
+ 793 0004 0446     		mov	r4, r0
+ 324:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 794              		.loc 1 324 3 is_stmt 1 view .LVU177
+ 327:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 795              		.loc 1 327 3 view .LVU178
+ 796 0006 0122     		movs	r2, #1
+ 797 0008 2421     		movs	r1, #36
+ 798 000a 0DF10700 		add	r0, sp, #7
+ 799              	.LVL58:
+ 327:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 800              		.loc 1 327 3 is_stmt 0 view .LVU179
+ 801 000e FFF7FEFF 		bl	ACCELERO_IO_Read
+ 802              	.LVL59:
+ 330:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg |= FS_value;
+ 803              		.loc 1 330 3 is_stmt 1 view .LVU180
+ 330:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   tmpreg |= FS_value;
+ 804              		.loc 1 330 10 is_stmt 0 view .LVU181
+ 805 0012 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 806 0016 03F0DF03 		and	r3, r3, #223
+ 331:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 807              		.loc 1 331 3 is_stmt 1 view .LVU182
+ 331:Drivers/accelero/Components/lis3dsh/lis3dsh.c ****   
+ 808              		.loc 1 331 10 is_stmt 0 view .LVU183
+ 809 001a 43EA0400 		orr	r0, r3, r4
+ 810 001e 8DF80700 		strb	r0, [sp, #7]
+ 334:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** }
+ 811              		.loc 1 334 3 is_stmt 1 view .LVU184
+ 812 0022 0122     		movs	r2, #1
+ 813 0024 2421     		movs	r1, #36
+ 814 0026 0DF10700 		add	r0, sp, #7
+ 815 002a FFF7FEFF 		bl	ACCELERO_IO_Write
+ 816              	.LVL60:
+ 335:Drivers/accelero/Components/lis3dsh/lis3dsh.c **** 
+ 817              		.loc 1 335 1 is_stmt 0 view .LVU185
+ 818 002e 02B0     		add	sp, sp, #8
+ 819              	.LCFI26:
+ 820              		.cfi_def_cfa_offset 8
+ 821              		@ sp needed
+ 822 0030 10BD     		pop	{r4, pc}
+ 823              		.cfi_endproc
+ 824              	.LFE7:
+ 826              		.global	Lis3dshDrv
+ 827              		.section	.data.Lis3dshDrv,"aw"
+ 828              		.align	2
+ 831              	Lis3dshDrv:
+ 832 0000 00000000 		.word	LIS3DSH_Init
+ 833 0004 00000000 		.word	LIS3DSH_DeInit
+ 834 0008 00000000 		.word	LIS3DSH_ReadID
+ 835 000c 00000000 		.word	LIS3DSH_RebootCmd
+ 836 0010 00000000 		.word	LIS3DSH_Click_IntConfig
+ 837 0014 00000000 		.word	0
+ 838 0018 00000000 		.word	0
+ 839 001c 00000000 		.word	0
+ 840 0020 00000000 		.word	0
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 25
+
+
+ 841 0024 00000000 		.word	0
+ 842 0028 00000000 		.word	0
+ 843 002c 00000000 		.word	0
+ 844 0030 00000000 		.word	LIS3DSH_ReadACC
+ 845              		.text
+ 846              	.Letext0:
+ 847              		.file 2 "/usr/local/Cellar/gcc-arm-none-eabi/20200630/arm-none-eabi/include/machine/_default_types
+ 848              		.file 3 "/usr/local/Cellar/gcc-arm-none-eabi/20200630/arm-none-eabi/include/sys/_stdint.h"
+ 849              		.file 4 "Drivers/accelero/Common/../Common/accelero.h"
+ 850              		.file 5 "Drivers/accelero/Components/lis3dsh/lis3dsh.h"
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s 			page 26
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 lis3dsh.c
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:18     .text.LIS3DSH_DeInit:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:26     .text.LIS3DSH_DeInit:0000000000000000 LIS3DSH_DeInit
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:40     .text.LIS3DSH_Init:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:47     .text.LIS3DSH_Init:0000000000000000 LIS3DSH_Init
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:101    .text.LIS3DSH_ReadID:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:108    .text.LIS3DSH_ReadID:0000000000000000 LIS3DSH_ReadID
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:146    .text.LIS3DSH_RebootCmd:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:153    .text.LIS3DSH_RebootCmd:0000000000000000 LIS3DSH_RebootCmd
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:194    .text.LIS3DSH_ReadACC:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:201    .text.LIS3DSH_ReadACC:0000000000000000 LIS3DSH_ReadACC
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:276    .text.LIS3DSH_ReadACC:0000000000000068 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:396    .text.LIS3DSH_ReadACC:00000000000000e0 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:405    .text.LIS3DSH_InterruptConfig:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:412    .text.LIS3DSH_InterruptConfig:0000000000000000 LIS3DSH_InterruptConfig
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:491    .text.LIS3DSH_Click_IntConfig:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:498    .text.LIS3DSH_Click_IntConfig:0000000000000000 LIS3DSH_Click_IntConfig
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:656    .text.LIS3DSH_ODR_LowpowerCmd:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:663    .text.LIS3DSH_ODR_LowpowerCmd:0000000000000000 LIS3DSH_ODR_LowpowerCmd
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:713    .text.LIS3DSH_DataRateCmd:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:720    .text.LIS3DSH_DataRateCmd:0000000000000000 LIS3DSH_DataRateCmd
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:770    .text.LIS3DSH_FullScaleCmd:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:777    .text.LIS3DSH_FullScaleCmd:0000000000000000 LIS3DSH_FullScaleCmd
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:831    .data.Lis3dshDrv:0000000000000000 Lis3dshDrv
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:828    .data.Lis3dshDrv:0000000000000000 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:301    .text.LIS3DSH_ReadACC:0000000000000081 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCPRE9t.s:301    .text.LIS3DSH_ReadACC:0000000000000082 $t
+
+UNDEFINED SYMBOLS
+ACCELERO_IO_Init
+ACCELERO_IO_Write
+ACCELERO_IO_Read
+ACCELERO_IO_ITConfig

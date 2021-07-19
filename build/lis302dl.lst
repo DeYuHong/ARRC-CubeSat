@@ -1,0 +1,1397 @@
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"lis302dl.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.LIS302DL_DeInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	LIS302DL_DeInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	LIS302DL_DeInit:
+  27              	.LFB1:
+  28              		.file 1 "Drivers/accelero/Components/lis302dl/lis302dl.c"
+   1:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+   2:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ******************************************************************************
+   3:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @file    lis302dl.c
+   4:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @author  MCD Application Team
+   5:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @version V2.0.0
+   6:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @date    03-August-2015
+   7:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief   This file provides a set of functions needed to manage the LIS302DL
+   8:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *          MEMS accelerometer.
+   9:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ******************************************************************************
+  10:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @attention
+  11:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *
+  12:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
+  13:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *
+  14:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  15:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * are permitted provided that the following conditions are met:
+  16:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  17:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *      this list of conditions and the following disclaimer.
+  18:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  19:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *      this list of conditions and the following disclaimer in the documentation
+  20:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *      and/or other materials provided with the distribution.
+  21:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  22:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *      may be used to endorse or promote products derived from this software
+  23:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *      without specific prior written permission.
+  24:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *
+  25:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  26:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  27:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  28:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  29:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  30:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 2
+
+
+  31:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  32:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  33:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  34:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  35:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *
+  36:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ******************************************************************************
+  37:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */ 
+  38:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  39:Drivers/accelero/Components/lis302dl/lis302dl.c **** /* Includes ------------------------------------------------------------------*/
+  40:Drivers/accelero/Components/lis302dl/lis302dl.c **** #include "lis302dl.h"
+  41:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  42:Drivers/accelero/Components/lis302dl/lis302dl.c **** /** @addtogroup BSP
+  43:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @{
+  44:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */ 
+  45:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  46:Drivers/accelero/Components/lis302dl/lis302dl.c **** /** @addtogroup Components
+  47:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @{
+  48:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */ 
+  49:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  50:Drivers/accelero/Components/lis302dl/lis302dl.c **** /** @addtogroup LIS302DL
+  51:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  This file includes the motion sensor driver for LIS302DL motion sensor 
+  52:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *         devices.
+  53:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @{
+  54:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+  55:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  56:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  57:Drivers/accelero/Components/lis302dl/lis302dl.c **** /** @defgroup LIS302DL_Private_TypesDefinitions
+  58:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @{
+  59:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+  60:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  61:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+  62:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @}
+  63:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+  64:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  65:Drivers/accelero/Components/lis302dl/lis302dl.c **** /** @defgroup LIS302DL_Private_Defines
+  66:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @{
+  67:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+  68:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  69:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+  70:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @}
+  71:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+  72:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  73:Drivers/accelero/Components/lis302dl/lis302dl.c **** /** @defgroup LIS302DL_Private_Macros
+  74:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @{
+  75:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+  76:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  77:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+  78:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @}
+  79:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */ 
+  80:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+  81:Drivers/accelero/Components/lis302dl/lis302dl.c **** /** @defgroup LIS302DL_Private_Variables
+  82:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @{
+  83:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+  84:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  85:Drivers/accelero/Components/lis302dl/lis302dl.c **** ACCELERO_DrvTypeDef Lis302dlDrv =
+  86:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+  87:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_Init,
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 3
+
+
+  88:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_DeInit,
+  89:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_ReadID,
+  90:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_RebootCmd,
+  91:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_Click_IntConfig,
+  92:Drivers/accelero/Components/lis302dl/lis302dl.c ****   0,
+  93:Drivers/accelero/Components/lis302dl/lis302dl.c ****   0,
+  94:Drivers/accelero/Components/lis302dl/lis302dl.c ****   0,
+  95:Drivers/accelero/Components/lis302dl/lis302dl.c ****   0,
+  96:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_Click_IntClear,
+  97:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_FilterConfig,
+  98:Drivers/accelero/Components/lis302dl/lis302dl.c ****   0,
+  99:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_ReadACC,
+ 100:Drivers/accelero/Components/lis302dl/lis302dl.c **** };
+ 101:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 102:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 103:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @}
+ 104:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 105:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 106:Drivers/accelero/Components/lis302dl/lis302dl.c **** /** @defgroup LIS302DL_Private_FunctionPrototypes
+ 107:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @{
+ 108:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 109:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 110:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 111:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @}
+ 112:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 113:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 114:Drivers/accelero/Components/lis302dl/lis302dl.c **** /** @defgroup LIS302DL_Private_Functions
+ 115:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @{
+ 116:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 117:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 118:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 119:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  Set LIS302DL Initialization.
+ 120:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @param  InitStruct: contains mask of different init parameters
+ 121:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @retval None
+ 122:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 123:Drivers/accelero/Components/lis302dl/lis302dl.c **** void LIS302DL_Init(uint16_t InitStruct)
+ 124:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+ 125:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t ctrl = 0x00;
+ 126:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 127:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Configure the low level interface */
+ 128:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Init();
+ 129:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 130:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ctrl = (uint8_t) InitStruct;
+ 131:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 132:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Write value to MEMS CTRL_REG1 register */
+ 133:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CTRL_REG1_ADDR, 1);
+ 134:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 135:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 136:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 137:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  LIS302DL De-Initialization.
+ 138:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @param  None
+ 139:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @retval None.
+ 140:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 141:Drivers/accelero/Components/lis302dl/lis302dl.c **** void LIS302DL_DeInit(void)
+ 142:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+  29              		.loc 1 142 1 view -0
+  30              		.cfi_startproc
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 4
+
+
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+ 143:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 144:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+  34              		.loc 1 144 1 view .LVU1
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE1:
+  39              		.section	.text.LIS302DL_Init,"ax",%progbits
+  40              		.align	1
+  41              		.global	LIS302DL_Init
+  42              		.syntax unified
+  43              		.thumb
+  44              		.thumb_func
+  45              		.fpu fpv4-sp-d16
+  47              	LIS302DL_Init:
+  48              	.LVL0:
+  49              	.LFB0:
+ 124:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t ctrl = 0x00;
+  50              		.loc 1 124 1 view -0
+  51              		.cfi_startproc
+  52              		@ args = 0, pretend = 0, frame = 8
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t ctrl = 0x00;
+  54              		.loc 1 124 1 is_stmt 0 view .LVU3
+  55 0000 10B5     		push	{r4, lr}
+  56              	.LCFI0:
+  57              		.cfi_def_cfa_offset 8
+  58              		.cfi_offset 4, -8
+  59              		.cfi_offset 14, -4
+  60 0002 82B0     		sub	sp, sp, #8
+  61              	.LCFI1:
+  62              		.cfi_def_cfa_offset 16
+  63 0004 0446     		mov	r4, r0
+ 125:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+  64              		.loc 1 125 3 is_stmt 1 view .LVU4
+ 125:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+  65              		.loc 1 125 11 is_stmt 0 view .LVU5
+  66 0006 0023     		movs	r3, #0
+  67 0008 8DF80730 		strb	r3, [sp, #7]
+ 128:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  68              		.loc 1 128 3 is_stmt 1 view .LVU6
+  69 000c FFF7FEFF 		bl	ACCELERO_IO_Init
+  70              	.LVL1:
+ 130:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  71              		.loc 1 130 3 view .LVU7
+ 130:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  72              		.loc 1 130 8 is_stmt 0 view .LVU8
+  73 0010 8DF80740 		strb	r4, [sp, #7]
+ 133:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+  74              		.loc 1 133 3 is_stmt 1 view .LVU9
+  75 0014 0122     		movs	r2, #1
+  76 0016 2021     		movs	r1, #32
+  77 0018 0DF10700 		add	r0, sp, #7
+  78 001c FFF7FEFF 		bl	ACCELERO_IO_Write
+  79              	.LVL2:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 5
+
+
+ 134:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+  80              		.loc 1 134 1 is_stmt 0 view .LVU10
+  81 0020 02B0     		add	sp, sp, #8
+  82              	.LCFI2:
+  83              		.cfi_def_cfa_offset 8
+  84              		@ sp needed
+  85 0022 10BD     		pop	{r4, pc}
+  86              		.cfi_endproc
+  87              	.LFE0:
+  89              		.section	.text.LIS302DL_ReadID,"ax",%progbits
+  90              		.align	1
+  91              		.global	LIS302DL_ReadID
+  92              		.syntax unified
+  93              		.thumb
+  94              		.thumb_func
+  95              		.fpu fpv4-sp-d16
+  97              	LIS302DL_ReadID:
+  98              	.LFB2:
+ 145:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 146:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 147:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  Read LIS302DL device ID.
+ 148:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @param  None
+ 149:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @retval The Device ID (two bytes).
+ 150:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 151:Drivers/accelero/Components/lis302dl/lis302dl.c **** uint8_t LIS302DL_ReadID(void)
+ 152:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+  99              		.loc 1 152 1 is_stmt 1 view -0
+ 100              		.cfi_startproc
+ 101              		@ args = 0, pretend = 0, frame = 8
+ 102              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103 0000 00B5     		push	{lr}
+ 104              	.LCFI3:
+ 105              		.cfi_def_cfa_offset 4
+ 106              		.cfi_offset 14, -4
+ 107 0002 83B0     		sub	sp, sp, #12
+ 108              	.LCFI4:
+ 109              		.cfi_def_cfa_offset 16
+ 153:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t tmp = 0;
+ 110              		.loc 1 153 3 view .LVU12
+ 111              		.loc 1 153 11 is_stmt 0 view .LVU13
+ 112 0004 0023     		movs	r3, #0
+ 113 0006 8DF80730 		strb	r3, [sp, #7]
+ 154:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 155:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Configure the low level interface */
+ 156:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Init();
+ 114              		.loc 1 156 3 is_stmt 1 view .LVU14
+ 115 000a FFF7FEFF 		bl	ACCELERO_IO_Init
+ 116              	.LVL3:
+ 157:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 158:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Read WHO_AM_I register */
+ 159:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Read(&tmp, LIS302DL_WHO_AM_I_ADDR, 1);
+ 117              		.loc 1 159 3 view .LVU15
+ 118 000e 0122     		movs	r2, #1
+ 119 0010 0F21     		movs	r1, #15
+ 120 0012 0DF10700 		add	r0, sp, #7
+ 121 0016 FFF7FEFF 		bl	ACCELERO_IO_Read
+ 122              	.LVL4:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 6
+
+
+ 160:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 161:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Return the ID */
+ 162:Drivers/accelero/Components/lis302dl/lis302dl.c ****   return (uint16_t)tmp;
+ 123              		.loc 1 162 3 view .LVU16
+ 163:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 124              		.loc 1 163 1 is_stmt 0 view .LVU17
+ 125 001a 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 126 001e 03B0     		add	sp, sp, #12
+ 127              	.LCFI5:
+ 128              		.cfi_def_cfa_offset 4
+ 129              		@ sp needed
+ 130 0020 5DF804FB 		ldr	pc, [sp], #4
+ 131              		.cfi_endproc
+ 132              	.LFE2:
+ 134              		.section	.text.LIS302DL_FilterConfig,"ax",%progbits
+ 135              		.align	1
+ 136              		.global	LIS302DL_FilterConfig
+ 137              		.syntax unified
+ 138              		.thumb
+ 139              		.thumb_func
+ 140              		.fpu fpv4-sp-d16
+ 142              	LIS302DL_FilterConfig:
+ 143              	.LVL5:
+ 144              	.LFB3:
+ 164:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 165:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 166:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  Set LIS302DL Internal High Pass Filter configuration.
+ 167:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @param  FilterStruct: contains data for filter config
+ 168:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @retval None
+ 169:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 170:Drivers/accelero/Components/lis302dl/lis302dl.c **** void LIS302DL_FilterConfig(uint8_t FilterStruct)
+ 171:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+ 145              		.loc 1 171 1 is_stmt 1 view -0
+ 146              		.cfi_startproc
+ 147              		@ args = 0, pretend = 0, frame = 8
+ 148              		@ frame_needed = 0, uses_anonymous_args = 0
+ 149              		.loc 1 171 1 is_stmt 0 view .LVU19
+ 150 0000 10B5     		push	{r4, lr}
+ 151              	.LCFI6:
+ 152              		.cfi_def_cfa_offset 8
+ 153              		.cfi_offset 4, -8
+ 154              		.cfi_offset 14, -4
+ 155 0002 82B0     		sub	sp, sp, #8
+ 156              	.LCFI7:
+ 157              		.cfi_def_cfa_offset 16
+ 158 0004 0446     		mov	r4, r0
+ 172:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t ctrl = 0x00;
+ 159              		.loc 1 172 3 is_stmt 1 view .LVU20
+ 160              		.loc 1 172 11 is_stmt 0 view .LVU21
+ 161 0006 0023     		movs	r3, #0
+ 162 0008 8DF80730 		strb	r3, [sp, #7]
+ 173:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 174:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Read CTRL_REG2 register */
+ 175:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Read(&ctrl, LIS302DL_CTRL_REG2_ADDR, 1);
+ 163              		.loc 1 175 3 is_stmt 1 view .LVU22
+ 164 000c 0122     		movs	r2, #1
+ 165 000e 2121     		movs	r1, #33
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 7
+
+
+ 166 0010 0DF10700 		add	r0, sp, #7
+ 167              	.LVL6:
+ 168              		.loc 1 175 3 is_stmt 0 view .LVU23
+ 169 0014 FFF7FEFF 		bl	ACCELERO_IO_Read
+ 170              	.LVL7:
+ 176:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 177:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Clear high pass filter cut-off level, interrupt and data selection bits */
+ 178:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ctrl &= (uint8_t)~(LIS302DL_FILTEREDDATASELECTION_OUTPUTREGISTER | \
+ 171              		.loc 1 178 3 is_stmt 1 view .LVU24
+ 172              		.loc 1 178 8 is_stmt 0 view .LVU25
+ 173 0018 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 174 001c 03F0D003 		and	r3, r3, #208
+ 179:Drivers/accelero/Components/lis302dl/lis302dl.c ****                      LIS302DL_HIGHPASSFILTER_LEVEL_3 | \
+ 180:Drivers/accelero/Components/lis302dl/lis302dl.c ****                      LIS302DL_HIGHPASSFILTERINTERRUPT_1_2);
+ 181:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 182:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ctrl |= FilterStruct;
+ 175              		.loc 1 182 3 is_stmt 1 view .LVU26
+ 176              		.loc 1 182 8 is_stmt 0 view .LVU27
+ 177 0020 43EA0400 		orr	r0, r3, r4
+ 178 0024 8DF80700 		strb	r0, [sp, #7]
+ 183:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 184:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Write value to MEMS CTRL_REG2 register */
+ 185:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CTRL_REG2_ADDR, 1);
+ 179              		.loc 1 185 3 is_stmt 1 view .LVU28
+ 180 0028 0122     		movs	r2, #1
+ 181 002a 2121     		movs	r1, #33
+ 182 002c 0DF10700 		add	r0, sp, #7
+ 183 0030 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 184              	.LVL8:
+ 186:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 185              		.loc 1 186 1 is_stmt 0 view .LVU29
+ 186 0034 02B0     		add	sp, sp, #8
+ 187              	.LCFI8:
+ 188              		.cfi_def_cfa_offset 8
+ 189              		@ sp needed
+ 190 0036 10BD     		pop	{r4, pc}
+ 191              		.cfi_endproc
+ 192              	.LFE3:
+ 194              		.section	.text.LIS302DL_Click_IntClear,"ax",%progbits
+ 195              		.align	1
+ 196              		.global	LIS302DL_Click_IntClear
+ 197              		.syntax unified
+ 198              		.thumb
+ 199              		.thumb_func
+ 200              		.fpu fpv4-sp-d16
+ 202              	LIS302DL_Click_IntClear:
+ 203              	.LFB6:
+ 187:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 188:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 189:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  Set LIS302DL Interrupt configuration.
+ 190:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @param  LIS302DL_InterruptConfig_TypeDef: pointer to a LIS302DL_InterruptConfig_TypeDef 
+ 191:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *         structure that contains the configuration setting for the LIS302DL Interrupt.
+ 192:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @retval None
+ 193:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 194:Drivers/accelero/Components/lis302dl/lis302dl.c **** void LIS302DL_InterruptConfig(LIS302DL_InterruptConfigTypeDef *LIS302DL_IntConfigStruct)
+ 195:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+ 196:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t ctrl = 0x00;
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 8
+
+
+ 197:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 198:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Read CLICK_CFG register */
+ 199:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Read(&ctrl, LIS302DL_CLICK_CFG_REG_ADDR, 1);
+ 200:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 201:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Configure latch Interrupt request, click interrupts and double click interrupts */            
+ 202:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ctrl = (uint8_t)(LIS302DL_IntConfigStruct->Latch_Request| \
+ 203:Drivers/accelero/Components/lis302dl/lis302dl.c ****                    LIS302DL_IntConfigStruct->SingleClick_Axes | \
+ 204:Drivers/accelero/Components/lis302dl/lis302dl.c ****                    LIS302DL_IntConfigStruct->DoubleClick_Axes);
+ 205:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 206:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Write value to MEMS CLICK_CFG register */
+ 207:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_CFG_REG_ADDR, 1);
+ 208:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 209:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 210:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 211:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  Set LIS302DL Interrupt configuration
+ 212:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @param  None
+ 213:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @retval None
+ 214:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 215:Drivers/accelero/Components/lis302dl/lis302dl.c **** void LIS302DL_Click_IntConfig(void)
+ 216:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+ 217:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t ctrl = 0x00;
+ 218:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptConfigTypeDef   LIS302DL_InterruptStruct;
+ 219:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 220:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_ITConfig();
+ 221:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 222:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Set configuration of Internal High Pass Filter of LIS302DL */
+ 223:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptStruct.Latch_Request = LIS302DL_INTERRUPTREQUEST_LATCHED;
+ 224:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptStruct.SingleClick_Axes = LIS302DL_CLICKINTERRUPT_Z_ENABLE;
+ 225:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptStruct.DoubleClick_Axes = LIS302DL_DOUBLECLICKINTERRUPT_Z_ENABLE;
+ 226:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptConfig(&LIS302DL_InterruptStruct);
+ 227:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 228:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Configure Interrupt control register: enable Click interrupt on INT1 and
+ 229:Drivers/accelero/Components/lis302dl/lis302dl.c ****   INT2 on Z axis high event */
+ 230:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ctrl = 0x3F;
+ 231:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CTRL_REG3_ADDR, 1);
+ 232:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 233:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Enable Interrupt generation on click on Z axis */
+ 234:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ctrl = 0x50;
+ 235:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_CFG_REG_ADDR, 1);
+ 236:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 237:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Configure Click Threshold on X/Y axis (10 x 0.5g) */
+ 238:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ctrl = 0xAA;
+ 239:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_THSY_X_REG_ADDR, 1);
+ 240:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 241:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Configure Click Threshold on Z axis (10 x 0.5g) */
+ 242:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ctrl = 0x0A;
+ 243:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_THSZ_REG_ADDR, 1);
+ 244:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 245:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Enable interrupt on Y axis high event */
+ 246:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ctrl = 0x4C;
+ 247:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_FF_WU_CFG1_REG_ADDR, 1);
+ 248:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 249:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Configure Time Limit */
+ 250:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ctrl = 0x03;
+ 251:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_TIMELIMIT_REG_ADDR, 1);
+ 252:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 253:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Configure Latency */
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 9
+
+
+ 254:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ctrl = 0x7F;
+ 255:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_LATENCY_REG_ADDR, 1);
+ 256:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 257:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Configure Click Window */
+ 258:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ctrl = 0x7F;
+ 259:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_WINDOW_REG_ADDR, 1);
+ 260:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 261:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 262:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 263:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  Clear LIS302DL click Interrupt 
+ 264:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @param  None
+ 265:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @retval None
+ 266:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 267:Drivers/accelero/Components/lis302dl/lis302dl.c **** void LIS302DL_Click_IntClear(void)
+ 268:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+ 204              		.loc 1 268 1 is_stmt 1 view -0
+ 205              		.cfi_startproc
+ 206              		@ args = 0, pretend = 0, frame = 16
+ 207              		@ frame_needed = 0, uses_anonymous_args = 0
+ 208 0000 00B5     		push	{lr}
+ 209              	.LCFI9:
+ 210              		.cfi_def_cfa_offset 4
+ 211              		.cfi_offset 14, -4
+ 212 0002 85B0     		sub	sp, sp, #20
+ 213              	.LCFI10:
+ 214              		.cfi_def_cfa_offset 24
+ 269:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t buffer[6], clickreg = 0;
+ 215              		.loc 1 269 3 view .LVU31
+ 216              		.loc 1 269 22 is_stmt 0 view .LVU32
+ 217 0004 0023     		movs	r3, #0
+ 218 0006 8DF80730 		strb	r3, [sp, #7]
+ 270:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 271:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Read click and status registers if the available MEMS Accelerometer is LIS302DL */
+ 272:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Read(&clickreg, LIS302DL_CLICK_SRC_REG_ADDR, 1); 
+ 219              		.loc 1 272 3 is_stmt 1 view .LVU33
+ 220 000a 0122     		movs	r2, #1
+ 221 000c 3921     		movs	r1, #57
+ 222 000e 0DF10700 		add	r0, sp, #7
+ 223 0012 FFF7FEFF 		bl	ACCELERO_IO_Read
+ 224              	.LVL9:
+ 273:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Read(buffer, LIS302DL_STATUS_REG_ADDR, 6);
+ 225              		.loc 1 273 3 view .LVU34
+ 226 0016 0622     		movs	r2, #6
+ 227 0018 2721     		movs	r1, #39
+ 228 001a 02A8     		add	r0, sp, #8
+ 229 001c FFF7FEFF 		bl	ACCELERO_IO_Read
+ 230              	.LVL10:
+ 274:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 231              		.loc 1 274 1 is_stmt 0 view .LVU35
+ 232 0020 05B0     		add	sp, sp, #20
+ 233              	.LCFI11:
+ 234              		.cfi_def_cfa_offset 4
+ 235              		@ sp needed
+ 236 0022 5DF804FB 		ldr	pc, [sp], #4
+ 237              		.cfi_endproc
+ 238              	.LFE6:
+ 240              		.section	.text.LIS302DL_RebootCmd,"ax",%progbits
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 10
+
+
+ 241              		.align	1
+ 242              		.global	LIS302DL_RebootCmd
+ 243              		.syntax unified
+ 244              		.thumb
+ 245              		.thumb_func
+ 246              		.fpu fpv4-sp-d16
+ 248              	LIS302DL_RebootCmd:
+ 249              	.LFB10:
+ 275:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 276:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 277:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  Change the lowpower mode for LIS302DL
+ 278:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @param  LowPowerMode: New state for the low power mode.
+ 279:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *   This parameter can be one of the following values:
+ 280:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *     @arg LIS302DL_LOWPOWERMODE_POWERDOWN: Power down mode
+ 281:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *     @arg LIS302DL_LOWPOWERMODE_ACTIVE: Active mode  
+ 282:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @retval None
+ 283:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 284:Drivers/accelero/Components/lis302dl/lis302dl.c **** void LIS302DL_LowpowerCmd(uint8_t LowPowerMode)
+ 285:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+ 286:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t tmpreg;
+ 287:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 288:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Read CTRL_REG1 register */
+ 289:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Read(&tmpreg, LIS302DL_CTRL_REG1_ADDR, 1);
+ 290:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 291:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Set new low power mode configuration */
+ 292:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg &= (uint8_t)~LIS302DL_LOWPOWERMODE_ACTIVE;
+ 293:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg |= LowPowerMode;
+ 294:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 295:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Write value to MEMS CTRL_REG1 register */
+ 296:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&tmpreg, LIS302DL_CTRL_REG1_ADDR, 1);
+ 297:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 298:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 299:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 300:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  Data Rate command 
+ 301:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @param  DataRateValue: Data rate value
+ 302:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *   This parameter can be one of the following values:
+ 303:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *     @arg LIS302DL_DATARATE_100: 100 Hz output data rate 
+ 304:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *     @arg LIS302DL_DATARATE_400: 400 Hz output data rate    
+ 305:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @retval None
+ 306:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 307:Drivers/accelero/Components/lis302dl/lis302dl.c **** void LIS302DL_DataRateCmd(uint8_t DataRateValue)
+ 308:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+ 309:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t tmpreg;
+ 310:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 311:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Read CTRL_REG1 register */
+ 312:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Read(&tmpreg, LIS302DL_CTRL_REG1_ADDR, 1);
+ 313:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 314:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Set new Data rate configuration */
+ 315:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg &= (uint8_t)~LIS302DL_DATARATE_400;
+ 316:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg |= DataRateValue;
+ 317:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 318:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Write value to MEMS CTRL_REG1 register */
+ 319:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&tmpreg, LIS302DL_CTRL_REG1_ADDR, 1);
+ 320:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 321:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 322:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 323:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  Change the Full Scale of LIS302DL
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 11
+
+
+ 324:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @param  FS_value: new full scale value. 
+ 325:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *   This parameter can be one of the following values:
+ 326:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *     @arg LIS302DL_FULLSCALE_2_3: +-2.3g
+ 327:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *     @arg LIS302DL_FULLSCALE_9_2: +-9.2g   
+ 328:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @retval None
+ 329:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 330:Drivers/accelero/Components/lis302dl/lis302dl.c **** void LIS302DL_FullScaleCmd(uint8_t FS_value)
+ 331:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+ 332:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t tmpreg;
+ 333:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 334:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Read CTRL_REG1 register */
+ 335:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Read(&tmpreg, LIS302DL_CTRL_REG1_ADDR, 1);
+ 336:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 337:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Set new full scale configuration */
+ 338:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg &= (uint8_t)~LIS302DL_FULLSCALE_9_2;
+ 339:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg |= FS_value;
+ 340:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 341:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Write value to MEMS CTRL_REG1 register */
+ 342:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&tmpreg, LIS302DL_CTRL_REG1_ADDR, 1);
+ 343:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 344:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 345:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 346:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  Reboot memory content of LIS302DL.
+ 347:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @param  None
+ 348:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @retval None
+ 349:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 350:Drivers/accelero/Components/lis302dl/lis302dl.c **** void LIS302DL_RebootCmd(void)
+ 351:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+ 250              		.loc 1 351 1 is_stmt 1 view -0
+ 251              		.cfi_startproc
+ 252              		@ args = 0, pretend = 0, frame = 8
+ 253              		@ frame_needed = 0, uses_anonymous_args = 0
+ 254 0000 00B5     		push	{lr}
+ 255              	.LCFI12:
+ 256              		.cfi_def_cfa_offset 4
+ 257              		.cfi_offset 14, -4
+ 258 0002 83B0     		sub	sp, sp, #12
+ 259              	.LCFI13:
+ 260              		.cfi_def_cfa_offset 16
+ 352:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t tmpreg;
+ 261              		.loc 1 352 3 view .LVU37
+ 353:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Read CTRL_REG2 register */
+ 354:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Read(&tmpreg, LIS302DL_CTRL_REG2_ADDR, 1);
+ 262              		.loc 1 354 3 view .LVU38
+ 263 0004 0122     		movs	r2, #1
+ 264 0006 2121     		movs	r1, #33
+ 265 0008 0DF10700 		add	r0, sp, #7
+ 266 000c FFF7FEFF 		bl	ACCELERO_IO_Read
+ 267              	.LVL11:
+ 355:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 356:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Enable or Disable the reboot memory */
+ 357:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg |= LIS302DL_BOOT_REBOOTMEMORY;
+ 268              		.loc 1 357 3 view .LVU39
+ 269              		.loc 1 357 10 is_stmt 0 view .LVU40
+ 270 0010 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 271 0014 43F04003 		orr	r3, r3, #64
+ 272 0018 8DF80730 		strb	r3, [sp, #7]
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 12
+
+
+ 358:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 359:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Write value to MEMS CTRL_REG2 register */
+ 360:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&tmpreg, LIS302DL_CTRL_REG2_ADDR, 1);
+ 273              		.loc 1 360 3 is_stmt 1 view .LVU41
+ 274 001c 0122     		movs	r2, #1
+ 275 001e 2121     		movs	r1, #33
+ 276 0020 0DF10700 		add	r0, sp, #7
+ 277 0024 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 278              	.LVL12:
+ 361:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 279              		.loc 1 361 1 is_stmt 0 view .LVU42
+ 280 0028 03B0     		add	sp, sp, #12
+ 281              	.LCFI14:
+ 282              		.cfi_def_cfa_offset 4
+ 283              		@ sp needed
+ 284 002a 5DF804FB 		ldr	pc, [sp], #4
+ 285              		.cfi_endproc
+ 286              	.LFE10:
+ 288              		.section	.text.LIS302DL_ReadACC,"ax",%progbits
+ 289              		.align	1
+ 290              		.global	LIS302DL_ReadACC
+ 291              		.syntax unified
+ 292              		.thumb
+ 293              		.thumb_func
+ 294              		.fpu fpv4-sp-d16
+ 296              	LIS302DL_ReadACC:
+ 297              	.LVL13:
+ 298              	.LFB11:
+ 362:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 363:Drivers/accelero/Components/lis302dl/lis302dl.c **** /**
+ 364:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @brief  Read LIS302DL output register, and calculate the acceleration 
+ 365:Drivers/accelero/Components/lis302dl/lis302dl.c ****   *         ACC[mg]=SENSITIVITY* (out_h*256+out_l)/16 (12 bit rappresentation)
+ 366:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @param  pfData: Data out pointer
+ 367:Drivers/accelero/Components/lis302dl/lis302dl.c ****   * @retval None
+ 368:Drivers/accelero/Components/lis302dl/lis302dl.c ****   */
+ 369:Drivers/accelero/Components/lis302dl/lis302dl.c **** void LIS302DL_ReadACC(int16_t *pData)
+ 370:Drivers/accelero/Components/lis302dl/lis302dl.c **** {
+ 299              		.loc 1 370 1 is_stmt 1 view -0
+ 300              		.cfi_startproc
+ 301              		@ args = 0, pretend = 0, frame = 24
+ 302              		@ frame_needed = 0, uses_anonymous_args = 0
+ 303              		.loc 1 370 1 is_stmt 0 view .LVU44
+ 304 0000 10B5     		push	{r4, lr}
+ 305              	.LCFI15:
+ 306              		.cfi_def_cfa_offset 8
+ 307              		.cfi_offset 4, -8
+ 308              		.cfi_offset 14, -4
+ 309 0002 86B0     		sub	sp, sp, #24
+ 310              	.LCFI16:
+ 311              		.cfi_def_cfa_offset 32
+ 312 0004 0446     		mov	r4, r0
+ 371:Drivers/accelero/Components/lis302dl/lis302dl.c ****   int8_t buffer[6];
+ 313              		.loc 1 371 3 is_stmt 1 view .LVU45
+ 372:Drivers/accelero/Components/lis302dl/lis302dl.c ****   int16_t pnRawData[3];
+ 314              		.loc 1 372 3 view .LVU46
+ 373:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t sensitivity = LIS302DL_SENSITIVITY_2_3G;
+ 315              		.loc 1 373 3 view .LVU47
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 13
+
+
+ 316              	.LVL14:
+ 374:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t crtl, i = 0x00;
+ 317              		.loc 1 374 3 view .LVU48
+ 375:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 376:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Read(&crtl, LIS302DL_CTRL_REG1_ADDR, 1);
+ 318              		.loc 1 376 3 view .LVU49
+ 319 0006 0122     		movs	r2, #1
+ 320 0008 2021     		movs	r1, #32
+ 321 000a 0DF10700 		add	r0, sp, #7
+ 322              	.LVL15:
+ 323              		.loc 1 376 3 is_stmt 0 view .LVU50
+ 324 000e FFF7FEFF 		bl	ACCELERO_IO_Read
+ 325              	.LVL16:
+ 377:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Read((uint8_t*)buffer, LIS302DL_OUT_X_ADDR, 6);
+ 326              		.loc 1 377 3 is_stmt 1 view .LVU51
+ 327 0012 0622     		movs	r2, #6
+ 328 0014 2921     		movs	r1, #41
+ 329 0016 04A8     		add	r0, sp, #16
+ 330 0018 FFF7FEFF 		bl	ACCELERO_IO_Read
+ 331              	.LVL17:
+ 378:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 379:Drivers/accelero/Components/lis302dl/lis302dl.c ****   for(i=0; i<3; i++)
+ 332              		.loc 1 379 3 view .LVU52
+ 333              		.loc 1 379 8 is_stmt 0 view .LVU53
+ 334 001c 0023     		movs	r3, #0
+ 335              		.loc 1 379 3 view .LVU54
+ 336 001e 08E0     		b	.L13
+ 337              	.LVL18:
+ 338              	.L14:
+ 380:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 381:Drivers/accelero/Components/lis302dl/lis302dl.c ****     pnRawData[i] = buffer[2*i];
+ 339              		.loc 1 381 5 is_stmt 1 discriminator 3 view .LVU55
+ 340              		.loc 1 381 26 is_stmt 0 discriminator 3 view .LVU56
+ 341 0020 06AA     		add	r2, sp, #24
+ 342 0022 02EB4302 		add	r2, r2, r3, lsl #1
+ 343 0026 12F9081C 		ldrsb	r1, [r2, #-8]
+ 344              		.loc 1 381 18 discriminator 3 view .LVU57
+ 345 002a 22F8101C 		strh	r1, [r2, #-16]	@ movhi
+ 379:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 346              		.loc 1 379 17 is_stmt 1 discriminator 3 view .LVU58
+ 379:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 347              		.loc 1 379 18 is_stmt 0 discriminator 3 view .LVU59
+ 348 002e 0133     		adds	r3, r3, #1
+ 349              	.LVL19:
+ 379:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 350              		.loc 1 379 18 discriminator 3 view .LVU60
+ 351 0030 DBB2     		uxtb	r3, r3
+ 352              	.LVL20:
+ 353              	.L13:
+ 379:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 354              		.loc 1 379 12 is_stmt 1 discriminator 1 view .LVU61
+ 379:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 355              		.loc 1 379 3 is_stmt 0 discriminator 1 view .LVU62
+ 356 0032 022B     		cmp	r3, #2
+ 357 0034 F4D9     		bls	.L14
+ 382:Drivers/accelero/Components/lis302dl/lis302dl.c ****   }
+ 383:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 14
+
+
+ 384:Drivers/accelero/Components/lis302dl/lis302dl.c ****   switch(crtl & LIS302DL_FULLSCALE_9_2) 
+ 358              		.loc 1 384 3 is_stmt 1 view .LVU63
+ 359              		.loc 1 384 15 is_stmt 0 view .LVU64
+ 360 0036 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 361              	.LVL21:
+ 362              		.loc 1 384 3 view .LVU65
+ 363 003a 03F02003 		and	r3, r3, #32
+ 364 003e 13B9     		cbnz	r3, .L18
+ 373:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t crtl, i = 0x00;
+ 365              		.loc 1 373 11 view .LVU66
+ 366 0040 1221     		movs	r1, #18
+ 367              	.L15:
+ 368              	.LVL22:
+ 385:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 386:Drivers/accelero/Components/lis302dl/lis302dl.c ****     /* FS bit = 0 ==> Sensitivity typical value = 18milligals/digit*/ 
+ 387:Drivers/accelero/Components/lis302dl/lis302dl.c ****   case LIS302DL_FULLSCALE_2_3:
+ 388:Drivers/accelero/Components/lis302dl/lis302dl.c ****     sensitivity = LIS302DL_SENSITIVITY_2_3G;
+ 389:Drivers/accelero/Components/lis302dl/lis302dl.c ****     break;
+ 390:Drivers/accelero/Components/lis302dl/lis302dl.c ****     
+ 391:Drivers/accelero/Components/lis302dl/lis302dl.c ****     /* FS bit = 1 ==> Sensitivity typical value = 72milligals/digit*/ 
+ 392:Drivers/accelero/Components/lis302dl/lis302dl.c ****   case LIS302DL_FULLSCALE_9_2:
+ 393:Drivers/accelero/Components/lis302dl/lis302dl.c ****     sensitivity = LIS302DL_SENSITIVITY_9_2G;
+ 394:Drivers/accelero/Components/lis302dl/lis302dl.c ****     break;
+ 395:Drivers/accelero/Components/lis302dl/lis302dl.c ****     
+ 396:Drivers/accelero/Components/lis302dl/lis302dl.c ****   default:
+ 397:Drivers/accelero/Components/lis302dl/lis302dl.c ****     break;
+ 398:Drivers/accelero/Components/lis302dl/lis302dl.c ****   }
+ 399:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 400:Drivers/accelero/Components/lis302dl/lis302dl.c ****   /* Obtain the mg value for the three axis */
+ 401:Drivers/accelero/Components/lis302dl/lis302dl.c ****   for(i=0; i<3; i++)
+ 369              		.loc 1 401 3 is_stmt 1 view .LVU67
+ 370              		.loc 1 401 8 is_stmt 0 view .LVU68
+ 371 0042 0023     		movs	r3, #0
+ 372              		.loc 1 401 3 view .LVU69
+ 373 0044 0CE0     		b	.L16
+ 374              	.LVL23:
+ 375              	.L18:
+ 393:Drivers/accelero/Components/lis302dl/lis302dl.c ****     break;
+ 376              		.loc 1 393 17 view .LVU70
+ 377 0046 4821     		movs	r1, #72
+ 378 0048 FBE7     		b	.L15
+ 379              	.LVL24:
+ 380              	.L17:
+ 402:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 403:Drivers/accelero/Components/lis302dl/lis302dl.c ****     pData[i]=(pnRawData[i] * sensitivity);
+ 381              		.loc 1 403 5 is_stmt 1 discriminator 3 view .LVU71
+ 382              		.loc 1 403 24 is_stmt 0 discriminator 3 view .LVU72
+ 383 004a 06AA     		add	r2, sp, #24
+ 384 004c 02EB4302 		add	r2, r2, r3, lsl #1
+ 385 0050 32F9102C 		ldrsh	r2, [r2, #-16]
+ 386              		.loc 1 403 13 discriminator 3 view .LVU73
+ 387 0054 12FB01F2 		smulbb	r2, r2, r1
+ 388 0058 24F81320 		strh	r2, [r4, r3, lsl #1]	@ movhi
+ 401:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 389              		.loc 1 401 17 is_stmt 1 discriminator 3 view .LVU74
+ 401:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 390              		.loc 1 401 18 is_stmt 0 discriminator 3 view .LVU75
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 15
+
+
+ 391 005c 0133     		adds	r3, r3, #1
+ 392              	.LVL25:
+ 401:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 393              		.loc 1 401 18 discriminator 3 view .LVU76
+ 394 005e DBB2     		uxtb	r3, r3
+ 395              	.LVL26:
+ 396              	.L16:
+ 401:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 397              		.loc 1 401 12 is_stmt 1 discriminator 1 view .LVU77
+ 401:Drivers/accelero/Components/lis302dl/lis302dl.c ****   {
+ 398              		.loc 1 401 3 is_stmt 0 discriminator 1 view .LVU78
+ 399 0060 022B     		cmp	r3, #2
+ 400 0062 F2D9     		bls	.L17
+ 404:Drivers/accelero/Components/lis302dl/lis302dl.c ****   }
+ 405:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 401              		.loc 1 405 1 view .LVU79
+ 402 0064 06B0     		add	sp, sp, #24
+ 403              	.LCFI17:
+ 404              		.cfi_def_cfa_offset 8
+ 405              		@ sp needed
+ 406 0066 10BD     		pop	{r4, pc}
+ 407              		.loc 1 405 1 view .LVU80
+ 408              		.cfi_endproc
+ 409              	.LFE11:
+ 411              		.section	.text.LIS302DL_InterruptConfig,"ax",%progbits
+ 412              		.align	1
+ 413              		.global	LIS302DL_InterruptConfig
+ 414              		.syntax unified
+ 415              		.thumb
+ 416              		.thumb_func
+ 417              		.fpu fpv4-sp-d16
+ 419              	LIS302DL_InterruptConfig:
+ 420              	.LVL27:
+ 421              	.LFB4:
+ 195:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t ctrl = 0x00;
+ 422              		.loc 1 195 1 is_stmt 1 view -0
+ 423              		.cfi_startproc
+ 424              		@ args = 0, pretend = 0, frame = 8
+ 425              		@ frame_needed = 0, uses_anonymous_args = 0
+ 195:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t ctrl = 0x00;
+ 426              		.loc 1 195 1 is_stmt 0 view .LVU82
+ 427 0000 10B5     		push	{r4, lr}
+ 428              	.LCFI18:
+ 429              		.cfi_def_cfa_offset 8
+ 430              		.cfi_offset 4, -8
+ 431              		.cfi_offset 14, -4
+ 432 0002 82B0     		sub	sp, sp, #8
+ 433              	.LCFI19:
+ 434              		.cfi_def_cfa_offset 16
+ 435 0004 0446     		mov	r4, r0
+ 196:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 436              		.loc 1 196 3 is_stmt 1 view .LVU83
+ 196:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 437              		.loc 1 196 11 is_stmt 0 view .LVU84
+ 438 0006 0023     		movs	r3, #0
+ 439 0008 8DF80730 		strb	r3, [sp, #7]
+ 199:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 16
+
+
+ 440              		.loc 1 199 3 is_stmt 1 view .LVU85
+ 441 000c 0122     		movs	r2, #1
+ 442 000e 3821     		movs	r1, #56
+ 443 0010 0DF10700 		add	r0, sp, #7
+ 444              	.LVL28:
+ 199:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 445              		.loc 1 199 3 is_stmt 0 view .LVU86
+ 446 0014 FFF7FEFF 		bl	ACCELERO_IO_Read
+ 447              	.LVL29:
+ 202:Drivers/accelero/Components/lis302dl/lis302dl.c ****                    LIS302DL_IntConfigStruct->SingleClick_Axes | \
+ 448              		.loc 1 202 3 is_stmt 1 view .LVU87
+ 202:Drivers/accelero/Components/lis302dl/lis302dl.c ****                    LIS302DL_IntConfigStruct->SingleClick_Axes | \
+ 449              		.loc 1 202 44 is_stmt 0 view .LVU88
+ 450 0018 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
+ 203:Drivers/accelero/Components/lis302dl/lis302dl.c ****                    LIS302DL_IntConfigStruct->DoubleClick_Axes);
+ 451              		.loc 1 203 44 view .LVU89
+ 452 001a 6178     		ldrb	r1, [r4, #1]	@ zero_extendqisi2
+ 204:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 453              		.loc 1 204 44 view .LVU90
+ 454 001c A378     		ldrb	r3, [r4, #2]	@ zero_extendqisi2
+ 202:Drivers/accelero/Components/lis302dl/lis302dl.c ****                    LIS302DL_IntConfigStruct->SingleClick_Axes | \
+ 455              		.loc 1 202 10 view .LVU91
+ 456 001e 0A43     		orrs	r2, r2, r1
+ 457 0020 1343     		orrs	r3, r3, r2
+ 202:Drivers/accelero/Components/lis302dl/lis302dl.c ****                    LIS302DL_IntConfigStruct->SingleClick_Axes | \
+ 458              		.loc 1 202 8 view .LVU92
+ 459 0022 8DF80730 		strb	r3, [sp, #7]
+ 207:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 460              		.loc 1 207 3 is_stmt 1 view .LVU93
+ 461 0026 0122     		movs	r2, #1
+ 462 0028 3821     		movs	r1, #56
+ 463 002a 0DF10700 		add	r0, sp, #7
+ 464 002e FFF7FEFF 		bl	ACCELERO_IO_Write
+ 465              	.LVL30:
+ 208:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 466              		.loc 1 208 1 is_stmt 0 view .LVU94
+ 467 0032 02B0     		add	sp, sp, #8
+ 468              	.LCFI20:
+ 469              		.cfi_def_cfa_offset 8
+ 470              		@ sp needed
+ 471 0034 10BD     		pop	{r4, pc}
+ 208:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 472              		.loc 1 208 1 view .LVU95
+ 473              		.cfi_endproc
+ 474              	.LFE4:
+ 476              		.section	.text.LIS302DL_Click_IntConfig,"ax",%progbits
+ 477              		.align	1
+ 478              		.global	LIS302DL_Click_IntConfig
+ 479              		.syntax unified
+ 480              		.thumb
+ 481              		.thumb_func
+ 482              		.fpu fpv4-sp-d16
+ 484              	LIS302DL_Click_IntConfig:
+ 485              	.LFB5:
+ 216:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t ctrl = 0x00;
+ 486              		.loc 1 216 1 is_stmt 1 view -0
+ 487              		.cfi_startproc
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 17
+
+
+ 488              		@ args = 0, pretend = 0, frame = 8
+ 489              		@ frame_needed = 0, uses_anonymous_args = 0
+ 490 0000 30B5     		push	{r4, r5, lr}
+ 491              	.LCFI21:
+ 492              		.cfi_def_cfa_offset 12
+ 493              		.cfi_offset 4, -12
+ 494              		.cfi_offset 5, -8
+ 495              		.cfi_offset 14, -4
+ 496 0002 83B0     		sub	sp, sp, #12
+ 497              	.LCFI22:
+ 498              		.cfi_def_cfa_offset 24
+ 217:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptConfigTypeDef   LIS302DL_InterruptStruct;
+ 499              		.loc 1 217 3 view .LVU97
+ 217:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptConfigTypeDef   LIS302DL_InterruptStruct;
+ 500              		.loc 1 217 11 is_stmt 0 view .LVU98
+ 501 0004 0023     		movs	r3, #0
+ 502 0006 8DF80730 		strb	r3, [sp, #7]
+ 218:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 503              		.loc 1 218 3 is_stmt 1 view .LVU99
+ 220:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 504              		.loc 1 220 3 view .LVU100
+ 505 000a FFF7FEFF 		bl	ACCELERO_IO_ITConfig
+ 506              	.LVL31:
+ 223:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptStruct.SingleClick_Axes = LIS302DL_CLICKINTERRUPT_Z_ENABLE;
+ 507              		.loc 1 223 3 view .LVU101
+ 223:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptStruct.SingleClick_Axes = LIS302DL_CLICKINTERRUPT_Z_ENABLE;
+ 508              		.loc 1 223 42 is_stmt 0 view .LVU102
+ 509 000e 4023     		movs	r3, #64
+ 510 0010 8DF80430 		strb	r3, [sp, #4]
+ 224:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptStruct.DoubleClick_Axes = LIS302DL_DOUBLECLICKINTERRUPT_Z_ENABLE;
+ 511              		.loc 1 224 3 is_stmt 1 view .LVU103
+ 224:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptStruct.DoubleClick_Axes = LIS302DL_DOUBLECLICKINTERRUPT_Z_ENABLE;
+ 512              		.loc 1 224 45 is_stmt 0 view .LVU104
+ 513 0014 1023     		movs	r3, #16
+ 514 0016 8DF80530 		strb	r3, [sp, #5]
+ 225:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptConfig(&LIS302DL_InterruptStruct);
+ 515              		.loc 1 225 3 is_stmt 1 view .LVU105
+ 225:Drivers/accelero/Components/lis302dl/lis302dl.c ****   LIS302DL_InterruptConfig(&LIS302DL_InterruptStruct);
+ 516              		.loc 1 225 45 is_stmt 0 view .LVU106
+ 517 001a 2023     		movs	r3, #32
+ 518 001c 8DF80630 		strb	r3, [sp, #6]
+ 226:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 519              		.loc 1 226 3 is_stmt 1 view .LVU107
+ 520 0020 01A8     		add	r0, sp, #4
+ 521 0022 FFF7FEFF 		bl	LIS302DL_InterruptConfig
+ 522              	.LVL32:
+ 230:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CTRL_REG3_ADDR, 1);
+ 523              		.loc 1 230 3 view .LVU108
+ 230:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CTRL_REG3_ADDR, 1);
+ 524              		.loc 1 230 8 is_stmt 0 view .LVU109
+ 525 0026 3F24     		movs	r4, #63
+ 526 0028 8DF80740 		strb	r4, [sp, #7]
+ 231:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 527              		.loc 1 231 3 is_stmt 1 view .LVU110
+ 528 002c 0122     		movs	r2, #1
+ 529 002e 2221     		movs	r1, #34
+ 530 0030 0DF10700 		add	r0, sp, #7
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 18
+
+
+ 531 0034 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 532              	.LVL33:
+ 234:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_CFG_REG_ADDR, 1);
+ 533              		.loc 1 234 3 view .LVU111
+ 234:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_CFG_REG_ADDR, 1);
+ 534              		.loc 1 234 8 is_stmt 0 view .LVU112
+ 535 0038 5023     		movs	r3, #80
+ 536 003a 8DF80730 		strb	r3, [sp, #7]
+ 235:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 537              		.loc 1 235 3 is_stmt 1 view .LVU113
+ 538 003e 0122     		movs	r2, #1
+ 539 0040 3821     		movs	r1, #56
+ 540 0042 0DF10700 		add	r0, sp, #7
+ 541 0046 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 542              	.LVL34:
+ 238:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_THSY_X_REG_ADDR, 1);
+ 543              		.loc 1 238 3 view .LVU114
+ 238:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_THSY_X_REG_ADDR, 1);
+ 544              		.loc 1 238 8 is_stmt 0 view .LVU115
+ 545 004a AA23     		movs	r3, #170
+ 546 004c 8DF80730 		strb	r3, [sp, #7]
+ 239:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 547              		.loc 1 239 3 is_stmt 1 view .LVU116
+ 548 0050 0122     		movs	r2, #1
+ 549 0052 3B21     		movs	r1, #59
+ 550 0054 0DF10700 		add	r0, sp, #7
+ 551 0058 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 552              	.LVL35:
+ 242:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_THSZ_REG_ADDR, 1);
+ 553              		.loc 1 242 3 view .LVU117
+ 242:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_THSZ_REG_ADDR, 1);
+ 554              		.loc 1 242 8 is_stmt 0 view .LVU118
+ 555 005c 0A23     		movs	r3, #10
+ 556 005e 8DF80730 		strb	r3, [sp, #7]
+ 243:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 557              		.loc 1 243 3 is_stmt 1 view .LVU119
+ 558 0062 0122     		movs	r2, #1
+ 559 0064 3C21     		movs	r1, #60
+ 560 0066 0DF10700 		add	r0, sp, #7
+ 561 006a FFF7FEFF 		bl	ACCELERO_IO_Write
+ 562              	.LVL36:
+ 246:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_FF_WU_CFG1_REG_ADDR, 1);
+ 563              		.loc 1 246 3 view .LVU120
+ 246:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_FF_WU_CFG1_REG_ADDR, 1);
+ 564              		.loc 1 246 8 is_stmt 0 view .LVU121
+ 565 006e 4C23     		movs	r3, #76
+ 566 0070 8DF80730 		strb	r3, [sp, #7]
+ 247:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 567              		.loc 1 247 3 is_stmt 1 view .LVU122
+ 568 0074 0122     		movs	r2, #1
+ 569 0076 3021     		movs	r1, #48
+ 570 0078 0DF10700 		add	r0, sp, #7
+ 571 007c FFF7FEFF 		bl	ACCELERO_IO_Write
+ 572              	.LVL37:
+ 250:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_TIMELIMIT_REG_ADDR, 1);
+ 573              		.loc 1 250 3 view .LVU123
+ 250:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_TIMELIMIT_REG_ADDR, 1);
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 19
+
+
+ 574              		.loc 1 250 8 is_stmt 0 view .LVU124
+ 575 0080 0323     		movs	r3, #3
+ 576 0082 8DF80730 		strb	r3, [sp, #7]
+ 251:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 577              		.loc 1 251 3 is_stmt 1 view .LVU125
+ 578 0086 0122     		movs	r2, #1
+ 579 0088 3D21     		movs	r1, #61
+ 580 008a 0DF10700 		add	r0, sp, #7
+ 581 008e FFF7FEFF 		bl	ACCELERO_IO_Write
+ 582              	.LVL38:
+ 254:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_LATENCY_REG_ADDR, 1);
+ 583              		.loc 1 254 3 view .LVU126
+ 254:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_LATENCY_REG_ADDR, 1);
+ 584              		.loc 1 254 8 is_stmt 0 view .LVU127
+ 585 0092 7F25     		movs	r5, #127
+ 586 0094 8DF80750 		strb	r5, [sp, #7]
+ 255:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 587              		.loc 1 255 3 is_stmt 1 view .LVU128
+ 588 0098 0122     		movs	r2, #1
+ 589 009a 3E21     		movs	r1, #62
+ 590 009c 0DF10700 		add	r0, sp, #7
+ 591 00a0 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 592              	.LVL39:
+ 258:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_WINDOW_REG_ADDR, 1);
+ 593              		.loc 1 258 3 view .LVU129
+ 258:Drivers/accelero/Components/lis302dl/lis302dl.c ****   ACCELERO_IO_Write(&ctrl, LIS302DL_CLICK_WINDOW_REG_ADDR, 1);
+ 594              		.loc 1 258 8 is_stmt 0 view .LVU130
+ 595 00a4 8DF80750 		strb	r5, [sp, #7]
+ 259:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 596              		.loc 1 259 3 is_stmt 1 view .LVU131
+ 597 00a8 0122     		movs	r2, #1
+ 598 00aa 2146     		mov	r1, r4
+ 599 00ac 0DF10700 		add	r0, sp, #7
+ 600 00b0 FFF7FEFF 		bl	ACCELERO_IO_Write
+ 601              	.LVL40:
+ 260:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 602              		.loc 1 260 1 is_stmt 0 view .LVU132
+ 603 00b4 03B0     		add	sp, sp, #12
+ 604              	.LCFI23:
+ 605              		.cfi_def_cfa_offset 12
+ 606              		@ sp needed
+ 607 00b6 30BD     		pop	{r4, r5, pc}
+ 608              		.cfi_endproc
+ 609              	.LFE5:
+ 611              		.section	.text.LIS302DL_LowpowerCmd,"ax",%progbits
+ 612              		.align	1
+ 613              		.global	LIS302DL_LowpowerCmd
+ 614              		.syntax unified
+ 615              		.thumb
+ 616              		.thumb_func
+ 617              		.fpu fpv4-sp-d16
+ 619              	LIS302DL_LowpowerCmd:
+ 620              	.LVL41:
+ 621              	.LFB7:
+ 285:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t tmpreg;
+ 622              		.loc 1 285 1 is_stmt 1 view -0
+ 623              		.cfi_startproc
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 20
+
+
+ 624              		@ args = 0, pretend = 0, frame = 8
+ 625              		@ frame_needed = 0, uses_anonymous_args = 0
+ 285:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t tmpreg;
+ 626              		.loc 1 285 1 is_stmt 0 view .LVU134
+ 627 0000 10B5     		push	{r4, lr}
+ 628              	.LCFI24:
+ 629              		.cfi_def_cfa_offset 8
+ 630              		.cfi_offset 4, -8
+ 631              		.cfi_offset 14, -4
+ 632 0002 82B0     		sub	sp, sp, #8
+ 633              	.LCFI25:
+ 634              		.cfi_def_cfa_offset 16
+ 635 0004 0446     		mov	r4, r0
+ 286:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 636              		.loc 1 286 3 is_stmt 1 view .LVU135
+ 289:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 637              		.loc 1 289 3 view .LVU136
+ 638 0006 0122     		movs	r2, #1
+ 639 0008 2021     		movs	r1, #32
+ 640 000a 0DF10700 		add	r0, sp, #7
+ 641              	.LVL42:
+ 289:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 642              		.loc 1 289 3 is_stmt 0 view .LVU137
+ 643 000e FFF7FEFF 		bl	ACCELERO_IO_Read
+ 644              	.LVL43:
+ 292:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg |= LowPowerMode;
+ 645              		.loc 1 292 3 is_stmt 1 view .LVU138
+ 292:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg |= LowPowerMode;
+ 646              		.loc 1 292 10 is_stmt 0 view .LVU139
+ 647 0012 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 648 0016 03F0BF03 		and	r3, r3, #191
+ 293:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 649              		.loc 1 293 3 is_stmt 1 view .LVU140
+ 293:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 650              		.loc 1 293 10 is_stmt 0 view .LVU141
+ 651 001a 43EA0400 		orr	r0, r3, r4
+ 652 001e 8DF80700 		strb	r0, [sp, #7]
+ 296:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 653              		.loc 1 296 3 is_stmt 1 view .LVU142
+ 654 0022 0122     		movs	r2, #1
+ 655 0024 2021     		movs	r1, #32
+ 656 0026 0DF10700 		add	r0, sp, #7
+ 657 002a FFF7FEFF 		bl	ACCELERO_IO_Write
+ 658              	.LVL44:
+ 297:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 659              		.loc 1 297 1 is_stmt 0 view .LVU143
+ 660 002e 02B0     		add	sp, sp, #8
+ 661              	.LCFI26:
+ 662              		.cfi_def_cfa_offset 8
+ 663              		@ sp needed
+ 664 0030 10BD     		pop	{r4, pc}
+ 665              		.cfi_endproc
+ 666              	.LFE7:
+ 668              		.section	.text.LIS302DL_DataRateCmd,"ax",%progbits
+ 669              		.align	1
+ 670              		.global	LIS302DL_DataRateCmd
+ 671              		.syntax unified
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 21
+
+
+ 672              		.thumb
+ 673              		.thumb_func
+ 674              		.fpu fpv4-sp-d16
+ 676              	LIS302DL_DataRateCmd:
+ 677              	.LVL45:
+ 678              	.LFB8:
+ 308:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t tmpreg;
+ 679              		.loc 1 308 1 is_stmt 1 view -0
+ 680              		.cfi_startproc
+ 681              		@ args = 0, pretend = 0, frame = 8
+ 682              		@ frame_needed = 0, uses_anonymous_args = 0
+ 308:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t tmpreg;
+ 683              		.loc 1 308 1 is_stmt 0 view .LVU145
+ 684 0000 10B5     		push	{r4, lr}
+ 685              	.LCFI27:
+ 686              		.cfi_def_cfa_offset 8
+ 687              		.cfi_offset 4, -8
+ 688              		.cfi_offset 14, -4
+ 689 0002 82B0     		sub	sp, sp, #8
+ 690              	.LCFI28:
+ 691              		.cfi_def_cfa_offset 16
+ 692 0004 0446     		mov	r4, r0
+ 309:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 693              		.loc 1 309 3 is_stmt 1 view .LVU146
+ 312:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 694              		.loc 1 312 3 view .LVU147
+ 695 0006 0122     		movs	r2, #1
+ 696 0008 2021     		movs	r1, #32
+ 697 000a 0DF10700 		add	r0, sp, #7
+ 698              	.LVL46:
+ 312:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 699              		.loc 1 312 3 is_stmt 0 view .LVU148
+ 700 000e FFF7FEFF 		bl	ACCELERO_IO_Read
+ 701              	.LVL47:
+ 315:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg |= DataRateValue;
+ 702              		.loc 1 315 3 is_stmt 1 view .LVU149
+ 315:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg |= DataRateValue;
+ 703              		.loc 1 315 10 is_stmt 0 view .LVU150
+ 704 0012 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 705 0016 03F07F03 		and	r3, r3, #127
+ 316:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 706              		.loc 1 316 3 is_stmt 1 view .LVU151
+ 316:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 707              		.loc 1 316 10 is_stmt 0 view .LVU152
+ 708 001a 43EA0400 		orr	r0, r3, r4
+ 709 001e 8DF80700 		strb	r0, [sp, #7]
+ 319:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 710              		.loc 1 319 3 is_stmt 1 view .LVU153
+ 711 0022 0122     		movs	r2, #1
+ 712 0024 2021     		movs	r1, #32
+ 713 0026 0DF10700 		add	r0, sp, #7
+ 714 002a FFF7FEFF 		bl	ACCELERO_IO_Write
+ 715              	.LVL48:
+ 320:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 716              		.loc 1 320 1 is_stmt 0 view .LVU154
+ 717 002e 02B0     		add	sp, sp, #8
+ 718              	.LCFI29:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 22
+
+
+ 719              		.cfi_def_cfa_offset 8
+ 720              		@ sp needed
+ 721 0030 10BD     		pop	{r4, pc}
+ 722              		.cfi_endproc
+ 723              	.LFE8:
+ 725              		.section	.text.LIS302DL_FullScaleCmd,"ax",%progbits
+ 726              		.align	1
+ 727              		.global	LIS302DL_FullScaleCmd
+ 728              		.syntax unified
+ 729              		.thumb
+ 730              		.thumb_func
+ 731              		.fpu fpv4-sp-d16
+ 733              	LIS302DL_FullScaleCmd:
+ 734              	.LVL49:
+ 735              	.LFB9:
+ 331:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t tmpreg;
+ 736              		.loc 1 331 1 is_stmt 1 view -0
+ 737              		.cfi_startproc
+ 738              		@ args = 0, pretend = 0, frame = 8
+ 739              		@ frame_needed = 0, uses_anonymous_args = 0
+ 331:Drivers/accelero/Components/lis302dl/lis302dl.c ****   uint8_t tmpreg;
+ 740              		.loc 1 331 1 is_stmt 0 view .LVU156
+ 741 0000 10B5     		push	{r4, lr}
+ 742              	.LCFI30:
+ 743              		.cfi_def_cfa_offset 8
+ 744              		.cfi_offset 4, -8
+ 745              		.cfi_offset 14, -4
+ 746 0002 82B0     		sub	sp, sp, #8
+ 747              	.LCFI31:
+ 748              		.cfi_def_cfa_offset 16
+ 749 0004 0446     		mov	r4, r0
+ 332:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 750              		.loc 1 332 3 is_stmt 1 view .LVU157
+ 335:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 751              		.loc 1 335 3 view .LVU158
+ 752 0006 0122     		movs	r2, #1
+ 753 0008 2021     		movs	r1, #32
+ 754 000a 0DF10700 		add	r0, sp, #7
+ 755              	.LVL50:
+ 335:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 756              		.loc 1 335 3 is_stmt 0 view .LVU159
+ 757 000e FFF7FEFF 		bl	ACCELERO_IO_Read
+ 758              	.LVL51:
+ 338:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg |= FS_value;
+ 759              		.loc 1 338 3 is_stmt 1 view .LVU160
+ 338:Drivers/accelero/Components/lis302dl/lis302dl.c ****   tmpreg |= FS_value;
+ 760              		.loc 1 338 10 is_stmt 0 view .LVU161
+ 761 0012 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 762 0016 03F0DF03 		and	r3, r3, #223
+ 339:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 763              		.loc 1 339 3 is_stmt 1 view .LVU162
+ 339:Drivers/accelero/Components/lis302dl/lis302dl.c ****   
+ 764              		.loc 1 339 10 is_stmt 0 view .LVU163
+ 765 001a 43EA0400 		orr	r0, r3, r4
+ 766 001e 8DF80700 		strb	r0, [sp, #7]
+ 342:Drivers/accelero/Components/lis302dl/lis302dl.c **** }
+ 767              		.loc 1 342 3 is_stmt 1 view .LVU164
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 23
+
+
+ 768 0022 0122     		movs	r2, #1
+ 769 0024 2021     		movs	r1, #32
+ 770 0026 0DF10700 		add	r0, sp, #7
+ 771 002a FFF7FEFF 		bl	ACCELERO_IO_Write
+ 772              	.LVL52:
+ 343:Drivers/accelero/Components/lis302dl/lis302dl.c **** 
+ 773              		.loc 1 343 1 is_stmt 0 view .LVU165
+ 774 002e 02B0     		add	sp, sp, #8
+ 775              	.LCFI32:
+ 776              		.cfi_def_cfa_offset 8
+ 777              		@ sp needed
+ 778 0030 10BD     		pop	{r4, pc}
+ 779              		.cfi_endproc
+ 780              	.LFE9:
+ 782              		.global	Lis302dlDrv
+ 783              		.section	.data.Lis302dlDrv,"aw"
+ 784              		.align	2
+ 787              	Lis302dlDrv:
+ 788 0000 00000000 		.word	LIS302DL_Init
+ 789 0004 00000000 		.word	LIS302DL_DeInit
+ 790 0008 00000000 		.word	LIS302DL_ReadID
+ 791 000c 00000000 		.word	LIS302DL_RebootCmd
+ 792 0010 00000000 		.word	LIS302DL_Click_IntConfig
+ 793 0014 00000000 		.word	0
+ 794 0018 00000000 		.word	0
+ 795 001c 00000000 		.word	0
+ 796 0020 00000000 		.word	0
+ 797 0024 00000000 		.word	LIS302DL_Click_IntClear
+ 798 0028 00000000 		.word	LIS302DL_FilterConfig
+ 799 002c 00000000 		.word	0
+ 800 0030 00000000 		.word	LIS302DL_ReadACC
+ 801              		.text
+ 802              	.Letext0:
+ 803              		.file 2 "/usr/local/Cellar/gcc-arm-none-eabi/20200630/arm-none-eabi/include/machine/_default_types
+ 804              		.file 3 "/usr/local/Cellar/gcc-arm-none-eabi/20200630/arm-none-eabi/include/sys/_stdint.h"
+ 805              		.file 4 "Drivers/accelero/Common/../Common/accelero.h"
+ 806              		.file 5 "Drivers/accelero/Components/lis302dl/lis302dl.h"
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 lis302dl.c
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:18     .text.LIS302DL_DeInit:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:26     .text.LIS302DL_DeInit:0000000000000000 LIS302DL_DeInit
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:40     .text.LIS302DL_Init:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:47     .text.LIS302DL_Init:0000000000000000 LIS302DL_Init
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:90     .text.LIS302DL_ReadID:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:97     .text.LIS302DL_ReadID:0000000000000000 LIS302DL_ReadID
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:135    .text.LIS302DL_FilterConfig:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:142    .text.LIS302DL_FilterConfig:0000000000000000 LIS302DL_FilterConfig
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:195    .text.LIS302DL_Click_IntClear:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:202    .text.LIS302DL_Click_IntClear:0000000000000000 LIS302DL_Click_IntClear
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:241    .text.LIS302DL_RebootCmd:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:248    .text.LIS302DL_RebootCmd:0000000000000000 LIS302DL_RebootCmd
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:289    .text.LIS302DL_ReadACC:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:296    .text.LIS302DL_ReadACC:0000000000000000 LIS302DL_ReadACC
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:412    .text.LIS302DL_InterruptConfig:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:419    .text.LIS302DL_InterruptConfig:0000000000000000 LIS302DL_InterruptConfig
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:477    .text.LIS302DL_Click_IntConfig:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:484    .text.LIS302DL_Click_IntConfig:0000000000000000 LIS302DL_Click_IntConfig
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:612    .text.LIS302DL_LowpowerCmd:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:619    .text.LIS302DL_LowpowerCmd:0000000000000000 LIS302DL_LowpowerCmd
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:669    .text.LIS302DL_DataRateCmd:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:676    .text.LIS302DL_DataRateCmd:0000000000000000 LIS302DL_DataRateCmd
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:726    .text.LIS302DL_FullScaleCmd:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:733    .text.LIS302DL_FullScaleCmd:0000000000000000 LIS302DL_FullScaleCmd
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:787    .data.Lis302dlDrv:0000000000000000 Lis302dlDrv
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccCdvI1V.s:784    .data.Lis302dlDrv:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+ACCELERO_IO_Init
+ACCELERO_IO_Write
+ACCELERO_IO_Read
+ACCELERO_IO_ITConfig
