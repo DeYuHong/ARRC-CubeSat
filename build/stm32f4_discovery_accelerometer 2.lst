@@ -1,0 +1,747 @@
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f4_discovery_accelerometer.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.BSP_ACCELERO_Init,"ax",%progbits
+  18              		.align	1
+  19              		.global	BSP_ACCELERO_Init
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	BSP_ACCELERO_Init:
+  27              	.LFB235:
+  28              		.file 1 "Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c"
+   1:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /**
+   2:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   ******************************************************************************
+   3:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @file    stm32f4_discovery_accelerometer.c
+   4:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @author  MCD Application Team
+   5:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @brief   This file provides a set of functions needed to manage the
+   6:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *          MEMS accelerometers available on STM32F4-Discovery Kit.
+   7:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   ******************************************************************************
+   8:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @attention
+   9:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *
+  10:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics</center></h2>
+  11:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *
+  12:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * Redistribution and use in source and binary forms, with or without modification,
+  13:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * are permitted provided that the following conditions are met:
+  14:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *   1. Redistributions of source code must retain the above copyright notice,
+  15:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *      this list of conditions and the following disclaimer.
+  16:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *   2. Redistributions in binary form must reproduce the above copyright notice,
+  17:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *      this list of conditions and the following disclaimer in the documentation
+  18:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *      and/or other materials provided with the distribution.
+  19:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *   3. Neither the name of STMicroelectronics nor the names of its contributors
+  20:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *      may be used to endorse or promote products derived from this software
+  21:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *      without specific prior written permission.
+  22:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *
+  23:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  24:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  25:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  26:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  27:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  28:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  29:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  30:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 2
+
+
+  31:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  32:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  33:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *
+  34:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   ******************************************************************************
+  35:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */ 
+  36:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  37:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /* Includes ------------------------------------------------------------------*/
+  38:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** #include "stm32f4_discovery_accelerometer.h"
+  39:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  40:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /** @addtogroup BSP 
+  41:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @{
+  42:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+  43:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  44:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /** @addtogroup STM32F4_DISCOVERY
+  45:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @{
+  46:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */ 
+  47:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  48:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /** @defgroup STM32F4_DISCOVERY_ACCELEROMETER STM32F4 DISCOVERY ACCELEROMETER
+  49:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @brief  This file includes the motion sensor driver for ACCELEROMETER motion sensor 
+  50:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *         devices.
+  51:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @{
+  52:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+  53:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  54:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /** @defgroup STM32F4_DISCOVERY_ACCELEROMETER_Private_TypesDefinitions STM32F4 DISCOVERY ACCELEROME
+  55:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @{
+  56:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+  57:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /**
+  58:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @}
+  59:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+  60:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  61:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /** @defgroup STM32F4_DISCOVERY_ACCELEROMETER_Private_Defines STM32F4 DISCOVERY ACCELEROMETER Priva
+  62:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @{
+  63:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+  64:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /**
+  65:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @}
+  66:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+  67:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  68:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /** @defgroup STM32F4_DISCOVERY_ACCELEROMETER_Private_Macros STM32F4 DISCOVERY ACCELEROMETER Privat
+  69:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @{
+  70:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+  71:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /**
+  72:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @}
+  73:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */ 
+  74:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   
+  75:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /** @defgroup STM32F4_DISCOVERY_ACCELEROMETER_Private_Variables STM32F4 DISCOVERY ACCELEROMETER Pri
+  76:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @{
+  77:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */ 
+  78:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** static ACCELERO_DrvTypeDef *AcceleroDrv;
+  79:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /**
+  80:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @}
+  81:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+  82:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  83:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /** @defgroup STM32F4_DISCOVERY_ACCELEROMETER_Private_FunctionPrototypes STM32F4 DISCOVERY ACCELERO
+  84:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @{
+  85:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+  86:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /**
+  87:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @}
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 3
+
+
+  88:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+  89:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  90:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /** @defgroup STM32F4_DISCOVERY_ACCELEROMETER_Private_Functions STM32F4 DISCOVERY ACCELEROMETER Pri
+  91:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @{
+  92:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+  93:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  94:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /**
+  95:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @brief  Setx Accelerometer Initialization.
+  96:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @retval ACCELERO_OK if no problem during initialization
+  97:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+  98:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** uint8_t BSP_ACCELERO_Init(void)
+  99:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** { 
+  29              		.loc 1 99 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 10B5     		push	{r4, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+ 100:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   uint8_t ret = ACCELERO_ERROR;
+  38              		.loc 1 100 3 view .LVU1
+  39              	.LVL0:
+ 101:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   uint16_t ctrl = 0x0000;
+  40              		.loc 1 101 3 view .LVU2
+ 102:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   LIS302DL_InitTypeDef         lis302dl_initstruct;
+  41              		.loc 1 102 3 view .LVU3
+ 103:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   LIS302DL_FilterConfigTypeDef lis302dl_filter = {0,0,0};
+  42              		.loc 1 103 3 view .LVU4
+ 104:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   LIS3DSH_InitTypeDef          l1s3dsh_InitStruct;
+  43              		.loc 1 104 3 view .LVU5
+ 105:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 106:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   if(Lis302dlDrv.ReadID() == I_AM_LIS302DL)
+  44              		.loc 1 106 3 view .LVU6
+  45              		.loc 1 106 17 is_stmt 0 view .LVU7
+  46 0002 104B     		ldr	r3, .L8
+  47 0004 9B68     		ldr	r3, [r3, #8]
+  48              		.loc 1 106 6 view .LVU8
+  49 0006 9847     		blx	r3
+  50              	.LVL1:
+  51              		.loc 1 106 5 view .LVU9
+  52 0008 3B28     		cmp	r0, #59
+  53 000a 06D0     		beq	.L6
+ 107:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   {
+ 108:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* Initialize the accelerometer driver structure */
+ 109:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     AcceleroDrv = &Lis302dlDrv;
+ 110:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 111:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* Set configuration of LIS302DL MEMS Accelerometer *********************/
+ 112:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_initstruct.Power_Mode = LIS302DL_LOWPOWERMODE_ACTIVE;
+ 113:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_initstruct.Output_DataRate = LIS302DL_DATARATE_100;
+ 114:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_initstruct.Axes_Enable = LIS302DL_XYZ_ENABLE;
+ 115:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_initstruct.Full_Scale = LIS302DL_FULLSCALE_2_3;
+ 116:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_initstruct.Self_Test = LIS302DL_SELFTEST_NORMAL;
+ 117:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+ 118:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* Configure MEMS: data rate, power mode, full scale, self test and axes */
+ 119:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     ctrl = (uint16_t) (lis302dl_initstruct.Output_DataRate | lis302dl_initstruct.Power_Mode | \
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 4
+
+
+ 120:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****                        lis302dl_initstruct.Full_Scale | lis302dl_initstruct.Self_Test | \
+ 121:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****                        lis302dl_initstruct.Axes_Enable);
+ 122:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+ 123:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* Configure the accelerometer main parameters */
+ 124:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     AcceleroDrv->Init(ctrl);
+ 125:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+ 126:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* MEMS High Pass Filter configuration */
+ 127:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_filter.HighPassFilter_Data_Selection = LIS302DL_FILTEREDDATASELECTION_OUTPUTREGISTER;
+ 128:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_filter.HighPassFilter_CutOff_Frequency = LIS302DL_HIGHPASSFILTER_LEVEL_1;
+ 129:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_filter.HighPassFilter_Interrupt = LIS302DL_HIGHPASSFILTERINTERRUPT_1_2;
+ 130:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+ 131:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* Configure MEMS high pass filter cut-off level, interrupt and data selection bits */         
+ 132:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     ctrl = (uint8_t)(lis302dl_filter.HighPassFilter_Data_Selection | \
+ 133:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****                      lis302dl_filter.HighPassFilter_CutOff_Frequency | \
+ 134:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****                      lis302dl_filter.HighPassFilter_Interrupt);
+ 135:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 136:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* Configure the accelerometer LPF main parameters */
+ 137:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     AcceleroDrv->FilterConfig(ctrl);
+ 138:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 139:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     ret = ACCELERO_OK;
+ 140:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   }
+ 141:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   else if(Lis3dshDrv.ReadID() == I_AM_LIS3DSH)
+  54              		.loc 1 141 8 is_stmt 1 view .LVU10
+  55              		.loc 1 141 21 is_stmt 0 view .LVU11
+  56 000c 0E4B     		ldr	r3, .L8+4
+  57 000e 9B68     		ldr	r3, [r3, #8]
+  58              		.loc 1 141 11 view .LVU12
+  59 0010 9847     		blx	r3
+  60              	.LVL2:
+  61              		.loc 1 141 10 view .LVU13
+  62 0012 3F28     		cmp	r0, #63
+  63 0014 0DD0     		beq	.L7
+ 142:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   {
+ 143:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* Initialize the accelerometer driver structure */
+ 144:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     AcceleroDrv = &Lis3dshDrv;
+ 145:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 146:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* Set configuration of LIS3DSH MEMS Accelerometer **********************/
+ 147:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     l1s3dsh_InitStruct.Output_DataRate = LIS3DSH_DATARATE_100;
+ 148:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     l1s3dsh_InitStruct.Axes_Enable = LIS3DSH_XYZ_ENABLE;
+ 149:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     l1s3dsh_InitStruct.SPI_Wire = LIS3DSH_SERIALINTERFACE_4WIRE;
+ 150:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     l1s3dsh_InitStruct.Self_Test = LIS3DSH_SELFTEST_NORMAL;
+ 151:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     l1s3dsh_InitStruct.Full_Scale = LIS3DSH_FULLSCALE_2;
+ 152:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     l1s3dsh_InitStruct.Filter_BW = LIS3DSH_FILTER_BW_800;
+ 153:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+ 154:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* Configure MEMS: power mode(ODR) and axes enable */
+ 155:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     ctrl = (uint16_t) (l1s3dsh_InitStruct.Output_DataRate | \
+ 156:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****                        l1s3dsh_InitStruct.Axes_Enable);
+ 157:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+ 158:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* Configure MEMS: full scale and self test */
+ 159:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     ctrl |= (uint16_t) ((l1s3dsh_InitStruct.SPI_Wire    | \
+ 160:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****                          l1s3dsh_InitStruct.Self_Test   | \
+ 161:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****                          l1s3dsh_InitStruct.Full_Scale  | \
+ 162:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****                          l1s3dsh_InitStruct.Filter_BW) << 8);
+ 163:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 164:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* Configure the accelerometer main parameters */
+ 165:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     AcceleroDrv->Init(ctrl);
+ 166:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 5
+
+
+ 167:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     ret = ACCELERO_OK;
+ 168:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   }
+ 169:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 170:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   else
+ 171:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   {
+ 172:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     ret = ACCELERO_ERROR;
+  64              		.loc 1 172 9 view .LVU14
+  65 0016 0120     		movs	r0, #1
+  66              	.LVL3:
+  67              	.L3:
+ 173:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   }
+ 174:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   return ret;
+  68              		.loc 1 174 3 is_stmt 1 view .LVU15
+ 175:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** }
+  69              		.loc 1 175 1 is_stmt 0 view .LVU16
+  70 0018 10BD     		pop	{r4, pc}
+  71              	.LVL4:
+  72              	.L6:
+ 109:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  73              		.loc 1 109 5 is_stmt 1 view .LVU17
+ 109:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  74              		.loc 1 109 17 is_stmt 0 view .LVU18
+  75 001a 0C4C     		ldr	r4, .L8+8
+  76 001c 094B     		ldr	r3, .L8
+  77 001e 2360     		str	r3, [r4]
+ 112:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_initstruct.Output_DataRate = LIS302DL_DATARATE_100;
+  78              		.loc 1 112 5 is_stmt 1 view .LVU19
+ 113:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_initstruct.Axes_Enable = LIS302DL_XYZ_ENABLE;
+  79              		.loc 1 113 5 view .LVU20
+ 114:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_initstruct.Full_Scale = LIS302DL_FULLSCALE_2_3;
+  80              		.loc 1 114 5 view .LVU21
+ 115:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_initstruct.Self_Test = LIS302DL_SELFTEST_NORMAL;
+  81              		.loc 1 115 5 view .LVU22
+ 116:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+  82              		.loc 1 116 5 view .LVU23
+ 119:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****                        lis302dl_initstruct.Full_Scale | lis302dl_initstruct.Self_Test | \
+  83              		.loc 1 119 5 view .LVU24
+  84              	.LVL5:
+ 124:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+  85              		.loc 1 124 5 view .LVU25
+ 124:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+  86              		.loc 1 124 16 is_stmt 0 view .LVU26
+  87 0020 1B68     		ldr	r3, [r3]
+ 124:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+  88              		.loc 1 124 5 view .LVU27
+  89 0022 4720     		movs	r0, #71
+  90 0024 9847     		blx	r3
+  91              	.LVL6:
+ 127:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_filter.HighPassFilter_CutOff_Frequency = LIS302DL_HIGHPASSFILTER_LEVEL_1;
+  92              		.loc 1 127 5 is_stmt 1 view .LVU28
+ 128:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     lis302dl_filter.HighPassFilter_Interrupt = LIS302DL_HIGHPASSFILTERINTERRUPT_1_2;
+  93              		.loc 1 128 5 view .LVU29
+ 129:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+  94              		.loc 1 129 5 view .LVU30
+ 132:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****                      lis302dl_filter.HighPassFilter_CutOff_Frequency | \
+  95              		.loc 1 132 5 view .LVU31
+ 137:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 6
+
+
+  96              		.loc 1 137 5 view .LVU32
+ 137:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+  97              		.loc 1 137 16 is_stmt 0 view .LVU33
+  98 0026 2368     		ldr	r3, [r4]
+  99 0028 9B6A     		ldr	r3, [r3, #40]
+ 137:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 100              		.loc 1 137 5 view .LVU34
+ 101 002a 2D20     		movs	r0, #45
+ 102 002c 9847     		blx	r3
+ 103              	.LVL7:
+ 139:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   }
+ 104              		.loc 1 139 5 is_stmt 1 view .LVU35
+ 139:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   }
+ 105              		.loc 1 139 9 is_stmt 0 view .LVU36
+ 106 002e 0020     		movs	r0, #0
+ 107 0030 F2E7     		b	.L3
+ 108              	.LVL8:
+ 109              	.L7:
+ 144:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 110              		.loc 1 144 5 is_stmt 1 view .LVU37
+ 144:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 111              		.loc 1 144 17 is_stmt 0 view .LVU38
+ 112 0032 054B     		ldr	r3, .L8+4
+ 113 0034 054A     		ldr	r2, .L8+8
+ 114 0036 1360     		str	r3, [r2]
+ 147:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     l1s3dsh_InitStruct.Axes_Enable = LIS3DSH_XYZ_ENABLE;
+ 115              		.loc 1 147 5 is_stmt 1 view .LVU39
+ 148:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     l1s3dsh_InitStruct.SPI_Wire = LIS3DSH_SERIALINTERFACE_4WIRE;
+ 116              		.loc 1 148 5 view .LVU40
+ 149:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     l1s3dsh_InitStruct.Self_Test = LIS3DSH_SELFTEST_NORMAL;
+ 117              		.loc 1 149 5 view .LVU41
+ 150:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     l1s3dsh_InitStruct.Full_Scale = LIS3DSH_FULLSCALE_2;
+ 118              		.loc 1 150 5 view .LVU42
+ 151:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     l1s3dsh_InitStruct.Filter_BW = LIS3DSH_FILTER_BW_800;
+ 119              		.loc 1 151 5 view .LVU43
+ 152:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+ 120              		.loc 1 152 5 view .LVU44
+ 155:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****                        l1s3dsh_InitStruct.Axes_Enable);
+ 121              		.loc 1 155 5 view .LVU45
+ 122              	.LVL9:
+ 159:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****                          l1s3dsh_InitStruct.Self_Test   | \
+ 123              		.loc 1 159 5 view .LVU46
+ 165:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+ 124              		.loc 1 165 5 view .LVU47
+ 165:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+ 125              		.loc 1 165 16 is_stmt 0 view .LVU48
+ 126 0038 1B68     		ldr	r3, [r3]
+ 165:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+ 127              		.loc 1 165 5 view .LVU49
+ 128 003a 6720     		movs	r0, #103
+ 129 003c 9847     		blx	r3
+ 130              	.LVL10:
+ 167:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   }
+ 131              		.loc 1 167 5 is_stmt 1 view .LVU50
+ 167:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   }
+ 132              		.loc 1 167 9 is_stmt 0 view .LVU51
+ 133 003e 0020     		movs	r0, #0
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 7
+
+
+ 134 0040 EAE7     		b	.L3
+ 135              	.L9:
+ 136 0042 00BF     		.align	2
+ 137              	.L8:
+ 138 0044 00000000 		.word	Lis302dlDrv
+ 139 0048 00000000 		.word	Lis3dshDrv
+ 140 004c 00000000 		.word	.LANCHOR0
+ 141              		.cfi_endproc
+ 142              	.LFE235:
+ 144              		.section	.text.BSP_ACCELERO_ReadID,"ax",%progbits
+ 145              		.align	1
+ 146              		.global	BSP_ACCELERO_ReadID
+ 147              		.syntax unified
+ 148              		.thumb
+ 149              		.thumb_func
+ 150              		.fpu fpv4-sp-d16
+ 152              	BSP_ACCELERO_ReadID:
+ 153              	.LFB236:
+ 176:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 177:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /**
+ 178:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @brief  Read ID of Accelerometer component.
+ 179:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @retval ID
+ 180:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+ 181:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** uint8_t BSP_ACCELERO_ReadID(void)
+ 182:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** {
+ 154              		.loc 1 182 1 is_stmt 1 view -0
+ 155              		.cfi_startproc
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158 0000 08B5     		push	{r3, lr}
+ 159              	.LCFI1:
+ 160              		.cfi_def_cfa_offset 8
+ 161              		.cfi_offset 3, -8
+ 162              		.cfi_offset 14, -4
+ 183:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   uint8_t id = 0x00;
+ 163              		.loc 1 183 3 view .LVU53
+ 164              	.LVL11:
+ 184:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 185:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   if(AcceleroDrv->ReadID != NULL)
+ 165              		.loc 1 185 3 view .LVU54
+ 166              		.loc 1 185 17 is_stmt 0 view .LVU55
+ 167 0002 044B     		ldr	r3, .L14
+ 168 0004 1B68     		ldr	r3, [r3]
+ 169 0006 9B68     		ldr	r3, [r3, #8]
+ 170              		.loc 1 185 5 view .LVU56
+ 171 0008 0BB1     		cbz	r3, .L12
+ 186:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   {
+ 187:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     id = AcceleroDrv->ReadID();
+ 172              		.loc 1 187 5 is_stmt 1 view .LVU57
+ 173              		.loc 1 187 10 is_stmt 0 view .LVU58
+ 174 000a 9847     		blx	r3
+ 175              	.LVL12:
+ 176              	.L11:
+ 188:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   }  
+ 189:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   return id;
+ 177              		.loc 1 189 3 is_stmt 1 view .LVU59
+ 190:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** }
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 8
+
+
+ 178              		.loc 1 190 1 is_stmt 0 view .LVU60
+ 179 000c 08BD     		pop	{r3, pc}
+ 180              	.LVL13:
+ 181              	.L12:
+ 183:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 182              		.loc 1 183 11 view .LVU61
+ 183 000e 0020     		movs	r0, #0
+ 184 0010 FCE7     		b	.L11
+ 185              	.L15:
+ 186 0012 00BF     		.align	2
+ 187              	.L14:
+ 188 0014 00000000 		.word	.LANCHOR0
+ 189              		.cfi_endproc
+ 190              	.LFE236:
+ 192              		.section	.text.BSP_ACCELERO_Reset,"ax",%progbits
+ 193              		.align	1
+ 194              		.global	BSP_ACCELERO_Reset
+ 195              		.syntax unified
+ 196              		.thumb
+ 197              		.thumb_func
+ 198              		.fpu fpv4-sp-d16
+ 200              	BSP_ACCELERO_Reset:
+ 201              	.LFB237:
+ 191:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 192:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /**
+ 193:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @brief  Reboot memory content of Accelerometer.
+ 194:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+ 195:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** void BSP_ACCELERO_Reset(void)
+ 196:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** {
+ 202              		.loc 1 196 1 is_stmt 1 view -0
+ 203              		.cfi_startproc
+ 204              		@ args = 0, pretend = 0, frame = 0
+ 205              		@ frame_needed = 0, uses_anonymous_args = 0
+ 206 0000 08B5     		push	{r3, lr}
+ 207              	.LCFI2:
+ 208              		.cfi_def_cfa_offset 8
+ 209              		.cfi_offset 3, -8
+ 210              		.cfi_offset 14, -4
+ 197:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   if(AcceleroDrv->Reset != NULL)
+ 211              		.loc 1 197 3 view .LVU63
+ 212              		.loc 1 197 17 is_stmt 0 view .LVU64
+ 213 0002 034B     		ldr	r3, .L19
+ 214 0004 1B68     		ldr	r3, [r3]
+ 215 0006 DB68     		ldr	r3, [r3, #12]
+ 216              		.loc 1 197 5 view .LVU65
+ 217 0008 03B1     		cbz	r3, .L16
+ 198:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   {
+ 199:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     AcceleroDrv->Reset();
+ 218              		.loc 1 199 5 is_stmt 1 view .LVU66
+ 219 000a 9847     		blx	r3
+ 220              	.LVL14:
+ 221              	.L16:
+ 200:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   }
+ 201:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** }
+ 222              		.loc 1 201 1 is_stmt 0 view .LVU67
+ 223 000c 08BD     		pop	{r3, pc}
+ 224              	.L20:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 9
+
+
+ 225 000e 00BF     		.align	2
+ 226              	.L19:
+ 227 0010 00000000 		.word	.LANCHOR0
+ 228              		.cfi_endproc
+ 229              	.LFE237:
+ 231              		.section	.text.BSP_ACCELERO_Click_ITConfig,"ax",%progbits
+ 232              		.align	1
+ 233              		.global	BSP_ACCELERO_Click_ITConfig
+ 234              		.syntax unified
+ 235              		.thumb
+ 236              		.thumb_func
+ 237              		.fpu fpv4-sp-d16
+ 239              	BSP_ACCELERO_Click_ITConfig:
+ 240              	.LFB238:
+ 202:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 203:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /**
+ 204:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @brief  Configure Accelerometer click IT. 
+ 205:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+ 206:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** void BSP_ACCELERO_Click_ITConfig(void)
+ 207:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** {
+ 241              		.loc 1 207 1 is_stmt 1 view -0
+ 242              		.cfi_startproc
+ 243              		@ args = 0, pretend = 0, frame = 0
+ 244              		@ frame_needed = 0, uses_anonymous_args = 0
+ 245 0000 08B5     		push	{r3, lr}
+ 246              	.LCFI3:
+ 247              		.cfi_def_cfa_offset 8
+ 248              		.cfi_offset 3, -8
+ 249              		.cfi_offset 14, -4
+ 208:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   if(AcceleroDrv->ConfigIT != NULL)
+ 250              		.loc 1 208 3 view .LVU69
+ 251              		.loc 1 208 17 is_stmt 0 view .LVU70
+ 252 0002 034B     		ldr	r3, .L24
+ 253 0004 1B68     		ldr	r3, [r3]
+ 254 0006 5B69     		ldr	r3, [r3, #20]
+ 255              		.loc 1 208 5 view .LVU71
+ 256 0008 03B1     		cbz	r3, .L21
+ 209:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   {
+ 210:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     AcceleroDrv->ConfigIT();
+ 257              		.loc 1 210 5 is_stmt 1 view .LVU72
+ 258 000a 9847     		blx	r3
+ 259              	.LVL15:
+ 260              	.L21:
+ 211:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   }
+ 212:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** }
+ 261              		.loc 1 212 1 is_stmt 0 view .LVU73
+ 262 000c 08BD     		pop	{r3, pc}
+ 263              	.L25:
+ 264 000e 00BF     		.align	2
+ 265              	.L24:
+ 266 0010 00000000 		.word	.LANCHOR0
+ 267              		.cfi_endproc
+ 268              	.LFE238:
+ 270              		.section	.text.BSP_ACCELERO_Click_ITClear,"ax",%progbits
+ 271              		.align	1
+ 272              		.global	BSP_ACCELERO_Click_ITClear
+ 273              		.syntax unified
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 10
+
+
+ 274              		.thumb
+ 275              		.thumb_func
+ 276              		.fpu fpv4-sp-d16
+ 278              	BSP_ACCELERO_Click_ITClear:
+ 279              	.LFB239:
+ 213:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 214:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /**
+ 215:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @brief  Clear Accelerometer click IT.
+ 216:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+ 217:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** void BSP_ACCELERO_Click_ITClear(void)
+ 218:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** {
+ 280              		.loc 1 218 1 is_stmt 1 view -0
+ 281              		.cfi_startproc
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284 0000 08B5     		push	{r3, lr}
+ 285              	.LCFI4:
+ 286              		.cfi_def_cfa_offset 8
+ 287              		.cfi_offset 3, -8
+ 288              		.cfi_offset 14, -4
+ 219:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   if(AcceleroDrv->ClearIT != NULL)
+ 289              		.loc 1 219 3 view .LVU75
+ 290              		.loc 1 219 17 is_stmt 0 view .LVU76
+ 291 0002 034B     		ldr	r3, .L29
+ 292 0004 1B68     		ldr	r3, [r3]
+ 293 0006 5B6A     		ldr	r3, [r3, #36]
+ 294              		.loc 1 219 5 view .LVU77
+ 295 0008 03B1     		cbz	r3, .L26
+ 220:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   {
+ 221:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     AcceleroDrv->ClearIT();
+ 296              		.loc 1 221 5 is_stmt 1 view .LVU78
+ 297 000a 9847     		blx	r3
+ 298              	.LVL16:
+ 299              	.L26:
+ 222:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   }
+ 223:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** }
+ 300              		.loc 1 223 1 is_stmt 0 view .LVU79
+ 301 000c 08BD     		pop	{r3, pc}
+ 302              	.L30:
+ 303 000e 00BF     		.align	2
+ 304              	.L29:
+ 305 0010 00000000 		.word	.LANCHOR0
+ 306              		.cfi_endproc
+ 307              	.LFE239:
+ 309              		.section	.text.BSP_ACCELERO_GetXYZ,"ax",%progbits
+ 310              		.align	1
+ 311              		.global	BSP_ACCELERO_GetXYZ
+ 312              		.syntax unified
+ 313              		.thumb
+ 314              		.thumb_func
+ 315              		.fpu fpv4-sp-d16
+ 317              	BSP_ACCELERO_GetXYZ:
+ 318              	.LVL17:
+ 319              	.LFB240:
+ 224:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** 
+ 225:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** /**
+ 226:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @brief  Get XYZ axes acceleration.
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 11
+
+
+ 227:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   * @param  pDataXYZ: Pointer to 3 angular acceleration axes.  
+ 228:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   *                   pDataXYZ[0] = X axis, pDataXYZ[1] = Y axis, pDataXYZ[2] = Z axis
+ 229:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   */
+ 230:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** void BSP_ACCELERO_GetXYZ(int16_t *pDataXYZ)
+ 231:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** {
+ 320              		.loc 1 231 1 is_stmt 1 view -0
+ 321              		.cfi_startproc
+ 322              		@ args = 0, pretend = 0, frame = 0
+ 323              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   int16_t SwitchXY = 0;
+ 324              		.loc 1 232 3 view .LVU81
+ 233:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   
+ 234:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   if(AcceleroDrv->GetXYZ != NULL)
+ 325              		.loc 1 234 3 view .LVU82
+ 326              		.loc 1 234 17 is_stmt 0 view .LVU83
+ 327 0000 0A4B     		ldr	r3, .L38
+ 328 0002 1B68     		ldr	r3, [r3]
+ 329 0004 1B6B     		ldr	r3, [r3, #48]
+ 330              		.loc 1 234 5 view .LVU84
+ 331 0006 7BB1     		cbz	r3, .L34
+ 231:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   int16_t SwitchXY = 0;
+ 332              		.loc 1 231 1 view .LVU85
+ 333 0008 10B5     		push	{r4, lr}
+ 334              	.LCFI5:
+ 335              		.cfi_def_cfa_offset 8
+ 336              		.cfi_offset 4, -8
+ 337              		.cfi_offset 14, -4
+ 338 000a 0446     		mov	r4, r0
+ 235:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   {   
+ 236:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     AcceleroDrv->GetXYZ(pDataXYZ);
+ 339              		.loc 1 236 5 is_stmt 1 view .LVU86
+ 340 000c 9847     		blx	r3
+ 341              	.LVL18:
+ 237:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     
+ 238:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     /* Switch X and Y Axes in case of LIS302DL MEMS */
+ 239:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     if(AcceleroDrv == &Lis302dlDrv)
+ 342              		.loc 1 239 5 view .LVU87
+ 343              		.loc 1 239 20 is_stmt 0 view .LVU88
+ 344 000e 074B     		ldr	r3, .L38
+ 345 0010 1A68     		ldr	r2, [r3]
+ 346              		.loc 1 239 7 view .LVU89
+ 347 0012 074B     		ldr	r3, .L38+4
+ 348 0014 9A42     		cmp	r2, r3
+ 349 0016 00D0     		beq	.L37
+ 350              	.LVL19:
+ 351              	.L31:
+ 240:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     { 
+ 241:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****       SwitchXY  = pDataXYZ[0];
+ 242:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****       pDataXYZ[0] = pDataXYZ[1];
+ 243:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****       /* Invert Y Axis to be compliant with LIS3DSH MEMS */
+ 244:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****       pDataXYZ[1] = -SwitchXY;
+ 245:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     } 
+ 246:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****   }
+ 247:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c **** }
+ 352              		.loc 1 247 1 view .LVU90
+ 353 0018 10BD     		pop	{r4, pc}
+ 354              	.LVL20:
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 12
+
+
+ 355              	.L37:
+ 241:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****       pDataXYZ[0] = pDataXYZ[1];
+ 356              		.loc 1 241 7 is_stmt 1 view .LVU91
+ 241:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****       pDataXYZ[0] = pDataXYZ[1];
+ 357              		.loc 1 241 17 is_stmt 0 view .LVU92
+ 358 001a B4F90030 		ldrsh	r3, [r4]
+ 359              	.LVL21:
+ 242:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****       /* Invert Y Axis to be compliant with LIS3DSH MEMS */
+ 360              		.loc 1 242 7 is_stmt 1 view .LVU93
+ 242:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****       /* Invert Y Axis to be compliant with LIS3DSH MEMS */
+ 361              		.loc 1 242 19 is_stmt 0 view .LVU94
+ 362 001e 6288     		ldrh	r2, [r4, #2]
+ 363 0020 2280     		strh	r2, [r4]	@ movhi
+ 244:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     } 
+ 364              		.loc 1 244 7 is_stmt 1 view .LVU95
+ 244:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     } 
+ 365              		.loc 1 244 19 is_stmt 0 view .LVU96
+ 366 0022 5B42     		rsbs	r3, r3, #0
+ 367              	.LVL22:
+ 244:Drivers/accelero/BSP/src/stm32f4_discovery_accelerometer.c ****     } 
+ 368              		.loc 1 244 19 view .LVU97
+ 369 0024 6380     		strh	r3, [r4, #2]	@ movhi
+ 370              		.loc 1 247 1 view .LVU98
+ 371 0026 F7E7     		b	.L31
+ 372              	.LVL23:
+ 373              	.L34:
+ 374              	.LCFI6:
+ 375              		.cfi_def_cfa_offset 0
+ 376              		.cfi_restore 4
+ 377              		.cfi_restore 14
+ 378              		.loc 1 247 1 view .LVU99
+ 379 0028 7047     		bx	lr
+ 380              	.L39:
+ 381 002a 00BF     		.align	2
+ 382              	.L38:
+ 383 002c 00000000 		.word	.LANCHOR0
+ 384 0030 00000000 		.word	Lis302dlDrv
+ 385              		.cfi_endproc
+ 386              	.LFE240:
+ 388              		.section	.bss.AcceleroDrv,"aw",%nobits
+ 389              		.align	2
+ 390              		.set	.LANCHOR0,. + 0
+ 393              	AcceleroDrv:
+ 394 0000 00000000 		.space	4
+ 395              		.text
+ 396              	.Letext0:
+ 397              		.file 2 "/usr/local/Cellar/gcc-arm-none-eabi/20200630/arm-none-eabi/include/machine/_default_types
+ 398              		.file 3 "/usr/local/Cellar/gcc-arm-none-eabi/20200630/arm-none-eabi/include/sys/_stdint.h"
+ 399              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 400              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 401              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 402              		.file 7 "Drivers/accelero/Common/../Common/accelero.h"
+ 403              		.file 8 "Drivers/accelero/Common/../Components/lis302dl/lis302dl.h"
+ 404              		.file 9 "Drivers/accelero/Common/../Components/lis3dsh/lis3dsh.h"
+ 405              		.file 10 "Drivers/accelero/BSP/inc/stm32f4_discovery_accelerometer.h"
+ARM GAS  /var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s 			page 13
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f4_discovery_accelerometer.c
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:18     .text.BSP_ACCELERO_Init:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:26     .text.BSP_ACCELERO_Init:0000000000000000 BSP_ACCELERO_Init
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:138    .text.BSP_ACCELERO_Init:0000000000000044 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:145    .text.BSP_ACCELERO_ReadID:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:152    .text.BSP_ACCELERO_ReadID:0000000000000000 BSP_ACCELERO_ReadID
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:188    .text.BSP_ACCELERO_ReadID:0000000000000014 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:193    .text.BSP_ACCELERO_Reset:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:200    .text.BSP_ACCELERO_Reset:0000000000000000 BSP_ACCELERO_Reset
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:227    .text.BSP_ACCELERO_Reset:0000000000000010 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:232    .text.BSP_ACCELERO_Click_ITConfig:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:239    .text.BSP_ACCELERO_Click_ITConfig:0000000000000000 BSP_ACCELERO_Click_ITConfig
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:266    .text.BSP_ACCELERO_Click_ITConfig:0000000000000010 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:271    .text.BSP_ACCELERO_Click_ITClear:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:278    .text.BSP_ACCELERO_Click_ITClear:0000000000000000 BSP_ACCELERO_Click_ITClear
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:305    .text.BSP_ACCELERO_Click_ITClear:0000000000000010 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:310    .text.BSP_ACCELERO_GetXYZ:0000000000000000 $t
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:317    .text.BSP_ACCELERO_GetXYZ:0000000000000000 BSP_ACCELERO_GetXYZ
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:383    .text.BSP_ACCELERO_GetXYZ:000000000000002c $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:389    .bss.AcceleroDrv:0000000000000000 $d
+/var/folders/y1/mrm7396d3yl40ryf_xr6m12h0000gn/T//ccuVY2Uc.s:393    .bss.AcceleroDrv:0000000000000000 AcceleroDrv
+
+UNDEFINED SYMBOLS
+Lis302dlDrv
+Lis3dshDrv
